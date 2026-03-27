@@ -5,8 +5,12 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "build:cn": "node ./scripts/build-site.mjs paperclipai.cn",
+    "build:intl": "node ./scripts/build-site.mjs penclip.ing",
     "preview": "astro preview",
-    "deploy": "astro build && wrangler pages deploy",
+    "deploy": "npm run deploy:intl",
+    "deploy:cn": "node ./scripts/deploy-site.mjs paperclipai.cn",
+    "deploy:intl": "node ./scripts/deploy-site.mjs penclip.ing",
     "astro": "astro"
   },
   "dependencies": {

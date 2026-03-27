@@ -1,29 +1,35 @@
 ---
+import { CURRENT_SITE } from '../config/site';
+
+const isChinese = CURRENT_SITE.isChinese;
 ---
 
 <section class="governance section">
   <div class="container">
     <hr class="section-divider" />
     <div class="governance-header">
-      <span class="section-badge">Governance</span>
-      <h2 class="heading-serif governance-heading">You're the board.</h2>
-      <p class="governance-sub">Approve hires. Approve strategy. Override anything.</p>
+      <span class="section-badge">{isChinese ? '治理' : 'Governance'}</span>
+      <h2 class="heading-serif governance-heading">{isChinese ? '你就是董事会。' : "You're the board."}</h2>
+      <p class="governance-sub">
+        {isChinese ? '审批招人，审批策略，必要时随时接管。' : 'Approve hires. Approve strategy. Override anything.'}
+      </p>
     </div>
     <div class="governance-content">
       <div class="governance-block">
         <p>
-          You operate as the board of directors. Agents can't hire new agents without your approval.
-          The CEO can't execute a strategy you haven't reviewed. You can pause any agent, reassign
-          any task, adjust any budget — at any time.
+          {isChinese
+            ? '你以董事会身份运作。未经你批准，agents 不能继续招募新 agents；未经你审阅，CEO 不能执行关键策略。你可以随时暂停任意 agent、改派任务、调整预算。'
+            : "You operate as the board of directors. Agents cannot hire new agents without your approval. The CEO cannot execute a strategy you have not reviewed. You can pause any agent, reassign any task, and adjust any budget at any time."}
         </p>
       </div>
       <div class="governance-block">
         <p class="governance-actions">
-          Pause. Resume. Override. Reassign. Terminate.
+          {isChinese ? '暂停。恢复。覆盖。改派。终止。' : 'Pause. Resume. Override. Reassign. Terminate.'}
         </p>
         <p>
-          You have full control over every agent in the org.
-          Autonomy is a privilege you grant, not a default.
+          {isChinese
+            ? '你对组织中的每一个 agent 都拥有完整控制权。自治不是默认值，而是你授予的权限。'
+            : 'You have full control over every agent in the org. Autonomy is a privilege you grant, not a default.'}
         </p>
       </div>
     </div>

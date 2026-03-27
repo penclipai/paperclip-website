@@ -1,44 +1,76 @@
 ---
-const problems = [
-  {
-    without: 'You have 20 Claude Code tabs open and can\'t track which one does what. On reboot you lose everything.',
-    with: 'Tasks are ticket-based, conversations are threaded, sessions persist across reboots.',
-  },
-  {
-    without: 'You manually gather context from several places to remind your bot what you\'re actually doing.',
-    with: 'Context flows from the task up through the project and company goals — your agent always knows what to do and why.',
-  },
-  {
-    without: 'Folders of agent configs are disorganized and you\'re re-inventing task management, communication, and coordination between agents.',
-    with: 'Paperclip gives you org charts, ticketing, delegation, and governance out of the box — so you run a company, not a pile of scripts.',
-  },
-  {
-    without: 'Runaway loops waste hundreds of dollars of tokens and max your quota before you even know what happened.',
-    with: 'Cost tracking surfaces token budgets and throttles agents when they\'re out. Management prioritizes with budgets.',
-  },
-  {
-    without: 'You have recurring jobs (customer support, social, reports) and have to remember to manually kick them off.',
-    with: 'Heartbeats handle regular work on a schedule. Management supervises.',
-  },
-  {
-    without: 'You have an idea, you have to find your repo, fire up Claude Code, keep a tab open, and babysit it.',
-    with: 'Add a task in Paperclip. Your coding agent works on it until it\'s done. Management reviews their work.',
-  },
-];
+import { CURRENT_SITE } from '../config/site';
+
+const isChinese = CURRENT_SITE.isChinese;
+const problems = isChinese
+  ? [
+      {
+        without: '你同时开着 20 个 Claude Code 标签页，却不知道谁在做什么；一重启，进度全丢。',
+        with: '任务以 ticket 为中心，对话成线程，session 跨重启持续存在。'
+      },
+      {
+        without: '你要手动从多个地方拼上下文，反复提醒 bot 现在到底在做什么。',
+        with: '上下文从任务一直关联到项目与公司目标，agent 天然知道该做什么、为什么做。'
+      },
+      {
+        without: 'Agent 配置散落各处，你还得自己重造任务管理、协作和调度系统。',
+        with: 'Penclip 把组织架构、ticket、委派和治理开箱给你，你运行的是公司，不是一堆脚本。'
+      },
+      {
+        without: '失控循环几分钟就烧掉几百美元 token，等你发现时额度已经见底。',
+        with: '成本追踪会把预算与消耗直接暴露出来，超限自动节流，由管理层按预算做优先级。'
+      },
+      {
+        without: '客服、内容、日报这类周期性工作，总得你自己记得去手动触发。',
+        with: 'Heartbeat 会按计划接管这些重复性工作，管理层只负责监督。'
+      },
+      {
+        without: '你有个想法，还得找仓库、开 Claude Code、盯着窗口，整个过程靠人工 babysit。',
+        with: '直接在 Penclip 里下发任务，编码 agent 会持续推进直到完成，再由管理层审阅。'
+      }
+    ]
+  : [
+      {
+        without: "You have 20 Claude Code tabs open and cannot track which one does what. On reboot you lose everything.",
+        with: 'Tasks are ticket-based, conversations are threaded, and sessions persist across reboots.'
+      },
+      {
+        without: "You manually gather context from several places to remind your bot what you're actually doing.",
+        with: 'Context flows from the task up through the project and company goals, so your agent always knows what to do and why.'
+      },
+      {
+        without: 'Folders of agent configs are disorganized and you are re-inventing task management, communication, and coordination between agents.',
+        with: 'Penclip gives you org charts, ticketing, delegation, and governance out of the box, so you run a company instead of a pile of scripts.'
+      },
+      {
+        without: 'Runaway loops waste hundreds of dollars of tokens and max your quota before you even know what happened.',
+        with: 'Cost tracking surfaces token budgets and throttles agents when they are out. Management prioritizes with budgets.'
+      },
+      {
+        without: 'You have recurring jobs like customer support, social scheduling, and reporting that still depend on manual triggers.',
+        with: 'Heartbeats handle regular work on a schedule while management supervises.'
+      },
+      {
+        without: 'You have an idea, then you have to find your repo, fire up Claude Code, keep a tab open, and babysit it.',
+        with: 'Add a task in Penclip. Your coding agent works on it until it is done. Management reviews the outcome.'
+      }
+    ];
 ---
 
 <section class="problems-section section">
   <div class="container">
     <hr class="section-divider" />
     <div class="problems-header">
-      <span class="section-badge">Problems Solved</span>
-      <h2 class="heading-serif problems-heading">What changes with Paperclip.</h2>
+      <span class="section-badge">{isChinese ? '解决的问题' : 'Problems Solved'}</span>
+      <h2 class="heading-serif problems-heading">
+        {isChinese ? '用了 Penclip，会发生什么变化。' : 'What changes with Penclip.'}
+      </h2>
     </div>
     <div class="problems-list">
       {problems.map((p) => (
         <div class="problem-row" data-animate-problem>
           <div class="problem-without">
-            <span class="problem-label problem-label-without">Without</span>
+            <span class="problem-label problem-label-without">{isChinese ? '没有 Penclip' : 'Without'}</span>
             <p>{p.without}</p>
           </div>
           <div class="problem-arrow">
@@ -47,7 +79,7 @@ const problems = [
             </svg>
           </div>
           <div class="problem-with">
-            <span class="problem-label problem-label-with">With Paperclip</span>
+            <span class="problem-label problem-label-with">{isChinese ? '使用 Penclip' : 'With Penclip'}</span>
             <p>{p.with}</p>
           </div>
         </div>

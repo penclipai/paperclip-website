@@ -1,58 +1,111 @@
 ---
-const features = [
-  {
-    title: 'Bring Your Own Agent',
-    desc: 'Any agent, any runtime, one org chart. If it can receive a heartbeat, it\'s hired.',
-    icon: 'plug',
-  },
-  {
-    title: 'Goal Alignment',
-    desc: 'Every task traces back to the company mission. Agents know what to do and why.',
-    icon: 'target',
-  },
-  {
-    title: 'Heartbeats',
-    desc: 'Agents wake on a schedule, check work, and act. Delegation flows up and down the org chart.',
-    icon: 'pulse',
-  },
-  {
-    title: 'Cost Control',
-    desc: 'Monthly budgets per agent. When they hit the limit, they stop. No runaway costs.',
-    icon: 'dollar',
-  },
-  {
-    title: 'Multi-Company',
-    desc: 'One deployment, many companies. Complete data isolation. One control plane for your portfolio.',
-    icon: 'building',
-  },
-  {
-    title: 'Ticket System',
-    desc: 'Every conversation traced. Every decision explained. Full tool-call tracing and audit log.',
-    icon: 'ticket',
-  },
-  {
-    title: 'Governance',
-    desc: 'You\'re the board. Approve hires, override strategy, pause or terminate any agent at any time.',
-    icon: 'shield',
-  },
-  {
-    title: 'Org Chart',
-    desc: 'Hierarchies, roles, reporting lines. Your agents have a boss, a title, and a job description.',
-    icon: 'orgchart',
-  },
-  {
-    title: 'Mobile Ready',
-    desc: 'Monitor and manage your autonomous businesses from anywhere.',
-    icon: 'phone',
-  },
-];
+import { CURRENT_SITE } from '../config/site';
+
+const isChinese = CURRENT_SITE.isChinese;
+const features = isChinese
+  ? [
+      {
+        title: '任意 Agent 接入',
+        desc: '任意 agent、任意 runtime、统一组织架构。只要能接收 heartbeat，就能加入公司。',
+        icon: 'plug'
+      },
+      {
+        title: '目标对齐',
+        desc: '每个任务都能追溯到公司目标，agent 知道做什么，也知道为什么要做。',
+        icon: 'target'
+      },
+      {
+        title: '心跳调度',
+        desc: 'Agent 按节奏醒来、检查工作、持续推进，委派沿着组织结构自动流动。',
+        icon: 'pulse'
+      },
+      {
+        title: '成本控制',
+        desc: '按 agent 设置月度预算，超限即停，没有失控 token 成本。',
+        icon: 'dollar'
+      },
+      {
+        title: '多公司运行',
+        desc: '一次部署可运行多家公司，数据隔离清晰，一个控制面管理整个业务组合。',
+        icon: 'building'
+      },
+      {
+        title: 'Ticket 系统',
+        desc: '每段对话、每次决策、每个工具调用都可追踪、可审计。',
+        icon: 'ticket'
+      },
+      {
+        title: '治理与审批',
+        desc: '你是董事会，审批招人、覆盖策略，随时暂停或终止任意 agent。',
+        icon: 'shield'
+      },
+      {
+        title: '组织架构',
+        desc: '层级、角色、汇报关系一目了然，agent 不再是散落脚本，而是完整团队。',
+        icon: 'orgchart'
+      },
+      {
+        title: '移动端可管',
+        desc: '随时随地查看和管理你的 AI 公司运行状态。',
+        icon: 'phone'
+      }
+    ]
+  : [
+      {
+        title: 'Bring Your Own Agent',
+        desc: 'Any agent, any runtime, one org chart. If it can receive a heartbeat, it is hired.',
+        icon: 'plug'
+      },
+      {
+        title: 'Goal Alignment',
+        desc: 'Every task traces back to the company mission. Agents know what to do and why.',
+        icon: 'target'
+      },
+      {
+        title: 'Heartbeats',
+        desc: 'Agents wake on a schedule, check work, and act. Delegation flows up and down the org chart.',
+        icon: 'pulse'
+      },
+      {
+        title: 'Cost Control',
+        desc: 'Monthly budgets per agent. When they hit the limit, they stop. No runaway costs.',
+        icon: 'dollar'
+      },
+      {
+        title: 'Multi-Company',
+        desc: 'One deployment, many companies. Complete data isolation. One control plane for your portfolio.',
+        icon: 'building'
+      },
+      {
+        title: 'Ticket System',
+        desc: 'Every conversation traced. Every decision explained. Full tool-call tracing and audit log.',
+        icon: 'ticket'
+      },
+      {
+        title: 'Governance',
+        desc: 'You are the board. Approve hires, override strategy, pause or terminate any agent at any time.',
+        icon: 'shield'
+      },
+      {
+        title: 'Org Chart',
+        desc: 'Hierarchies, roles, reporting lines. Your agents have a boss, a title, and a job description.',
+        icon: 'orgchart'
+      },
+      {
+        title: 'Mobile Ready',
+        desc: 'Monitor and manage your autonomous businesses from anywhere.',
+        icon: 'phone'
+      }
+    ];
 ---
 
 <section class="features-section section">
   <div class="container">
     <div class="features-header">
-      <span class="section-badge">Features</span>
-      <h2 class="heading-serif features-heading">Everything you need to run<br />an autonomous company.</h2>
+      <span class="section-badge">{isChinese ? '核心能力' : 'Features'}</span>
+      <h2 class="heading-serif features-heading">
+        {isChinese ? '运行 AI 公司的全套控制面。' : 'Everything you need to run'}{!isChinese && <br />}{!isChinese && 'an autonomous company.'}
+      </h2>
     </div>
     <div class="features-grid">
       {features.map((f) => (

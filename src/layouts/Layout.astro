@@ -1,35 +1,65 @@
 ---
+import { BRAND } from '../config/brand';
+import {
+  CURRENT_SITE,
+  getAlternateLinks,
+  getCanonicalUrl,
+  getRobotsContent
+} from '../config/site';
+
 interface Props {
   title?: string;
   description?: string;
   ogImage?: string;
+  lang?: string;
+  robots?: string;
+  structuredData?: Record<string, unknown> | Array<Record<string, unknown>>;
 }
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://paperclip.dev');
+const pathname = Astro.url.pathname;
+const canonicalURL = new URL(getCanonicalUrl(pathname));
+const alternateLinks = getAlternateLinks(pathname);
 
 const {
-  title = 'Paperclip — The control plane for AI agents',
-  description = 'Manage a team of AI agents to run your business. Org charts, budgets, governance, and goals — all in one deployment.',
+  title = CURRENT_SITE.title,
+  description = CURRENT_SITE.description,
   ogImage = '/og.png',
+  lang = CURRENT_SITE.lang,
+  robots = getRobotsContent(true),
+  structuredData = [],
 } = Astro.props;
 
-const ogImageURL = new URL(ogImage, canonicalURL.origin).href;
+const structuredDataItems = Array.isArray(structuredData)
+  ? structuredData
+  : structuredData
+    ? [structuredData]
+    : [];
+const ogImageURL = new URL(ogImage, CURRENT_SITE.siteUrl).href;
+const alternateLocale = CURRENT_SITE.lang === 'zh-CN' ? 'en_US' : 'zh_CN';
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <meta name="robots" content={robots} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
     <link rel="canonical" href={canonicalURL.href} />
+    {alternateLinks.map((link) => (
+      <link rel="alternate" hreflang={link.hreflang} href={link.href} />
+    ))}
     <title>{title}</title>
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={BRAND.name} />
     <meta property="og:url" content={canonicalURL.href} />
+    <meta property="og:locale" content={CURRENT_SITE.ogLocale} />
+    <meta property="og:locale:alternate" content={alternateLocale} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImageURL} />
@@ -41,6 +71,9 @@ const ogImageURL = new URL(ogImage, canonicalURL.origin).href;
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageURL} />
+    {structuredDataItems.map((item) => (
+      <script type="application/ld+json" set:html={JSON.stringify(item)} />
+    ))}
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

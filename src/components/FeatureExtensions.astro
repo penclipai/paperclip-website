@@ -1,4 +1,47 @@
 ---
+import { CURRENT_SITE } from '../config/site';
+
+const content = CURRENT_SITE.isChinese
+  ? {
+      badge: '开源可扩展',
+      heading: ['可扩展，可适配，', '完全开源。'],
+      sub:
+        'Penclip 延续 Paperclip 的开源扩展能力。你可以通过扩展接入新能力、适配现有技术栈，并掌握驱动 AI 组织运行的每一行代码。',
+      pillars: [
+        {
+          label: '可扩展',
+          desc: '通过扩展为 Penclip 增加新能力，无需改动核心代码。'
+        },
+        {
+          label: '可适配',
+          desc: '兼容任意 LLM 提供商、工具栈和部署目标。'
+        },
+        {
+          label: '开源',
+          desc: 'MIT 许可。可以 Fork、审计，也可以回馈社区。'
+        }
+      ]
+    }
+  : {
+      badge: 'Open Source',
+      heading: ['Extensible, adaptable,', 'open source.'],
+      sub:
+        'Penclip keeps the open-source flexibility of Paperclip. Add capabilities through extensions, adapt it to your stack, and own every line of code that runs your AI workforce.',
+      pillars: [
+        {
+          label: 'Extensible',
+          desc: 'Drop-in extensions add new capabilities without touching core code.'
+        },
+        {
+          label: 'Adaptable',
+          desc: 'Works with any LLM provider, any tool stack, any deployment target.'
+        },
+        {
+          label: 'Open Source',
+          desc: 'MIT-licensed. Fork it, audit it, contribute back.'
+        }
+      ]
+    };
 ---
 
 <section class="feature-section section" id="extensions-section">
@@ -6,12 +49,10 @@
     <hr class="section-divider" />
     <div class="feature-header">
       <div>
-        <span class="section-badge">Open Source</span>
-        <h2 class="heading-serif feature-heading">Extensible, adaptable,<br />open source.</h2>
+        <span class="section-badge">{content.badge}</span>
+        <h2 class="heading-serif feature-heading">{content.heading[0]}<br />{content.heading[1]}</h2>
         <p class="feature-sub">
-          Paperclip is built to be extended. Add capabilities through extensions,
-          adapt it to your stack, and own every line of the code that runs your
-          AI workforce.
+          {content.sub}
         </p>
       </div>
     </div>
@@ -22,22 +63,22 @@
         <div class="pillar-icon">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19.439 7.85c-.049 4.764-1.607 9.326-4.439 12.984-2.832-3.658-4.39-8.22-4.439-12.984h-.001C10.56 4.59 12 2 12 2s1.44 2.59 1.44 5.85h-.001z"/><path d="M11.5 7.85C11.45 4.59 10 2 10 2S7.11 6.85 7.11 12.5c0 3.32.95 6.43 2.59 9.06"/><path d="M12.5 7.85c.05-3.26 1.5-5.85 1.5-5.85s2.89 4.85 2.89 10.5c0 3.32-.95 6.43-2.59 9.06"/></svg>
         </div>
-        <span class="pillar-label">Extensible</span>
-        <p class="pillar-desc">Drop-in extensions add new capabilities without touching core code.</p>
+        <span class="pillar-label">{content.pillars[0].label}</span>
+        <p class="pillar-desc">{content.pillars[0].desc}</p>
       </div>
       <div class="pillar-card" style="--d:1">
         <div class="pillar-icon">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
         </div>
-        <span class="pillar-label">Adaptable</span>
-        <p class="pillar-desc">Works with any LLM provider, any tool stack, any deployment target.</p>
+        <span class="pillar-label">{content.pillars[1].label}</span>
+        <p class="pillar-desc">{content.pillars[1].desc}</p>
       </div>
       <div class="pillar-card" style="--d:2">
         <div class="pillar-icon">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 01-9 9"/></svg>
         </div>
-        <span class="pillar-label">Open Source</span>
-        <p class="pillar-desc">MIT-licensed. Fork it, audit it, contribute back.</p>
+        <span class="pillar-label">{content.pillars[2].label}</span>
+        <p class="pillar-desc">{content.pillars[2].desc}</p>
       </div>
     </div>
 

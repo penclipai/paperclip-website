@@ -1,50 +1,95 @@
 ---
-const items = [
-  {
-    label: 'Atomic execution.',
-    detail: 'Task checkout and budget enforcement are atomic, so no double-work and no runaway spend.',
-    icon: 'atom',
-  },
-  {
-    label: 'Persistent agent state.',
-    detail: 'Agents resume the same task context across heartbeats instead of restarting from scratch.',
-    icon: 'save',
-  },
-  {
-    label: 'Runtime skill injection.',
-    detail: 'Agents can learn Paperclip workflows and project context at runtime, without retraining.',
-    icon: 'zap',
-  },
-  {
-    label: 'Governance with rollback.',
-    detail: 'Approval gates are enforced, config changes are revisioned, and bad changes can be rolled back safely.',
-    icon: 'rewind',
-  },
-  {
-    label: 'Goal-aware execution.',
-    detail: 'Tasks carry full goal ancestry so agents consistently see the "why," not just a title.',
-    icon: 'layers',
-  },
-  {
-    label: 'Portable company templates.',
-    detail: 'Export/import orgs, agents, and skills with secret scrubbing and collision handling.',
-    icon: 'package',
-  },
-  {
-    label: 'True multi-company isolation.',
-    detail: 'Every entity is company-scoped, so one deployment can run many companies with separate data and audit trails.',
-    icon: 'lock',
-  },
-];
+import { CURRENT_SITE } from '../config/site';
+
+const isChinese = CURRENT_SITE.isChinese;
+const items = isChinese
+  ? [
+      {
+        label: '原子执行。',
+        detail: '任务 checkout 和预算约束都按原子方式执行，不会重复干活，也不会失控烧钱。',
+        icon: 'atom'
+      },
+      {
+        label: '持久化 Agent 状态。',
+        detail: 'Agents 会在 heartbeat 之间续接同一份上下文，而不是每次从零开始。',
+        icon: 'save'
+      },
+      {
+        label: '运行时技能注入。',
+        detail: 'Agent 可以在运行时学习 Penclip 工作流和项目上下文，不需要重新训练。',
+        icon: 'zap'
+      },
+      {
+        label: '可回滚治理。',
+        detail: '审批门禁可强制执行，配置变更带版本，错误修改可以安全回滚。',
+        icon: 'rewind'
+      },
+      {
+        label: '目标感知执行。',
+        detail: '任务携带完整目标谱系，agent 看到的不只是标题，还有背后的为什么。',
+        icon: 'layers'
+      },
+      {
+        label: '可移植公司模板。',
+        detail: '组织、agents 和 skills 可以导出导入，同时处理敏感信息清洗与命名冲突。',
+        icon: 'package'
+      },
+      {
+        label: '真正的多公司隔离。',
+        detail: '所有实体都按 company 作用域隔离，一套部署即可承载多家公司与各自审计轨迹。',
+        icon: 'lock'
+      }
+    ]
+  : [
+      {
+        label: 'Atomic execution.',
+        detail: 'Task checkout and budget enforcement are atomic, so there is no double-work and no runaway spend.',
+        icon: 'atom'
+      },
+      {
+        label: 'Persistent agent state.',
+        detail: 'Agents resume the same task context across heartbeats instead of restarting from scratch.',
+        icon: 'save'
+      },
+      {
+        label: 'Runtime skill injection.',
+        detail: 'Agents can learn Penclip workflows and project context at runtime without retraining.',
+        icon: 'zap'
+      },
+      {
+        label: 'Governance with rollback.',
+        detail: 'Approval gates are enforced, config changes are revisioned, and bad changes can be rolled back safely.',
+        icon: 'rewind'
+      },
+      {
+        label: 'Goal-aware execution.',
+        detail: 'Tasks carry full goal ancestry so agents consistently see the why, not just a title.',
+        icon: 'layers'
+      },
+      {
+        label: 'Portable company templates.',
+        detail: 'Export and import orgs, agents, and skills with secret scrubbing and collision handling.',
+        icon: 'package'
+      },
+      {
+        label: 'True multi-company isolation.',
+        detail: 'Every entity is company-scoped, so one deployment can run many companies with separate data and audit trails.',
+        icon: 'lock'
+      }
+    ];
 ---
 
 <section class="special-section section">
   <div class="container">
     <hr class="section-divider" />
     <div class="special-header">
-      <span class="section-badge">Under the Hood</span>
-      <h2 class="heading-serif special-heading">Why Paperclip is special.</h2>
-      <p class="special-sub">Paperclip handles the hard orchestration details correctly.</p>
+      <span class="section-badge">{isChinese ? '底层能力' : 'Under the Hood'}</span>
+      <h2 class="heading-serif special-heading">{isChinese ? '为什么 Penclip 更适合真正落地。' : 'Why Penclip is special.'}</h2>
+      <p class="special-sub">
+        {isChinese
+          ? 'Penclip 把最难的编排细节、成本治理和组织控制做对了。'
+          : 'Penclip handles the hard orchestration details correctly.'}
+      </p>
     </div>
     <div class="special-grid">
       {items.map((item, i) => (

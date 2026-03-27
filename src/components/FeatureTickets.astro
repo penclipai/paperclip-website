@@ -1,4 +1,81 @@
 ---
+import { CURRENT_SITE } from '../config/site';
+
+const content = CURRENT_SITE.isChinese
+  ? {
+      badge: '工单系统',
+      heading: ['每次对话都有记录。', '每个决策都能追溯。'],
+      sub:
+        '你通过工单与 agents 协作。每条指令、每次响应、每个工具调用和关键决策都会被完整记录下来，没有黑盒。',
+      bullets: [
+        {
+          title: '结构化工单',
+          desc: '每项任务都是一个工单，带有明确负责人、状态和线程。'
+        },
+        {
+          title: '完整 Trace',
+          desc: '每次工具调用、API 请求和决策节点都可见可查。'
+        },
+        {
+          title: '不可变审计日志',
+          desc: '只追加、不篡改、不删除，责任链完整可追踪。'
+        }
+      ],
+      ticket: {
+        title: '发布新版定价页',
+        status: '进行中',
+        assignee: 'CTO',
+        messages: [
+          { author: '你', time: '2 分钟前', text: '把新版定价页部署到生产环境，先跑测试。' },
+          { author: 'CTO Agent', time: '1 分钟前', text: '正在执行测试和预发部署。烟雾测试通过后我会切到生产。' },
+          { author: '你', time: '刚刚', text: '已批准，继续。' }
+        ],
+        traceLabel: '执行轨迹',
+        trace: [
+          { action: 'run_tests()', status: '通过' },
+          { action: 'deploy_to_staging()', status: '完成' },
+          { action: 'smoke_test()', status: '通过' },
+          { action: 'deploy_to_production()', status: '进行中' }
+        ]
+      }
+    }
+  : {
+      badge: 'Ticket System',
+      heading: ['Every conversation traced.', 'Every decision explained.'],
+      sub:
+        'You communicate with agents through tickets. Every instruction, every response, every tool call and decision is recorded with full tracing. Nothing happens in the dark.',
+      bullets: [
+        {
+          title: 'Structured tickets',
+          desc: 'Every task is a ticket with a clear owner, status, and thread.'
+        },
+        {
+          title: 'Full trace',
+          desc: 'Every tool call, API request, and decision point is logged and visible.'
+        },
+        {
+          title: 'Immutable audit log',
+          desc: 'Append-only history. No edits, no deletions. Full accountability.'
+        }
+      ],
+      ticket: {
+        title: 'Deploy updated pricing page',
+        status: 'In Progress',
+        assignee: 'CTO',
+        messages: [
+          { author: 'You', time: '2 min ago', text: 'Deploy the updated pricing page to production. Run tests first.' },
+          { author: 'CTO Agent', time: '1 min ago', text: "Running test suite and staging deployment now. I'll promote to production once smoke tests pass." },
+          { author: 'You', time: 'just now', text: 'Approved. Go ahead.' }
+        ],
+        traceLabel: 'Trace',
+        trace: [
+          { action: 'run_tests()', status: 'passed' },
+          { action: 'deploy_to_staging()', status: 'done' },
+          { action: 'smoke_test()', status: 'passed' },
+          { action: 'deploy_to_production()', status: 'running' }
+        ]
+      }
+    };
 ---
 
 <section class="feature-section section">
@@ -7,11 +84,10 @@
     <div class="tickets-two-col" id="tickets-section">
       <!-- Left: copy + bullets -->
       <div class="tickets-copy">
-        <span class="section-badge">Ticket System</span>
-        <h2 class="heading-serif feature-heading">Every conversation traced.<br />Every decision explained.</h2>
+        <span class="section-badge">{content.badge}</span>
+        <h2 class="heading-serif feature-heading">{content.heading[0]}<br />{content.heading[1]}</h2>
         <p class="feature-sub">
-          You communicate with agents through tickets. Every instruction, every response,
-          every tool call and decision is recorded with full tracing. Nothing happens in the dark.
+          {content.sub}
         </p>
         <ul class="ticket-bullets">
           <li class="ticket-bullet" style="--d:0">
@@ -19,8 +95,8 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
             </span>
             <div>
-              <strong>Structured tickets</strong>
-              <span>Every task is a ticket with a clear owner, status, and thread.</span>
+              <strong>{content.bullets[0].title}</strong>
+              <span>{content.bullets[0].desc}</span>
             </div>
           </li>
           <li class="ticket-bullet" style="--d:1">
@@ -28,8 +104,8 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
             </span>
             <div>
-              <strong>Full trace</strong>
-              <span>Every tool call, API request, and decision point is logged and visible.</span>
+              <strong>{content.bullets[1].title}</strong>
+              <span>{content.bullets[1].desc}</span>
             </div>
           </li>
           <li class="ticket-bullet" style="--d:2">
@@ -37,8 +113,8 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             </span>
             <div>
-              <strong>Immutable audit log</strong>
-              <span>Append-only history. No edits, no deletions. Full accountability.</span>
+              <strong>{content.bullets[2].title}</strong>
+              <span>{content.bullets[2].desc}</span>
             </div>
           </li>
         </ul>
@@ -52,13 +128,13 @@
           <div class="ticket-header" style="--d:0">
             <div class="ticket-id-row">
               <span class="ticket-number">#1042</span>
-              <span class="ticket-title">Deploy updated pricing page</span>
+              <span class="ticket-title">{content.ticket.title}</span>
             </div>
             <div class="ticket-meta">
-              <span class="ticket-pill ticket-pill--status">In Progress</span>
+              <span class="ticket-pill ticket-pill--status">{content.ticket.status}</span>
               <span class="ticket-pill ticket-pill--assignee">
                 <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
-                CTO
+                {content.ticket.assignee}
               </span>
             </div>
           </div>
@@ -71,10 +147,10 @@
               </div>
               <div class="msg-body">
                 <div class="msg-meta">
-                  <span class="msg-author">You</span>
-                  <span class="msg-time">2 min ago</span>
+                  <span class="msg-author">{content.ticket.messages[0].author}</span>
+                  <span class="msg-time">{content.ticket.messages[0].time}</span>
                 </div>
-                <p class="msg-text">Deploy the updated pricing page to production. Run tests first.</p>
+                <p class="msg-text">{content.ticket.messages[0].text}</p>
               </div>
             </div>
             <div class="thread-msg thread-msg--agent" style="--d:2">
@@ -83,10 +159,10 @@
               </div>
               <div class="msg-body">
                 <div class="msg-meta">
-                  <span class="msg-author">CTO Agent</span>
-                  <span class="msg-time">1 min ago</span>
+                  <span class="msg-author">{content.ticket.messages[1].author}</span>
+                  <span class="msg-time">{content.ticket.messages[1].time}</span>
                 </div>
-                <p class="msg-text">Running test suite and staging deployment now. I'll promote to production once smoke tests pass.</p>
+                <p class="msg-text">{content.ticket.messages[1].text}</p>
               </div>
             </div>
             <div class="thread-msg thread-msg--human" style="--d:3">
@@ -95,40 +171,40 @@
               </div>
               <div class="msg-body">
                 <div class="msg-meta">
-                  <span class="msg-author">You</span>
-                  <span class="msg-time">just now</span>
+                  <span class="msg-author">{content.ticket.messages[2].author}</span>
+                  <span class="msg-time">{content.ticket.messages[2].time}</span>
                 </div>
-                <p class="msg-text">Approved. Go ahead.</p>
+                <p class="msg-text">{content.ticket.messages[2].text}</p>
               </div>
             </div>
           </div>
 
           <!-- Trace timeline -->
           <div class="ticket-trace">
-            <span class="trace-label">Trace</span>
+            <span class="trace-label">{content.ticket.traceLabel}</span>
             <div class="trace-steps">
               <div class="trace-step" style="--d:4">
                 <span class="trace-dot trace-dot--done"></span>
                 <span class="trace-line"></span>
-                <span class="trace-action">run_tests()</span>
-                <span class="trace-status trace-status--done">passed</span>
+                <span class="trace-action">{content.ticket.trace[0].action}</span>
+                <span class="trace-status trace-status--done">{content.ticket.trace[0].status}</span>
               </div>
               <div class="trace-step" style="--d:5">
                 <span class="trace-dot trace-dot--done"></span>
                 <span class="trace-line"></span>
-                <span class="trace-action">deploy_to_staging()</span>
-                <span class="trace-status trace-status--done">done</span>
+                <span class="trace-action">{content.ticket.trace[1].action}</span>
+                <span class="trace-status trace-status--done">{content.ticket.trace[1].status}</span>
               </div>
               <div class="trace-step" style="--d:6">
                 <span class="trace-dot trace-dot--done"></span>
                 <span class="trace-line"></span>
-                <span class="trace-action">smoke_test()</span>
-                <span class="trace-status trace-status--done">passed</span>
+                <span class="trace-action">{content.ticket.trace[2].action}</span>
+                <span class="trace-status trace-status--done">{content.ticket.trace[2].status}</span>
               </div>
               <div class="trace-step trace-step--active" style="--d:7">
                 <span class="trace-dot trace-dot--active"></span>
-                <span class="trace-action">deploy_to_production()</span>
-                <span class="trace-status trace-status--active">running</span>
+                <span class="trace-action">{content.ticket.trace[3].action}</span>
+                <span class="trace-status trace-status--active">{content.ticket.trace[3].status}</span>
               </div>
             </div>
           </div>

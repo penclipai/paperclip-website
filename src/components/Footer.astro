@@ -1,4 +1,7 @@
 ---
+import { CURRENT_SITE } from '../config/site';
+
+const { footer } = CURRENT_SITE.home;
 ---
 
 <footer class="footer">
@@ -11,35 +14,18 @@
 
   <div class="footer-content">
     <div class="container footer-columns">
-      <div class="footer-col">
-        <h4 class="footer-col-heading">Product</h4>
-        <a href="#get-started">Get started</a>
-        <a href="#get-started">Quickstart</a>
-        <!-- <a href="#">Pricing</a> -->
-      </div>
-      <div class="footer-col">
-        <h4 class="footer-col-heading">Platform</h4>
-        <a href="#get-started">Agents</a>
-        <a href="#get-started">Governance</a>
-        <a href="#get-started">Integrations</a>
-      </div>
-      <div class="footer-col">
-        <h4 class="footer-col-heading">Developers</h4>
-        <a href="https://github.com/paperclipai/paperclip">Documentation</a>
-        <a href="https://github.com/paperclipai/paperclip">API reference</a>
-        <a href="https://github.com/paperclipai/paperclip">GitHub</a>
-      </div>
-      <div class="footer-col">
-        <h4 class="footer-col-heading">Resources</h4>
-        <a href="https://github.com/paperclipai/paperclip">Changelog</a>
-        <a href="https://github.com/paperclipai/paperclip">Contributing</a>
-        <a href="https://github.com/paperclipai/paperclip">License</a>
-        <a href="https://discord.gg/m4HZY7xNG3">Discord</a>
-      </div>
+      {footer.columns.map((column) => (
+        <div class="footer-col">
+          <h4 class="footer-col-heading">{column.heading}</h4>
+          {column.links.map((link) => (
+            <a href={link.href}>{link.label}</a>
+          ))}
+        </div>
+      ))}
     </div>
 
     <div class="container footer-bottom">
-      <span class="footer-copy">&copy; {new Date().getFullYear()} Paperclip. Open source under MIT.</span>
+      <span class="footer-copy">&copy; {new Date().getFullYear()} {footer.copyright}</span>
       <!-- <div class="footer-bottom-links">
         <a href="#">Privacy</a>
         <a href="#">Terms</a>

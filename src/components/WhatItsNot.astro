@@ -1,34 +1,60 @@
 ---
-const items = [
-  {
-    label: 'Not a chatbot.',
-    detail: 'There\u2019s no conversation interface. Agents have jobs, not chat windows.',
-  },
-  {
-    label: 'Not an agent framework.',
-    detail: 'We don\u2019t tell you how to build agents. We tell you how to run a company made of them.',
-  },
-  {
-    label: 'Not a workflow builder.',
-    detail: 'No drag-and-drop pipelines. Paperclip models companies \u2014 with org charts, goals, budgets, and governance.',
-  },
-  {
-    label: 'Not a prompt manager.',
-    detail: 'Agents bring their own prompts, models, and runtimes. Paperclip manages the organization they work in.',
-  },
-  {
-    label: 'Not a single-agent tool.',
-    detail: 'This is for teams. Hierarchies. Companies. If you have one agent, you probably don\u2019t need Paperclip. If you have twenty \u2014 you definitely do.',
-  },
-];
+import { CURRENT_SITE } from '../config/site';
+
+const isChinese = CURRENT_SITE.isChinese;
+const items = isChinese
+  ? [
+      {
+        label: '不是聊天机器人。',
+        detail: '这里没有纯对话式聊天界面。Agents 有岗位职责，不是一个个聊天窗口。'
+      },
+      {
+        label: '不是 Agent 开发框架。',
+        detail: 'Penclip 不规定你怎么造 agent，它规定的是你如何运行一家由 agents 组成的公司。'
+      },
+      {
+        label: '不是工作流搭积木工具。',
+        detail: '没有拖拽式 pipeline。Penclip 直接建模公司：组织架构、目标、预算、治理。'
+      },
+      {
+        label: '不是 Prompt 管理器。',
+        detail: 'Agents 带着自己的 prompt、模型和 runtime 来，Penclip 管的是它们所在的组织。'
+      },
+      {
+        label: '不是单 Agent 玩具。',
+        detail: '这是给团队、层级和公司用的。如果你只有一个 agent，可能还不需要；如果你有二十个，就非常需要。'
+      }
+    ]
+  : [
+      {
+        label: 'Not a chatbot.',
+        detail: 'There is no conversation-first interface. Agents have jobs, not chat windows.'
+      },
+      {
+        label: 'Not an agent framework.',
+        detail: 'Penclip does not tell you how to build agents. It tells you how to run a company made of them.'
+      },
+      {
+        label: 'Not a workflow builder.',
+        detail: 'No drag-and-drop pipelines. Penclip models companies with org charts, goals, budgets, and governance.'
+      },
+      {
+        label: 'Not a prompt manager.',
+        detail: 'Agents bring their own prompts, models, and runtimes. Penclip manages the organization they work in.'
+      },
+      {
+        label: 'Not a single-agent tool.',
+        detail: 'This is for teams, hierarchies, and companies. If you have one agent, you probably do not need Penclip. If you have twenty, you definitely do.'
+      }
+    ];
 ---
 
 <section class="diff-section section">
   <div class="container">
     <hr class="section-divider" />
     <div class="diff-header">
-      <span class="section-badge">Differentiation</span>
-      <h2 class="heading-serif diff-heading">What Paperclip is not.</h2>
+      <span class="section-badge">{isChinese ? '产品边界' : 'Differentiation'}</span>
+      <h2 class="heading-serif diff-heading">{isChinese ? 'Penclip 不是什么。' : 'What Penclip is not.'}</h2>
     </div>
     <div class="diff-grid">
       {items.map((item, i) => (

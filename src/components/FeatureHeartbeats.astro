@@ -1,10 +1,65 @@
 ---
-const features = [
-  'Agents wake up on a schedule, check their work, and act.',
-  'Delegation flows up and down the org chart automatically.',
-  'Ticket assignments wake agents to work.',
-  'Cross-team requests delegate to the best agent for the job.',
-];
+import { CURRENT_SITE } from '../config/site';
+
+const content = CURRENT_SITE.isChinese
+  ? {
+      badge: '心跳调度',
+      heading: ['Heartbeats 让', '整家公司持续运转。'],
+      features: [
+        'Agents 按排程醒来，检查自己的工作并继续执行。',
+        '委派会沿着组织结构自动向上和向下流转。',
+        '工单分配会直接唤醒对应 agents 开始工作。',
+        '跨团队请求会自动委派给最合适的 agent。'
+      ],
+      lanes: {
+        writer: {
+          name: '内容编辑',
+          cadence: '每 4 小时',
+          labels: ['起草文章', '润色文案', '撰写周报', '社媒短句', '审核草稿', '批量发布', '日报汇总']
+        },
+        seo: {
+          name: 'SEO 分析',
+          cadence: '每 8 小时',
+          labels: ['站点巡检', '关键词研究', '排名追踪', '外链报告']
+        },
+        social: {
+          name: '社媒运营',
+          cadence: '每 12 小时',
+          labels: ['安排发帖', '跟进评论', '复盘数据'],
+          interrupt: '紧急：品牌提及激增'
+        }
+      }
+    }
+  : {
+      badge: 'Heartbeats',
+      heading: ['Heartbeats keep', 'the lights on.'],
+      features: [
+        'Agents wake up on a schedule, check their work, and act.',
+        'Delegation flows up and down the org chart automatically.',
+        'Ticket assignments wake agents to work.',
+        'Cross-team requests delegate to the best agent for the job.'
+      ],
+      lanes: {
+        writer: {
+          name: 'Content Writer',
+          cadence: 'every 4h',
+          labels: ['Draft blog post', 'Edit copy', 'Write newsletter', 'Social captions', 'Review drafts', 'Publish batch', 'Daily report']
+        },
+        seo: {
+          name: 'SEO Analyst',
+          cadence: 'every 8h',
+          labels: ['Crawl audit', 'Keyword research', 'Rank tracking', 'Link report']
+        },
+        social: {
+          name: 'Social Manager',
+          cadence: 'every 12h',
+          labels: ['Schedule posts', 'Engage replies', 'Analytics review'],
+          interrupt: 'Urgent: Brand mention spike'
+        }
+      }
+    };
+
+const features = content.features;
 ---
 
 <section class="feature-section section heartbeat-dark" id="heartbeat-section">
@@ -20,8 +75,8 @@ const features = [
     <hr class="section-divider" />
     <div class="feature-layout">
       <div class="feature-copy">
-        <span class="section-badge"><svg class="badge-heart" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>Heartbeats</span>
-        <h2 class="heading-serif feature-heading">Heartbeats keep<br />the lights on.</h2>
+        <span class="section-badge"><svg class="badge-heart" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>{content.badge}</span>
+        <h2 class="heading-serif feature-heading">{content.heading[0]}<br />{content.heading[1]}</h2>
         <ul class="feature-list">
           {features.map((f) => (
             <li class="feature-list-item">
@@ -52,8 +107,8 @@ const features = [
           <!-- Lane 1: Content Writer (every 4h) -->
           <div class="swim-lane" data-agent="writer" style="--lane:0">
             <div class="swim-lane__label">
-              <span class="agent-name">Content Writer</span>
-              <span class="agent-cadence">every 4h</span>
+              <span class="agent-name">{content.lanes.writer.name}</span>
+              <span class="agent-cadence">{content.lanes.writer.cadence}</span>
             </div>
             <div class="swim-lane__track">
               <div class="track-line"></div>
@@ -65,21 +120,21 @@ const features = [
               <div class="schedule-dot" data-dot="5" style="left:83.33%"></div>
               <div class="schedule-dot" data-dot="6" style="left:100%"></div>
               <div class="pulse-traveler"></div>
-              <div class="work-label work-label--start" data-for="0" style="left:0%">Draft blog post</div>
-              <div class="work-label" data-for="1" style="left:16.67%">Edit copy</div>
-              <div class="work-label" data-for="2" style="left:33.33%">Write newsletter</div>
-              <div class="work-label" data-for="3" style="left:50%">Social captions</div>
-              <div class="work-label" data-for="4" style="left:66.67%">Review drafts</div>
-              <div class="work-label" data-for="5" style="left:83.33%">Publish batch</div>
-              <div class="work-label work-label--end" data-for="6" style="left:100%">Daily report</div>
+              <div class="work-label work-label--start" data-for="0" style="left:0%">{content.lanes.writer.labels[0]}</div>
+              <div class="work-label" data-for="1" style="left:16.67%">{content.lanes.writer.labels[1]}</div>
+              <div class="work-label" data-for="2" style="left:33.33%">{content.lanes.writer.labels[2]}</div>
+              <div class="work-label" data-for="3" style="left:50%">{content.lanes.writer.labels[3]}</div>
+              <div class="work-label" data-for="4" style="left:66.67%">{content.lanes.writer.labels[4]}</div>
+              <div class="work-label" data-for="5" style="left:83.33%">{content.lanes.writer.labels[5]}</div>
+              <div class="work-label work-label--end" data-for="6" style="left:100%">{content.lanes.writer.labels[6]}</div>
             </div>
           </div>
 
           <!-- Lane 2: SEO Analyst (every 8h) -->
           <div class="swim-lane" data-agent="seo" style="--lane:1">
             <div class="swim-lane__label">
-              <span class="agent-name">SEO Analyst</span>
-              <span class="agent-cadence">every 8h</span>
+              <span class="agent-name">{content.lanes.seo.name}</span>
+              <span class="agent-cadence">{content.lanes.seo.cadence}</span>
             </div>
             <div class="swim-lane__track">
               <div class="track-line"></div>
@@ -88,18 +143,18 @@ const features = [
               <div class="schedule-dot" data-dot="2" style="left:66.67%"></div>
               <div class="schedule-dot" data-dot="3" style="left:100%"></div>
               <div class="pulse-traveler"></div>
-              <div class="work-label work-label--start" data-for="0" style="left:0%">Crawl audit</div>
-              <div class="work-label" data-for="1" style="left:33.33%">Keyword research</div>
-              <div class="work-label" data-for="2" style="left:66.67%">Rank tracking</div>
-              <div class="work-label work-label--end" data-for="3" style="left:100%">Link report</div>
+              <div class="work-label work-label--start" data-for="0" style="left:0%">{content.lanes.seo.labels[0]}</div>
+              <div class="work-label" data-for="1" style="left:33.33%">{content.lanes.seo.labels[1]}</div>
+              <div class="work-label" data-for="2" style="left:66.67%">{content.lanes.seo.labels[2]}</div>
+              <div class="work-label work-label--end" data-for="3" style="left:100%">{content.lanes.seo.labels[3]}</div>
             </div>
           </div>
 
           <!-- Lane 3: Social Manager (every 12h) -->
           <div class="swim-lane" data-agent="social" style="--lane:2">
             <div class="swim-lane__label">
-              <span class="agent-name">Social Manager</span>
-              <span class="agent-cadence">every 12h</span>
+              <span class="agent-name">{content.lanes.social.name}</span>
+              <span class="agent-cadence">{content.lanes.social.cadence}</span>
             </div>
             <div class="swim-lane__track">
               <div class="track-line"></div>
@@ -107,13 +162,13 @@ const features = [
               <div class="schedule-dot" data-dot="1" style="left:50%"></div>
               <div class="schedule-dot" data-dot="2" style="left:100%"></div>
               <div class="pulse-traveler"></div>
-              <div class="work-label work-label--start" data-for="0" style="left:0%">Schedule posts</div>
-              <div class="work-label" data-for="1" style="left:50%">Engage replies</div>
-              <div class="work-label work-label--end" data-for="2" style="left:100%">Analytics review</div>
+              <div class="work-label work-label--start" data-for="0" style="left:0%">{content.lanes.social.labels[0]}</div>
+              <div class="work-label" data-for="1" style="left:50%">{content.lanes.social.labels[1]}</div>
+              <div class="work-label work-label--end" data-for="2" style="left:100%">{content.lanes.social.labels[2]}</div>
               <!-- Ticket interrupt card -->
               <div class="ticket-interrupt" id="ticket-interrupt">
                 <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-                <span>Urgent: Brand mention spike</span>
+                <span>{content.lanes.social.interrupt}</span>
               </div>
             </div>
           </div>

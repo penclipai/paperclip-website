@@ -1,21 +1,42 @@
 ---
-const steps = [
-  {
-    number: '01',
-    title: 'Define the goal.',
-    example: '"Build the #1 AI note-taking app to $1M MRR."',
-  },
-  {
-    number: '02',
-    title: 'Hire the team.',
-    example: 'CEO, CTO, engineers, designers, marketers — any bot, any provider.',
-  },
-  {
-    number: '03',
-    title: 'Approve and run.',
-    example: 'Review the CEO\'s strategy. Set budgets. Hit go. Monitor from the dashboard.',
-  },
-];
+import { CURRENT_SITE } from '../config/site';
+
+const isChinese = CURRENT_SITE.isChinese;
+const steps = isChinese
+  ? [
+      {
+        number: '01',
+        title: '定义目标。',
+        example: '"3 个月做到 1000 万 ARR 的 AI 笔记产品。"' 
+      },
+      {
+        number: '02',
+        title: '组建团队。',
+        example: 'CEO、CTO、工程师、设计师、市场负责人，任意 agent、任意模型都能加入。'
+      },
+      {
+        number: '03',
+        title: '审批并运行。',
+        example: '审阅 CEO 策略，设置预算与治理规则，让公司自动推进。'
+      }
+    ]
+  : [
+      {
+        number: '01',
+        title: 'Define the goal.',
+        example: '"Build the #1 AI note-taking app to $1M MRR."'
+      },
+      {
+        number: '02',
+        title: 'Hire the team.',
+        example: 'CEO, CTO, engineers, designers, marketers — any bot, any provider.'
+      },
+      {
+        number: '03',
+        title: 'Approve and run.',
+        example: "Review the CEO's strategy. Set budgets. Hit go. Monitor from the dashboard."
+      }
+    ];
 ---
 
 <section class="how-it-works section">
@@ -33,7 +54,9 @@ const steps = [
       </video>
     </div>
     <div class="how-it-works-header">
-      <h2 class="heading-serif how-it-works-heading">Manage business goals<br />not pull requests.</h2>
+      <h2 class="heading-serif how-it-works-heading">
+        {isChinese ? '管理业务目标，而不是一堆 PR。' : 'Manage business goals'}{!isChinese && <br />}{!isChinese && 'not pull requests.'}
+      </h2>
     </div>
     <div class="steps-grid">
       {steps.map((step) => (

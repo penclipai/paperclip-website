@@ -1,10 +1,11 @@
 ---
+import { BRAND } from '../config/brand';
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="Brand — Paperclip" description="Paperclip brand identity guidelines: logo, color palette, typography, voice, components, and design tokens.">
+<Layout title={`Brand — ${BRAND.name}`} description={`${BRAND.name} brand identity guidelines: logo, color palette, typography, voice, components, and design tokens.`} robots="noindex,follow">
   <Navbar />
 
   <!-- Cover -->
@@ -20,7 +21,7 @@ import Footer from '../components/Footer.astro';
           <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48" />
         </svg>
       </div>
-      <h1 class="brand-cover-title">Paperclip</h1>
+      <h1 class="brand-cover-title">{BRAND.name}</h1>
       <p class="brand-cover-subtitle">Brand Identity</p>
       <p class="brand-cover-version">v1.0 — February 2026</p>
     </div>
@@ -37,8 +38,8 @@ import Footer from '../components/Footer.astro';
             <h2 class="heading-serif">The control plane<br>for AI agents.</h2>
           </div>
           <div>
-            <p class="brand-intro-text">Paperclip is open-source orchestration to manage teams of AI Agents. Hire AI employees, set goals, automate jobs — and your business runs itself.</p>
-            <p class="brand-intro-text brand-muted">This document defines the visual and verbal identity of the Paperclip brand. It captures the colors, typography, logo, voice, and component patterns used across paperclip.dev and related surfaces.</p>
+            <p class="brand-intro-text">Penclip is a Chinese-enhanced fork of Paperclip for orchestrating teams of AI agents. Hire AI employees, set goals, automate jobs, and keep your business observable end to end.</p>
+            <p class="brand-intro-text brand-muted">This document defines the visual and verbal identity of the Penclip brand. It captures the colors, typography, logo, voice, and component patterns used across penclip.ing, paperclipai.cn, and related surfaces.</p>
           </div>
         </div>
       </div>
@@ -49,8 +50,8 @@ import Footer from '../components/Footer.astro';
       <div class="container">
         <hr class="brand-rule">
         <span class="brand-badge">Logo</span>
-        <h2 class="heading-serif">The Paperclip Mark</h2>
-        <p class="brand-lede">A minimalist, line-drawn paperclip. Functional. Recognizable at any size. Always rendered as a stroke, never filled.</p>
+        <h2 class="heading-serif">The Penclip Mark</h2>
+        <p class="brand-lede">A minimalist, stroke-drawn monogram built around the Penclip "P". Functional. Recognizable at any size. Always rendered as a stroke, never filled.</p>
 
         <div class="brand-logo-showcase">
           <div class="brand-logo-card brand-logo-card--light">
@@ -58,7 +59,7 @@ import Footer from '../components/Footer.astro';
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48" />
               </svg>
-              <span class="brand-logo-wordmark" style="color:#1a1a1a">Paperclip</span>
+              <span class="brand-logo-wordmark" style="color:#1a1a1a">{BRAND.name}</span>
             </div>
             <span class="brand-logo-label">Primary — Light</span>
           </div>
@@ -67,7 +68,7 @@ import Footer from '../components/Footer.astro';
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#f0f0f0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48" />
               </svg>
-              <span class="brand-logo-wordmark" style="color:#f0f0f0">Paperclip</span>
+              <span class="brand-logo-wordmark" style="color:#f0f0f0">{BRAND.name}</span>
             </div>
             <span class="brand-logo-label" style="color:rgba(255,255,255,0.5)">Primary — Dark</span>
           </div>
@@ -91,7 +92,7 @@ import Footer from '../components/Footer.astro';
         <div class="brand-logo-rules">
           <div class="brand-rule-item">
             <span class="brand-rule-icon brand-rule-icon--do">&#10003;</span>
-            <p>Always use the stroke-based mark. Never fill the paperclip shape.</p>
+            <p>Always use the stroke-based mark. Never fill the Penclip symbol.</p>
           </div>
           <div class="brand-rule-item">
             <span class="brand-rule-icon brand-rule-icon--do">&#10003;</span>
@@ -103,7 +104,7 @@ import Footer from '../components/Footer.astro';
           </div>
           <div class="brand-rule-item">
             <span class="brand-rule-icon brand-rule-icon--dont">&#10007;</span>
-            <p>Never use "PaperClip", "paperclip", or "PAPERCLIP". Always title-case: Paperclip.</p>
+            <p>Never use "PenClip", "penclip", or legacy "Paperclip" on Penclip brand surfaces. Always title-case: Penclip.</p>
           </div>
         </div>
       </div>
@@ -241,7 +242,7 @@ import Footer from '../components/Footer.astro';
             <p class="brand-type-meta">Regular 400 &middot; Italic</p>
             <p class="brand-type-desc">The editorial voice. Used for all headings and display text. Weight 400 only — the delicacy of the serif strokes provides natural emphasis without needing bold.</p>
             <div class="brand-type-specimen">
-              <p style="font-family:'Instrument Serif',serif;font-size:clamp(2rem,4vw,2.8rem);line-height:1.15;letter-spacing:-0.01em;">Paperclip runs your business.</p>
+              <p style="font-family:'Instrument Serif',serif;font-size:clamp(2rem,4vw,2.8rem);line-height:1.15;letter-spacing:-0.01em;">Penclip runs your business.</p>
             </div>
             <div class="brand-type-tokens">
               <code>font-family: 'Instrument Serif', serif</code>
@@ -271,7 +272,7 @@ import Footer from '../components/Footer.astro';
             <p class="brand-type-meta">400 Regular &middot; 500 Medium</p>
             <p class="brand-type-desc">The technical layer. Used in terminal blocks, code snippets, inline tokens, and the CLI. Gives the interface its engineering credibility.</p>
             <div class="brand-type-specimen brand-type-specimen--dark">
-              <p style="font-family:'JetBrains Mono',monospace;font-size:0.92rem;line-height:1.6;color:#f0f0f0;">$ npx paperclip deploy --self-hosted<br><span style="color:#22c55e">✓</span> Company created<br><span style="color:#22c55e">✓</span> CEO agent online</p>
+              <p style="font-family:'JetBrains Mono',monospace;font-size:0.92rem;line-height:1.6;color:#f0f0f0;">$ npx paperclipai deploy --self-hosted<br><span style="color:#22c55e">✓</span> Company created<br><span style="color:#22c55e">✓</span> CEO agent online</p>
             </div>
             <div class="brand-type-tokens">
               <code>font-family: 'JetBrains Mono', monospace</code>
@@ -283,7 +284,7 @@ import Footer from '../components/Footer.astro';
         <div class="brand-type-scale">
           <h3 class="brand-subsection">Type Scale</h3>
           <div class="brand-scale-table">
-            <div class="brand-scale-row"><span class="brand-scale-label">Hero</span><span class="brand-scale-sample" style="font-family:'Instrument Serif',serif;font-size:clamp(1.8rem,4vw,3rem);line-height:1.15;">Paperclip runs your business.</span><code class="brand-scale-size">clamp(2.8rem, 7vw, 4.5rem)</code></div>
+          <div class="brand-scale-row"><span class="brand-scale-label">Hero</span><span class="brand-scale-sample" style="font-family:'Instrument Serif',serif;font-size:clamp(1.8rem,4vw,3rem);line-height:1.15;">Penclip runs your business.</span><code class="brand-scale-size">clamp(2.8rem, 7vw, 4.5rem)</code></div>
             <div class="brand-scale-row"><span class="brand-scale-label">H2</span><span class="brand-scale-sample" style="font-family:'Instrument Serif',serif;font-size:clamp(1.4rem,3vw,2rem);line-height:1.15;">Section heading</span><code class="brand-scale-size">clamp(2rem, 4vw, 2.8rem)</code></div>
             <div class="brand-scale-row"><span class="brand-scale-label">Body</span><span class="brand-scale-sample" style="font-family:'Inter',sans-serif;font-size:1rem;line-height:1.65;">Body text at standard size</span><code class="brand-scale-size">1rem / 16px</code></div>
             <div class="brand-scale-row"><span class="brand-scale-label">Small</span><span class="brand-scale-sample" style="font-family:'Inter',sans-serif;font-size:0.8rem;line-height:1.5;font-weight:500;">Labels and badges</span><code class="brand-scale-size">0.8rem / 12.8px</code></div>
@@ -299,13 +300,13 @@ import Footer from '../components/Footer.astro';
         <hr class="brand-rule">
         <span class="brand-badge">Voice &amp; Tone</span>
         <h2 class="heading-serif">Direct. Confident.<br>Never decorative.</h2>
-        <p class="brand-lede">Paperclip speaks with authority about complex systems but never obscures meaning. Short sentences. Active verbs. Technical when needed, never when not.</p>
+        <p class="brand-lede">Penclip speaks with authority about complex systems but never obscures meaning. Short sentences. Active verbs. Technical when needed, never when not.</p>
 
         <div class="brand-voice-grid">
           <div class="brand-voice-card">
             <h3 class="brand-voice-trait">Clarity</h3>
             <p class="brand-voice-desc">Explain complex concepts simply. One idea per sentence. If a word doesn't earn its place, cut it.</p>
-            <div class="brand-voice-example"><span class="brand-voice-label">Example</span><blockquote>"Paperclip uses those agents. It orchestrates them into a company — with org charts, budgets, goals, governance, and accountability."</blockquote></div>
+            <div class="brand-voice-example"><span class="brand-voice-label">Example</span><blockquote>"Penclip uses those agents. It orchestrates them into a company — with org charts, budgets, goals, governance, and accountability."</blockquote></div>
           </div>
           <div class="brand-voice-card">
             <h3 class="brand-voice-trait">Control</h3>
@@ -314,7 +315,7 @@ import Footer from '../components/Footer.astro';
           </div>
           <div class="brand-voice-card">
             <h3 class="brand-voice-trait">Honesty</h3>
-            <p class="brand-voice-desc">Say what Paperclip is and what it isn't. Never oversell. Let the product speak through specificity, not superlatives.</p>
+            <p class="brand-voice-desc">Say what Penclip is and what it is not. Never oversell. Let the product speak through specificity, not superlatives.</p>
             <div class="brand-voice-example"><span class="brand-voice-label">Example</span><blockquote>"Not a chatbot. Not an agent framework. Not a workflow builder."</blockquote></div>
           </div>
           <div class="brand-voice-card">
@@ -343,7 +344,7 @@ import Footer from '../components/Footer.astro';
         <hr class="brand-rule">
         <span class="brand-badge">Components</span>
         <h2 class="heading-serif">Living elements.</h2>
-        <p class="brand-lede">Core UI patterns used across the Paperclip interface. Pill-shaped buttons, warm-bordered cards, glassmorphic overlays, and a macOS-style terminal.</p>
+        <p class="brand-lede">Core UI patterns used across the Penclip interface. Pill-shaped buttons, warm-bordered cards, glassmorphic overlays, and a macOS-style terminal.</p>
 
         <div class="brand-comp-section">
           <h3 class="brand-subsection">Buttons</h3>
@@ -397,7 +398,7 @@ import Footer from '../components/Footer.astro';
               <span class="brand-terminal-dot" style="background:#28c840;"></span>
             </div>
             <div class="brand-terminal-body">
-              <div class="brand-terminal-line"><span class="brand-terminal-prompt">$</span> npx paperclip init</div>
+              <div class="brand-terminal-line"><span class="brand-terminal-prompt">$</span> npx paperclipai init</div>
               <div class="brand-terminal-line brand-terminal-output">Creating company... <span style="color:#22c55e">done</span></div>
               <div class="brand-terminal-line brand-terminal-output">Hiring CEO agent... <span style="color:#22c55e">done</span></div>
               <div class="brand-terminal-line brand-terminal-output">Deploying to localhost:3100... <span style="color:#22c55e">done</span></div>
@@ -424,7 +425,7 @@ import Footer from '../components/Footer.astro';
               <div class="brand-navbar-left"><span style="font-family:'JetBrains Mono',monospace;font-size:0.82rem;opacity:0.7;">Docs</span><span style="font-family:'JetBrains Mono',monospace;font-size:0.82rem;opacity:0.7;">GitHub</span></div>
               <div class="brand-navbar-center">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48" /></svg>
-                <span style="font-weight:600;font-size:0.92rem;">Paperclip</span>
+                <span style="font-weight:600;font-size:0.92rem;">{BRAND.name}</span>
               </div>
               <div class="brand-navbar-right"><button class="brand-btn--glass" style="padding:0.35rem 0.8rem;font-size:0.78rem;border-radius:100px;">Star</button></div>
             </div>
@@ -539,7 +540,7 @@ import Footer from '../components/Footer.astro';
             <span class="brand-terminal-dot" style="background:#28c840;"></span>
           </div>
           <div class="brand-terminal-body">
-            <div class="brand-terminal-line brand-terminal-comment">/* Paperclip Design Tokens */</div>
+            <div class="brand-terminal-line brand-terminal-comment">/* Penclip Design Tokens */</div>
             <div class="brand-terminal-line"><span class="brand-terminal-key">--color-bg:</span> #ffffff;</div>
             <div class="brand-terminal-line"><span class="brand-terminal-key">--color-bg-alt:</span> #f5f3f0;</div>
             <div class="brand-terminal-line"><span class="brand-terminal-key">--color-surface:</span> #f0ece7;</div>

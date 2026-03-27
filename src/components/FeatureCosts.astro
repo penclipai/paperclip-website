@@ -1,4 +1,35 @@
 ---
+import { CURRENT_SITE } from '../config/site';
+
+const content = CURRENT_SITE.isChinese
+  ? {
+      badge: '成本治理',
+      heading: ['看清每个 agent 的成本。', '也管住每个 agent 的预算。'],
+      sub:
+        '每个 agent 都有月度预算。达到上限就会自动停下。没有失控成本，没有意外账单，只有系统强制执行的硬限制。',
+      headers: {
+        agent: '角色',
+        budget: '预算使用',
+        cost: '成本'
+      },
+      total: '总计',
+      detail:
+        '按 agent、任务、项目和目标追踪成本。你能看清哪些 agent 最贵、哪些任务最烧 token、哪些项目已经超预算。'
+    }
+  : {
+      badge: 'Cost Tracking',
+      heading: ['Know what every agent costs.', 'Control what every agent spends.'],
+      sub:
+        'Every agent gets a monthly budget. When they hit it, they stop. Automatically. No runaway costs. No surprise bills. Hard limits, enforced by the system.',
+      headers: {
+        agent: 'Agent',
+        budget: 'Budget Used',
+        cost: 'Cost'
+      },
+      total: 'Total',
+      detail:
+        'Track costs per agent, per task, per project, per goal. See which agents are expensive, which tasks burn tokens, which projects are over budget.'
+    };
 ---
 
 <section class="feature-section section">
@@ -6,11 +37,10 @@
     <hr class="section-divider" />
     <div class="feature-header">
       <div>
-        <span class="section-badge">Cost Tracking</span>
-        <h2 class="heading-serif feature-heading">Know what every agent costs.<br />Control what every agent spends.</h2>
+        <span class="section-badge">{content.badge}</span>
+        <h2 class="heading-serif feature-heading">{content.heading[0]}<br />{content.heading[1]}</h2>
         <p class="feature-sub">
-          Every agent gets a monthly budget. When they hit it, they stop. Automatically.
-          No runaway costs. No surprise bills. Hard limits, enforced by the system.
+          {content.sub}
         </p>
       </div>
     </div>
@@ -18,9 +48,9 @@
       <div class="cost-table-wrap">
         <div class="cost-table" id="cost-table">
           <div class="cost-header-row">
-            <span class="cost-col-agent">Agent</span>
-            <span class="cost-col-bar">Budget Used</span>
-            <span class="cost-col-cost">Cost</span>
+            <span class="cost-col-agent">{content.headers.agent}</span>
+            <span class="cost-col-bar">{content.headers.budget}</span>
+            <span class="cost-col-cost">{content.headers.cost}</span>
           </div>
           <div class="cost-divider"></div>
 
@@ -141,7 +171,7 @@
           <div class="cost-divider"></div>
           <div class="cost-row cost-row--total" data-cost="140" data-budget="240">
             <div class="cost-col-agent">
-              <span class="cost-agent-name">Total</span>
+              <span class="cost-agent-name">{content.total}</span>
             </div>
             <div class="cost-col-bar"></div>
             <div class="cost-col-cost">
@@ -153,8 +183,7 @@
       </div>
       <div class="feature-details">
         <p class="feature-detail-text">
-          Track costs per agent, per task, per project, per goal. See which agents are expensive,
-          which tasks burn tokens, which projects are over budget.
+          {content.detail}
         </p>
       </div>
     </div>

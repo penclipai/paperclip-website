@@ -1,12 +1,43 @@
 ---
+import { CURRENT_SITE } from '../config/site';
+
+const content = CURRENT_SITE.isChinese
+  ? {
+      badge: '目标对齐',
+      heading: ['让每个 agent 都', '对准同一个目标。'],
+      levels: [
+        { label: '公司使命', text: '做到 200 万美元 ARR，做成第一的 AI 记笔记应用' },
+        { label: '项目目标', text: '上线协作功能' },
+        { label: 'Agent 目标', text: '实现实时同步' },
+        { label: '任务', text: '编写文档更新的 WebSocket 处理器' }
+      ],
+      paragraphs: [
+        '每一项工作都会拿到可追溯到公司使命的上下文。你的 agents 不只知道要做什么，也知道为什么要做。',
+        'Penclip 的'
+      ]
+    }
+  : {
+      badge: 'Goal Alignment',
+      heading: ['Keep your agents aligned', 'on the goal.'],
+      levels: [
+        { label: 'Company Mission', text: 'Make $2mm ARR with the #1 AI note-taking app' },
+        { label: 'Project Goal', text: 'Ship collaboration features' },
+        { label: 'Agent Goal', text: 'Implement real-time sync' },
+        { label: 'Task', text: 'Write WebSocket handler for document updates' }
+      ],
+      paragraphs: [
+        'Every piece of work is given context that traces back to the company mission. Your agents will know what to do and why.',
+        'Penclip'
+      ]
+    };
 ---
 
 <section class="feature-section section">
   <div class="container">
     <hr class="section-divider" />
     <div class="feature-header">
-      <span class="section-badge">Goal Alignment</span>
-      <h2 class="heading-serif feature-heading">Keep your agents aligned<br />on the goal.</h2>
+      <span class="section-badge">{content.badge}</span>
+      <h2 class="heading-serif feature-heading">{content.heading[0]}<br />{content.heading[1]}</h2>
     </div>
     <div class="feature-layout">
       <div class="feature-graphic">
@@ -14,44 +45,44 @@
           <div class="goal-level goal-level-1">
             <span class="goal-icon">&#9678;</span>
             <div>
-              <span class="goal-label">Company Mission</span>
-              <span class="goal-text">Make $2mm ARR with the #1 AI note-taking app</span>
+              <span class="goal-label">{content.levels[0].label}</span>
+              <span class="goal-text">{content.levels[0].text}</span>
             </div>
           </div>
           <div class="goal-connector"></div>
           <div class="goal-level goal-level-2">
             <span class="goal-icon">&#9673;</span>
             <div>
-              <span class="goal-label">Project Goal</span>
-              <span class="goal-text">Ship collaboration features</span>
+              <span class="goal-label">{content.levels[1].label}</span>
+              <span class="goal-text">{content.levels[1].text}</span>
             </div>
           </div>
           <div class="goal-connector"></div>
           <div class="goal-level goal-level-3">
             <span class="goal-icon">&#9675;</span>
             <div>
-              <span class="goal-label">Agent Goal</span>
-              <span class="goal-text">Implement real-time sync</span>
+              <span class="goal-label">{content.levels[2].label}</span>
+              <span class="goal-text">{content.levels[2].text}</span>
             </div>
           </div>
           <div class="goal-connector"></div>
           <div class="goal-level goal-level-4">
             <span class="goal-icon">&#8226;</span>
             <div>
-              <span class="goal-label">Task</span>
-              <span class="goal-text">Write WebSocket handler for document updates</span>
+              <span class="goal-label">{content.levels[3].label}</span>
+              <span class="goal-text">{content.levels[3].text}</span>
             </div>
           </div>
         </div>
       </div>
       <div class="feature-copy">
         <p class="feature-sub">
-          Every piece of work is given context that traces back to the company
-          mission. Your agents will know <em>what</em> to do and <em>why</em>.
+          {content.paragraphs[0]}
         </p>
         <p class="feature-sub">
-          Paperclip <code>SKILLS.md</code> means your agents know how to
-          discover the context they need.
+          {content.paragraphs[1]} <code>SKILLS.md</code> {CURRENT_SITE.isChinese
+            ? '机制让 agents 知道该如何发现自己需要的上下文。'
+            : 'means your agents know how to discover the context they need.'}
         </p>
       </div>
     </div>

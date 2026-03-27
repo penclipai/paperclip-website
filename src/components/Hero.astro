@@ -1,4 +1,7 @@
 ---
+import { CURRENT_SITE } from '../config/site';
+
+const { hero } = CURRENT_SITE.home;
 ---
 
 <section class="hero">
@@ -10,15 +13,15 @@
   </div>
   <div class="container hero-inner">
     <h1 class="hero-headline heading-serif">
-      Paperclip<br />Open-source orchestration<br />for zero-human companies
+      {hero.headlineLines[0]}<br />{hero.headlineLines[1]}<br />{hero.headlineLines[2]}
     </h1>
     <p class="hero-lede">
-      Hire AI employees, set goals, automate jobs and<br />your business runs itself.
+      {hero.lede}
     </p>
     <div class="hero-actions">
-      <a href="#get-started" class="hero-btn-primary">Get started</a>
-      <a href="https://github.com/paperclipai/paperclip" class="hero-btn-secondary">
-        GitHub
+      <a href={hero.primaryCtaHref} class="hero-btn-primary">{hero.primaryCtaLabel}</a>
+      <a href={hero.secondaryCtaHref} class="hero-btn-secondary">
+        {hero.secondaryCtaLabel}
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
       </a>
     </div>
