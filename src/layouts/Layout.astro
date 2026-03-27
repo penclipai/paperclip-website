@@ -27,7 +27,7 @@ const {
   canonicalHref = getCanonicalUrl(pathname),
   title = site.title,
   description = site.description,
-  ogImage = '/og.png',
+  ogImage = '/hero-bg.jpg',
   lang = site.lang,
   robots = getRobotsContent(true),
   structuredData = [],
@@ -69,8 +69,8 @@ const alternateLocale = site.lang === 'zh-CN' ? 'en_US' : 'zh_CN';
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImageURL} />
-    <meta property="og:image:width" content="2200" />
-    <meta property="og:image:height" content="1260" />
+    <meta property="og:image:width" content="1920" />
+    <meta property="og:image:height" content="759" />
 
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />

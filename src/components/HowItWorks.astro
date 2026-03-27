@@ -55,7 +55,6 @@ const steps = isChinese
         <source src="/videos/full-tour.webm" type="video/webm" />
       </video>
     </div>
-    {isChinese && <p class="video-caption">功能演示视频占位区，后续会替换为本地化后的中文演示视频。</p>}
     <div class="how-it-works-header">
       <h2 class="heading-serif how-it-works-heading">
         {isChinese ? '管理业务目标，而不是一堆 PR。' : 'Manage business goals'}{!isChinese && <br />}{!isChinese && 'not pull requests.'}
@@ -87,15 +86,6 @@ const steps = isChinese
     aspect-ratio: 16 / 9;
     object-fit: cover;
     background: var(--color-surface);
-  }
-
-  .video-caption {
-    max-width: 42rem;
-    margin: -0.5rem auto var(--space-lg);
-    text-align: center;
-    color: var(--color-text-muted);
-    font-size: 0.92rem;
-    line-height: 1.6;
   }
 
   @keyframes videoFadeIn {

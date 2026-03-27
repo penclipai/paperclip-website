@@ -409,7 +409,7 @@ export function getHomeStructuredData(pathname = '/') {
       name: BRAND.name,
       alternateName: site.alternateName,
       url,
-      logo: getAbsoluteUrl('/og.png', site.domain),
+      logo: getAbsoluteUrl('/favicon.svg', site.domain),
       sameAs: [site.firstPartyRepoUrl, site.firstPartyWebsiteRepoUrl]
     },
     {
