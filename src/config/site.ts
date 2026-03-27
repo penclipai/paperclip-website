@@ -17,6 +17,7 @@ type HomeContent = {
     ctaHref: string;
   };
   hero: {
+    eyebrow: string;
     headlineLines: [string, string, string];
     lede: string;
     primaryCtaLabel: string;
@@ -89,7 +90,8 @@ const zhHomeContent: HomeContent = {
     ctaHref: FIRST_PARTY_REPO_URL
   },
   hero: {
-    headlineLines: ['Penclip', 'Paperclip 中文增强版', '零人力公司操作系统'],
+    eyebrow: 'Paperclip 中文增强版',
+    headlineLines: ['Penclip', '开源编排系统', '面向零人力公司'],
     lede:
       '面向中国团队优化的自托管多智能体编排平台。组织架构、预算治理、任务协作与国产大模型支持，统一落在一个控制面里。',
     primaryCtaLabel: '立即体验 Penclip',
@@ -164,7 +166,8 @@ const enHomeContent: HomeContent = {
     ctaHref: FIRST_PARTY_REPO_URL
   },
   hero: {
-    headlineLines: ['Penclip', 'Chinese-enhanced fork of Paperclip', 'for autonomous companies'],
+    eyebrow: 'Chinese-enhanced fork of Paperclip',
+    headlineLines: ['Penclip', 'Open-source orchestration', 'for autonomous companies'],
     lede:
       'Self-hosted AI agent orchestration with org charts, budgets, governance, and a localization layer built for teams shipping in the China model ecosystem.',
     primaryCtaLabel: 'Try Penclip',
