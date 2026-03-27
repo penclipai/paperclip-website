@@ -5,13 +5,13 @@ const site = getSiteForPath(Astro.url.pathname);
 
 const content = site.isChinese
   ? {
-      badge: '心跳调度',
-      heading: ['Heartbeats 让', '整家公司持续运转。'],
+      badge: '定时调度',
+      heading: ['定时唤醒让', '整套流程持续推进。'],
       features: [
-        'Agents 按排程醒来，检查自己的工作并继续执行。',
-        '委派会沿着组织结构自动向上和向下流转。',
-        '工单分配会直接唤醒对应 agents 开始工作。',
-        '跨团队请求会自动委派给最合适的 agent。'
+        '智能体会按排程醒来，检查自己的工作并继续执行。',
+        '任务会沿着组织结构在合适的角色之间流转。',
+        '工单分配会直接唤醒对应执行者开始工作。',
+        '跨团队请求会自动转给最合适的协作角色。'
       ],
       lanes: {
         writer: {

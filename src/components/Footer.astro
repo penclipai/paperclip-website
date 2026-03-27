@@ -4,6 +4,7 @@ import { getSiteForPath } from '../config/site';
 const site = getSiteForPath(Astro.url.pathname);
 
 const { footer } = site.home;
+const { communityCard, legalFooter } = site;
 ---
 
 <footer class="footer">
@@ -25,6 +26,31 @@ const { footer } = site.home;
         </div>
       ))}
     </div>
+
+    {communityCard?.show && (
+      <div class="container footer-community" id="community">
+        <div class="community-card">
+          <img
+            src={communityCard.imageSrc}
+            alt={communityCard.title}
+            width="160"
+            height="160"
+            loading="lazy"
+          />
+          <div class="community-copy">
+            <h4>{communityCard.title}</h4>
+            <p>{communityCard.description}</p>
+          </div>
+        </div>
+      </div>
+    )}
+
+    {legalFooter?.show && (
+      <div class="container footer-legal">
+        <span>{legalFooter.icp}</span>
+        <span>{legalFooter.publicSecurity}</span>
+      </div>
+    )}
 
     <div class="container footer-bottom">
       <span class="footer-copy">&copy; {new Date().getFullYear()} {footer.copyright}</span>
@@ -81,7 +107,7 @@ const { footer } = site.home;
     grid-template-columns: repeat(4, 1fr);
     gap: var(--space-lg);
     padding-top: clamp(3rem, 6vw, 5rem);
-    padding-bottom: clamp(4rem, 10vw, 8rem);
+    padding-bottom: var(--space-xl);
   }
 
   .footer-col-heading {
@@ -103,6 +129,54 @@ const { footer } = site.home;
 
   .footer-col a:hover {
     color: #ffffff;
+  }
+
+  .footer-community {
+    padding-bottom: var(--space-lg);
+  }
+
+  .community-card {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+    width: min(100%, 560px);
+    padding: var(--space-md);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: var(--radius);
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(6px);
+  }
+
+  .community-card img {
+    width: 128px;
+    height: 128px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.94);
+    flex-shrink: 0;
+  }
+
+  .community-copy h4 {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0.35rem;
+  }
+
+  .community-copy p {
+    max-width: 24rem;
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.72);
+  }
+
+  .footer-legal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.25rem;
+    padding-bottom: var(--space-md);
+    color: rgba(255, 255, 255, 0.58);
+    font-size: 0.8rem;
   }
 
   /* ── Bottom bar ── */
@@ -143,9 +217,26 @@ const { footer } = site.home;
       grid-template-columns: repeat(2, 1fr);
       gap: var(--space-lg) var(--space-md);
     }
+
+    .community-card {
+      align-items: flex-start;
+    }
   }
 
   @media (max-width: 480px) {
+    .footer-columns {
+      grid-template-columns: 1fr;
+    }
+
+    .community-card {
+      flex-direction: column;
+    }
+
+    .community-card img {
+      width: 120px;
+      height: 120px;
+    }
+
     .footer-bottom {
       flex-direction: column;
       align-items: flex-start;

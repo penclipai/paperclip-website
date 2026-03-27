@@ -5,11 +5,11 @@ const site = getSiteForPath(Astro.url.pathname);
 
 const content = site.isChinese
   ? {
-      badge: '自带 Agent',
-      heading: '把你的 Bot 接进来。',
+      badge: '接入现有工具',
+      heading: '把你的执行工具接进来。',
       sub:
-        '把 Clawdbot、Cursor 和 Codex 统一放进一个组织结构，围绕同一个目标协同工作。只要能接收 heartbeat，就能上岗。',
-      worksWith: '兼容任意 agent',
+        '把 Clawdbot、Cursor 和 Codex 放进同一个组织结构里，围绕同一个目标协同工作。只要能被调用，就能纳入 Penclip 的协作流程。',
+      worksWith: '兼容多种智能体与工具',
       activeLabel: '运行中',
       engineerTitle: '工程师'
     }

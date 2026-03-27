@@ -6,15 +6,15 @@ const site = getSiteForPath(Astro.url.pathname);
 const content = site.isChinese
   ? {
       badge: '目标对齐',
-      heading: ['让每个 agent 都', '对准同一个目标。'],
+      heading: ['让每个智能体都', '对准同一个目标。'],
       levels: [
-        { label: '公司使命', text: '做到 200 万美元 ARR，做成第一的 AI 记笔记应用' },
-        { label: '项目目标', text: '上线协作功能' },
-        { label: 'Agent 目标', text: '实现实时同步' },
-        { label: '任务', text: '编写文档更新的 WebSocket 处理器' }
+        { label: '团队目标', text: '完成产品内测，并建立稳定的协作流程' },
+        { label: '项目目标', text: '上线多人协作能力' },
+        { label: '角色目标', text: '实现实时同步体验' },
+        { label: '当前任务', text: '完善文档更新的实时同步逻辑' }
       ],
       paragraphs: [
-        '每一项工作都会拿到可追溯到公司使命的上下文。你的 agents 不只知道要做什么，也知道为什么要做。',
+        '每一项工作都能关联到更上层的团队目标。执行者不只知道要做什么，也知道这项任务为什么重要。',
         'Penclip 的'
       ]
     }
@@ -83,7 +83,7 @@ const content = site.isChinese
         </p>
         <p class="feature-sub">
           {content.paragraphs[1]} <code>SKILLS.md</code> {site.isChinese
-            ? '机制让 agents 知道该如何发现自己需要的上下文。'
+            ? '机制让智能体知道该去哪里查找所需的上下文。'
             : 'means your agents know how to discover the context they need.'}
         </p>
       </div>

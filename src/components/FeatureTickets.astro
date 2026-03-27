@@ -8,15 +8,15 @@ const content = site.isChinese
       badge: '工单系统',
       heading: ['每次对话都有记录。', '每个决策都能追溯。'],
       sub:
-        '你通过工单与 agents 协作。每条指令、每次响应、每个工具调用和关键决策都会被完整记录下来，没有黑盒。',
+        '你通过工单与智能体协作。每条指令、每次响应、每个工具调用和关键决策都会被记录下来，方便追踪与复盘。',
       bullets: [
         {
           title: '结构化工单',
           desc: '每项任务都是一个工单，带有明确负责人、状态和线程。'
         },
         {
-          title: '完整 Trace',
-          desc: '每次工具调用、API 请求和决策节点都可见可查。'
+          title: '完整执行记录',
+          desc: '每次工具调用、接口请求和关键决策节点都可见可查。'
         },
         {
           title: '不可变审计日志',
@@ -29,10 +29,10 @@ const content = site.isChinese
         assignee: 'CTO',
         messages: [
           { author: '你', time: '2 分钟前', text: '把新版定价页部署到生产环境，先跑测试。' },
-          { author: 'CTO Agent', time: '1 分钟前', text: '正在执行测试和预发部署。烟雾测试通过后我会切到生产。' },
+          { author: 'CTO 智能体', time: '1 分钟前', text: '正在执行测试和预发部署。烟雾测试通过后我会切到生产。' },
           { author: '你', time: '刚刚', text: '已批准，继续。' }
         ],
-        traceLabel: '执行轨迹',
+        traceLabel: '执行记录',
         trace: [
           { action: 'run_tests()', status: '通过' },
           { action: 'deploy_to_staging()', status: '完成' },

@@ -7,38 +7,38 @@ const isChinese = site.isChinese;
 const items = isChinese
   ? [
       {
-        label: '原子执行。',
-        detail: '任务 checkout 和预算约束都按原子方式执行，不会重复干活，也不会失控烧钱。',
+        label: '执行过程更稳。',
+        detail: '任务领取和预算约束都有明确规则，避免重复执行，也减少异常消耗。',
         icon: 'atom'
       },
       {
-        label: '持久化 Agent 状态。',
-        detail: 'Agents 会在 heartbeat 之间续接同一份上下文，而不是每次从零开始。',
+        label: '上下文可续接。',
+        detail: '智能体在多次唤醒之间可以延续同一份上下文，不需要每次都从头开始。',
         icon: 'save'
       },
       {
-        label: '运行时技能注入。',
-        detail: 'Agent 可以在运行时学习 Penclip 工作流和项目上下文，不需要重新训练。',
+        label: '技能可按需补充。',
+        detail: '智能体可以在执行时读取工作流和项目上下文，不需要重新训练才能理解当前任务。',
         icon: 'zap'
       },
       {
-        label: '可回滚治理。',
-        detail: '审批门禁可强制执行，配置变更带版本，错误修改可以安全回滚。',
+        label: '配置可回滚。',
+        detail: '审批规则可以强制执行，配置变更有版本记录，出现问题时也更容易回退。',
         icon: 'rewind'
       },
       {
-        label: '目标感知执行。',
-        detail: '任务携带完整目标谱系，agent 看到的不只是标题，还有背后的为什么。',
+        label: '目标上下文完整。',
+        detail: '任务不只带标题，也会带上关联目标和背景说明，方便执行者理解优先级。',
         icon: 'layers'
       },
       {
-        label: '可移植公司模板。',
-        detail: '组织、agents 和 skills 可以导出导入，同时处理敏感信息清洗与命名冲突。',
+        label: '团队模板可迁移。',
+        detail: '组织结构、智能体配置和技能可以导出导入，也能处理敏感信息清理与命名冲突。',
         icon: 'package'
       },
       {
-        label: '真正的多公司隔离。',
-        detail: '所有实体都按 company 作用域隔离，一套部署即可承载多家公司与各自审计轨迹。',
+        label: '多团队隔离清晰。',
+        detail: '不同业务单元的数据和执行记录彼此隔离，一套部署也能稳定承载多个团队。',
         icon: 'lock'
       }
     ]
@@ -89,7 +89,7 @@ const items = isChinese
       <h2 class="heading-serif special-heading">{isChinese ? '为什么 Penclip 更适合真正落地。' : 'Why Penclip is special.'}</h2>
       <p class="special-sub">
         {isChinese
-          ? 'Penclip 把最难的编排细节、成本治理和组织控制做对了。'
+          ? 'Penclip 把任务编排、成本管理和组织控制放进了一套更容易落地的执行框架里。'
           : 'Penclip handles the hard orchestration details correctly.'}
       </p>
     </div>

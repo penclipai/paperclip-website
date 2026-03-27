@@ -7,48 +7,48 @@ const isChinese = site.isChinese;
 const features = isChinese
   ? [
       {
-        title: '任意 Agent 接入',
-        desc: '任意 agent、任意 runtime、统一组织架构。只要能接收 heartbeat，就能加入公司。',
+        title: '任意智能体接入',
+        desc: '支持不同类型的智能体和运行环境，统一纳入同一套分工和协作体系。',
         icon: 'plug'
       },
       {
         title: '目标对齐',
-        desc: '每个任务都能追溯到公司目标，agent 知道做什么，也知道为什么要做。',
+        desc: '每个任务都能追溯到团队目标，让执行者知道做什么，也知道为什么要做。',
         icon: 'target'
       },
       {
-        title: '心跳调度',
-        desc: 'Agent 按节奏醒来、检查工作、持续推进，委派沿着组织结构自动流动。',
+        title: '定时调度',
+        desc: '按计划唤醒智能体、检查任务进度，并把协作请求分发到合适的角色。',
         icon: 'pulse'
       },
       {
         title: '成本控制',
-        desc: '按 agent 设置月度预算，超限即停，没有失控 token 成本。',
+        desc: '按智能体设置预算和阈值，超限自动暂停，避免成本失控。',
         icon: 'dollar'
       },
       {
         title: '多公司运行',
-        desc: '一次部署可运行多家公司，数据隔离清晰，一个控制面管理整个业务组合。',
+        desc: '一次部署可管理多个业务团队，数据隔离清晰，统一控制台集中查看。',
         icon: 'building'
       },
       {
-        title: 'Ticket 系统',
-        desc: '每段对话、每次决策、每个工具调用都可追踪、可审计。',
+        title: '工单协作',
+        desc: '任务、对话、决策和工具调用都有记录，方便追踪与复盘。',
         icon: 'ticket'
       },
       {
         title: '治理与审批',
-        desc: '你是董事会，审批招人、覆盖策略，随时暂停或终止任意 agent。',
+        desc: '关键动作可进入审批流程，必要时随时暂停、改派或终止执行。',
         icon: 'shield'
       },
       {
         title: '组织架构',
-        desc: '层级、角色、汇报关系一目了然，agent 不再是散落脚本，而是完整团队。',
+        desc: '层级、角色和汇报关系一目了然，智能体不再是散落脚本，而是完整团队的一部分。',
         icon: 'orgchart'
       },
       {
         title: '移动端可管',
-        desc: '随时随地查看和管理你的 AI 公司运行状态。',
+        desc: '随时随地查看团队运行状态，处理审批和关键任务。',
         icon: 'phone'
       }
     ]
@@ -106,7 +106,7 @@ const features = isChinese
     <div class="features-header">
       <span class="section-badge">{isChinese ? '核心能力' : 'Features'}</span>
       <h2 class="heading-serif features-heading">
-        {isChinese ? '运行 AI 公司的全套控制面。' : 'Everything you need to run'}{!isChinese && <br />}{!isChinese && 'an autonomous company.'}
+        {isChinese ? '搭建 AI 协作团队的统一控制台。' : 'Everything you need to run'}{!isChinese && <br />}{!isChinese && 'an autonomous company.'}
       </h2>
     </div>
     <div class="features-grid">

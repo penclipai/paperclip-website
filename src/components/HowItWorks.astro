@@ -8,18 +8,18 @@ const steps = isChinese
   ? [
       {
         number: '01',
-        title: '定义目标。',
-        example: '"3 个月做到 1000 万 ARR 的 AI 笔记产品。"' 
+        title: '设定目标。',
+        example: '"3 个月内完成产品内测，并建立稳定的内容协作流程。"' 
       },
       {
         number: '02',
-        title: '组建团队。',
-        example: 'CEO、CTO、工程师、设计师、市场负责人，任意 agent、任意模型都能加入。'
+        title: '安排分工。',
+        example: '产品、研发、设计、运营等角色都可以接入，按职责拆分任务与协作流程。'
       },
       {
         number: '03',
-        title: '审批并运行。',
-        example: '审阅 CEO 策略，设置预算与治理规则，让公司自动推进。'
+        title: '审核执行。',
+        example: '确认关键策略、设置预算和审批规则，让任务按计划持续推进。'
       }
     ]
   : [
@@ -55,6 +55,7 @@ const steps = isChinese
         <source src="/videos/full-tour.webm" type="video/webm" />
       </video>
     </div>
+    {isChinese && <p class="video-caption">功能演示视频占位区，后续会替换为本地化后的中文演示视频。</p>}
     <div class="how-it-works-header">
       <h2 class="heading-serif how-it-works-heading">
         {isChinese ? '管理业务目标，而不是一堆 PR。' : 'Manage business goals'}{!isChinese && <br />}{!isChinese && 'not pull requests.'}
@@ -86,6 +87,15 @@ const steps = isChinese
     aspect-ratio: 16 / 9;
     object-fit: cover;
     background: var(--color-surface);
+  }
+
+  .video-caption {
+    max-width: 42rem;
+    margin: -0.5rem auto var(--space-lg);
+    text-align: center;
+    color: var(--color-text-muted);
+    font-size: 0.92rem;
+    line-height: 1.6;
   }
 
   @keyframes videoFadeIn {

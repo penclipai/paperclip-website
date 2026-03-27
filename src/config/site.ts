@@ -14,6 +14,22 @@ type LocaleSwitch = {
   label: string;
 };
 
+type LegalFooter = {
+  icp: string;
+  publicSecurity: string;
+  show: boolean;
+};
+
+type CommunityCard = {
+  type: 'wechat_qr_placeholder';
+  imageSrc: string;
+  title: string;
+  description: string;
+  label: string;
+  href: string;
+  show: boolean;
+};
+
 type HomeContent = {
   navbar: {
     primaryLinkLabel: string;
@@ -59,6 +75,7 @@ type HomeContent = {
 export type SiteContext = {
   alternateName: string;
   ctaUrl: string;
+  communityCard?: CommunityCard;
   description: string;
   discordUrl: string;
   domain: SiteDomain;
@@ -67,6 +84,7 @@ export type SiteContext = {
   home: HomeContent;
   isChinese: boolean;
   lang: SiteLanguage;
+  legalFooter?: LegalFooter;
   localeSwitch: LocaleSwitch;
   ogLocale: OgLocale;
   path: string;
@@ -80,6 +98,7 @@ const FIRST_PARTY_REPO_URL = `https://github.com/${BRAND.githubOrg}/paperclip`;
 const FIRST_PARTY_WEBSITE_REPO_URL = `https://github.com/${BRAND.githubOrg}/paperclip-website`;
 const UPSTREAM_REPO_URL = 'https://github.com/paperclipai/paperclip';
 const DISCORD_URL = 'https://discord.gg/m4HZY7xNG3';
+const WECHAT_PLACEHOLDER_IMAGE = '/wechat-community-placeholder.svg';
 
 const DOMAIN_TO_SITE_URL: Record<SiteDomain, string> = {
   [BRAND.chineseDomain]: `https://${BRAND.chineseDomain}`,
@@ -132,9 +151,9 @@ const zhHomeContent: HomeContent = {
   },
   hero: {
     eyebrow: 'Paperclip 中文增强版',
-    headlineLines: ['Penclip', '开源编排系统', '面向零人力公司'],
+    headlineLines: ['Penclip', '开源编排系统', '面向 AI 协作团队'],
     lede:
-      '面向中国团队优化的自托管多智能体编排平台。组织架构、预算治理、任务协作与国产大模型支持，统一落在一个控制面里。',
+      '面向中国团队优化的开源自托管平台，用来组织智能体分工、协作、审批与任务推进，并兼容国产大模型与现有工具链。',
     primaryCtaLabel: '立即体验 Penclip',
     primaryCtaHref: FIRST_PARTY_REPO_URL,
     secondaryCtaLabel: '查看核心能力',
@@ -143,7 +162,7 @@ const zhHomeContent: HomeContent = {
   quickstart: {
     heading: '快速开始',
     sub:
-      '开源、自托管、可审计。交互式初始化会带你完成数据库、认证和第一家 AI 公司配置。兼容现有 Paperclip 工作流与自托管部署方式。',
+      '开源、自托管、可审计。交互式初始化会带你完成数据库、认证和首个团队空间配置，并兼容现有 Paperclip 工作流与部署方式。',
     primaryLabel: '查看 Penclip 仓库',
     primaryHref: FIRST_PARTY_REPO_URL,
     secondaryLabel: '查看快速开始 ->',
@@ -151,9 +170,9 @@ const zhHomeContent: HomeContent = {
   },
   cta: {
     badge: '立即开始',
-    heading: '从想法到自动运转的 AI 公司，只差一个仓库。',
+    heading: '从想法到持续协作的 AI 团队，只差一个仓库。',
     sub:
-      '从 Penclip 仓库开始搭建你的中文增强版 Paperclip 实例。保留自托管能力，同时获得更适合中国团队的品牌、文案与落地体验。',
+      '从 Penclip 仓库开始搭建你的中文增强版 Paperclip 实例，保留自托管能力，也获得更适合中国团队的界面、文案与使用路径。',
     primaryLabel: '立即体验 Penclip',
     primaryHref: FIRST_PARTY_REPO_URL,
     secondaryLabel: '查看常见问题 ->',
@@ -189,11 +208,11 @@ const zhHomeContent: HomeContent = {
         links: [
           { href: '#features', label: '核心能力' },
           { href: '#faq', label: '常见问题' },
-          { href: DISCORD_URL, label: 'Discord' }
+          { href: '#community', label: '微信交流群' }
         ]
       }
     ],
-    copyright: `${BRAND.name}. Open source under MIT.`
+    copyright: `${BRAND.name}. 基于 MIT 协议开源。`
   }
 };
 
@@ -299,6 +318,7 @@ export function getSiteForPath(
   const normalizedPath = normalizePathname(pathname);
   const lang = resolveLanguage(normalizedPath, domain);
   const isChinese = lang === 'zh-CN';
+  const showLegalFooter = isChinese && domain === BRAND.chineseDomain;
 
   return {
     domain,
@@ -306,10 +326,10 @@ export function getSiteForPath(
     lang,
     ogLocale: isChinese ? 'zh_CN' : 'en_US',
     title: isChinese
-      ? 'Penclip | Paperclip 中文增强版，零人力公司操作系统'
+      ? 'Penclip | Paperclip 中文增强版，面向 AI 协作团队'
       : 'Penclip | Chinese-enhanced fork of Paperclip for autonomous companies',
     description: isChinese
-      ? 'Penclip 是 Paperclip 的中文增强 Fork，面向中国团队优化，支持自托管、多智能体编排、组织架构、预算治理与国产大模型生态。'
+      ? 'Penclip 是 Paperclip 的中文增强 Fork，面向中国团队优化，支持自托管、智能体协作、任务审批与国产大模型接入。'
       : 'Penclip is a Chinese-enhanced Paperclip fork focused on localized UX, self-hosted AI agent orchestration, and support for the China model ecosystem.',
     alternateName: isChinese
       ? 'Penclip, Paperclip 中文增强版'
@@ -320,8 +340,26 @@ export function getSiteForPath(
     firstPartyRepoUrl: FIRST_PARTY_REPO_URL,
     firstPartyWebsiteRepoUrl: FIRST_PARTY_WEBSITE_REPO_URL,
     discordUrl: DISCORD_URL,
+    communityCard: isChinese
+      ? {
+          type: 'wechat_qr_placeholder',
+          imageSrc: WECHAT_PLACEHOLDER_IMAGE,
+          title: '微信交流群',
+          description: '社群入口筹备中，二维码后续替换为正式版本。',
+          label: '查看社群占位',
+          href: '#community',
+          show: true
+        }
+      : undefined,
     isChinese,
     home: isChinese ? zhHomeContent : enHomeContent,
+    legalFooter: isChinese
+      ? {
+          icp: 'ICP备案号申请中',
+          publicSecurity: '公网安备申请中',
+          show: showLegalFooter
+        }
+      : undefined,
     localeSwitch: getLocaleSwitch(normalizedPath, domain, lang),
     path: normalizedPath
   };

@@ -6,9 +6,9 @@ const site = getSiteForPath(Astro.url.pathname);
 const content = site.isChinese
   ? {
       badge: '成本治理',
-      heading: ['看清每个 agent 的成本。', '也管住每个 agent 的预算。'],
+      heading: ['看清每个智能体的成本。', '也管住每个智能体的预算。'],
       sub:
-        '每个 agent 都有月度预算。达到上限就会自动停下。没有失控成本，没有意外账单，只有系统强制执行的硬限制。',
+        '每个智能体都可以设置月度预算。达到上限后会自动暂停，帮助团队及时发现异常消耗并控制成本。',
       headers: {
         agent: '角色',
         budget: '预算使用',
@@ -16,7 +16,7 @@ const content = site.isChinese
       },
       total: '总计',
       detail:
-        '按 agent、任务、项目和目标追踪成本。你能看清哪些 agent 最贵、哪些任务最烧 token、哪些项目已经超预算。'
+        '你可以按角色、任务、项目和目标查看成本分布，快速找出高消耗环节，并及时调整预算。'
     }
   : {
       badge: 'Cost Tracking',

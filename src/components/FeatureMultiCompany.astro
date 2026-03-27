@@ -8,27 +8,27 @@ const content = site.isChinese
       badge: '多公司隔离',
       heading: ['一次部署。', '管理多家公司。'],
       sub:
-        '一套 Penclip 安装即可承载多个业务实体。你可以只跑一家 AI 公司，也可以同时管理五十家。公司之间数据严格隔离，但共用一个控制面。',
+        '一套 Penclip 安装即可承载多个业务团队。你可以只管理一个团队，也可以同时管理多个业务单元，数据彼此隔离、控制台统一查看。',
       companies: [
         {
           name: '移动营销公司',
-          agents: '8 个 agent',
+          agents: '8 个智能体',
           status: '运行中',
           lead: 'CEO',
           managers: ['市场 VP', '增长 VP'],
           specialists: ['内容', '广告', 'SEO', '分析']
         },
         {
-          name: '量化交易基金',
-          agents: '14 个 agent',
+          name: '策略研究团队',
+          agents: '14 个智能体',
           status: '运行中',
-          lead: '管理合伙人',
-          managers: ['交易', '研究', '风控'],
-          specialists: ['量化', '执行 Bot', 'Scout', '对冲']
+          lead: '团队负责人',
+          managers: ['策略', '研究', '风控'],
+          specialists: ['数据', '执行', '洞察', '复盘']
         },
         {
-          name: '无人出镜短视频工厂',
-          agents: '5 个 agent',
+          name: '短视频内容团队',
+          agents: '5 个智能体',
           status: '运行中',
           lead: '制片人',
           managers: ['脚本', '剪辑'],
@@ -38,7 +38,7 @@ const content = site.isChinese
       addCompany: '新增公司',
       yourCeo: '你的 CEO',
       rolePlaceholder: '角色...',
-      agentPlaceholder: 'Agent...'
+      agentPlaceholder: '智能体...'
     }
   : {
       badge: 'Multi-Company',

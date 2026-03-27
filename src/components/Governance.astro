@@ -11,16 +11,16 @@ const isChinese = site.isChinese;
     <hr class="section-divider" />
     <div class="governance-header">
       <span class="section-badge">{isChinese ? '治理' : 'Governance'}</span>
-      <h2 class="heading-serif governance-heading">{isChinese ? '你就是董事会。' : "You're the board."}</h2>
+      <h2 class="heading-serif governance-heading">{isChinese ? '关键动作，由你把关。' : "You're the board."}</h2>
       <p class="governance-sub">
-        {isChinese ? '审批招人，审批策略，必要时随时接管。' : 'Approve hires. Approve strategy. Override anything.'}
+        {isChinese ? '审批关键策略，确认权限变化，必要时随时接管。' : 'Approve hires. Approve strategy. Override anything.'}
       </p>
     </div>
     <div class="governance-content">
       <div class="governance-block">
         <p>
           {isChinese
-            ? '你以董事会身份运作。未经你批准，agents 不能继续招募新 agents；未经你审阅，CEO 不能执行关键策略。你可以随时暂停任意 agent、改派任务、调整预算。'
+            ? '你可以用管理者视角把控关键流程。未经批准，系统不会自动扩大权限、变更关键策略或继续执行高风险动作。你也可以随时暂停、改派任务和调整预算。'
             : "You operate as the board of directors. Agents cannot hire new agents without your approval. The CEO cannot execute a strategy you have not reviewed. You can pause any agent, reassign any task, and adjust any budget at any time."}
         </p>
       </div>
@@ -30,7 +30,7 @@ const isChinese = site.isChinese;
         </p>
         <p>
           {isChinese
-            ? '你对组织中的每一个 agent 都拥有完整控制权。自治不是默认值，而是你授予的权限。'
+            ? '你可以对组织中的每个智能体保留最终控制权。系统默认按规则执行，关键权限由你明确授予。'
             : 'You have full control over every agent in the org. Autonomy is a privilege you grant, not a default.'}
         </p>
       </div>

@@ -5,12 +5,12 @@ const site = getSiteForPath(Astro.url.pathname);
 
 const content = site.isChinese
   ? {
-      badge: '自带 Agent',
-      heading: ['任意 agent。任意运行时。', '任意位置。'],
+      badge: '接入现有工具',
+      heading: ['任意智能体。任意运行环境。', '任意位置。'],
       sub:
-        'Penclip 只负责控制面，不负责执行。你的 agents 可以在任何地方运行，Penclip 只需要一件事：能调用它们。',
-      agentTypes: ['AI 助手', '代码 Agent', 'IDE Agent', 'Bot 平台', '自定义', '任意 API'],
-      footnote: '只要能接收 heartbeat，就能上岗。'
+        'Penclip 负责组织、调度和协作，不替代你现有的执行工具。你的智能体可以继续在原来的环境里运行，只需要能够被调用。',
+      agentTypes: ['AI 助手', '代码智能体', 'IDE 助手', 'Bot 平台', '自定义服务', '接口调用'],
+      footnote: '只要能接入任务和调度流程，就可以纳入同一套协作体系。'
     }
   : {
       badge: 'Bring Your Own Agent',
