@@ -10,4 +10,6 @@ build/
 videos/
 !public/videos/
 !public/videos/full-tour.webm
+!public/videos/full-tour.mp4
+!public/videos/full-tour-poster.jpg
 /.idea/
