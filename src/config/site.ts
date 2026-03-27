@@ -1,10 +1,17 @@
 import { BRAND } from './brand';
 
-type SiteDomain = typeof BRAND.chineseDomain | typeof BRAND.internationalDomain;
+export type SiteDomain = typeof BRAND.chineseDomain | typeof BRAND.internationalDomain;
 type SiteLanguage = 'zh-CN' | 'en';
-type AlternateLink = {
+type OgLocale = 'zh_CN' | 'en_US';
+
+export type AlternateLink = {
   href: string;
   hreflang: 'zh-CN' | 'en' | 'x-default';
+};
+
+type LocaleSwitch = {
+  href: string;
+  label: string;
 };
 
 type HomeContent = {
@@ -49,6 +56,26 @@ type HomeContent = {
   };
 };
 
+export type SiteContext = {
+  alternateName: string;
+  ctaUrl: string;
+  description: string;
+  discordUrl: string;
+  domain: SiteDomain;
+  firstPartyRepoUrl: string;
+  firstPartyWebsiteRepoUrl: string;
+  home: HomeContent;
+  isChinese: boolean;
+  lang: SiteLanguage;
+  localeSwitch: LocaleSwitch;
+  ogLocale: OgLocale;
+  path: string;
+  siteUrl: string;
+  title: string;
+  upstreamUrl: string;
+  xDefaultUrl: string;
+};
+
 const FIRST_PARTY_REPO_URL = `https://github.com/${BRAND.githubOrg}/paperclip`;
 const FIRST_PARTY_WEBSITE_REPO_URL = `https://github.com/${BRAND.githubOrg}/paperclip-website`;
 const UPSTREAM_REPO_URL = 'https://github.com/paperclipai/paperclip';
@@ -59,7 +86,7 @@ const DOMAIN_TO_SITE_URL: Record<SiteDomain, string> = {
   [BRAND.internationalDomain]: `https://${BRAND.internationalDomain}`
 };
 
-const DOMAIN_TO_LANG: Record<SiteDomain, SiteLanguage> = {
+const DOMAIN_TO_DEFAULT_LANG: Record<SiteDomain, SiteLanguage> = {
   [BRAND.chineseDomain]: 'zh-CN',
   [BRAND.internationalDomain]: 'en'
 };
@@ -72,11 +99,29 @@ function normalizeDomain(input?: string): SiteDomain {
   return BRAND.internationalDomain;
 }
 
+function normalizePathname(pathname = '/'): string {
+  if (!pathname) {
+    return '/';
+  }
+
+  return pathname.startsWith('/') ? pathname : `/${pathname}`;
+}
+
+function isTemporaryChineseRoute(pathname: string, domain: SiteDomain): boolean {
+  return domain === BRAND.internationalDomain && /^\/zh(?:\/|$)/.test(normalizePathname(pathname));
+}
+
+function resolveLanguage(pathname: string, domain: SiteDomain): SiteLanguage {
+  if (isTemporaryChineseRoute(pathname, domain)) {
+    return 'zh-CN';
+  }
+
+  return DOMAIN_TO_DEFAULT_LANG[domain];
+}
+
 const requestedDomain = normalizeDomain(
   process.env.PUBLIC_DOMAIN ?? import.meta.env.PUBLIC_DOMAIN
 );
-
-const isChinese = requestedDomain === BRAND.chineseDomain;
 
 const zhHomeContent: HomeContent = {
   navbar: {
@@ -226,43 +271,88 @@ const enHomeContent: HomeContent = {
   }
 };
 
-export const CURRENT_SITE = {
-  domain: requestedDomain,
-  siteUrl: DOMAIN_TO_SITE_URL[requestedDomain],
-  lang: DOMAIN_TO_LANG[requestedDomain],
-  ogLocale: isChinese ? 'zh_CN' : 'en_US',
-  title: isChinese
-    ? 'Penclip | Paperclip 中文增强版，零人力公司操作系统'
-    : 'Penclip | Chinese-enhanced fork of Paperclip for autonomous companies',
-  description: isChinese
-    ? 'Penclip 是 Paperclip 的中文增强 Fork，面向中国团队优化，支持自托管、多智能体编排、组织架构、预算治理与国产大模型生态。'
-    : 'Penclip is a Chinese-enhanced Paperclip fork focused on localized UX, self-hosted AI agent orchestration, and support for the China model ecosystem.',
-  alternateName: isChinese
-    ? 'Penclip, Paperclip 中文增强版'
-    : 'Penclip, Chinese-enhanced fork of Paperclip',
-  ctaUrl: FIRST_PARTY_REPO_URL,
-  upstreamUrl: UPSTREAM_REPO_URL,
-  xDefaultUrl: DOMAIN_TO_SITE_URL[BRAND.internationalDomain],
-  firstPartyRepoUrl: FIRST_PARTY_REPO_URL,
-  firstPartyWebsiteRepoUrl: FIRST_PARTY_WEBSITE_REPO_URL,
-  discordUrl: DISCORD_URL,
-  isChinese,
-  home: isChinese ? zhHomeContent : enHomeContent
-} as const;
+function getLocaleSwitch(pathname: string, domain: SiteDomain, lang: SiteLanguage): LocaleSwitch {
+  if (domain === BRAND.chineseDomain) {
+    return {
+      href: DOMAIN_TO_SITE_URL[BRAND.internationalDomain],
+      label: 'EN'
+    };
+  }
 
-export function getAbsoluteUrl(pathname = '/', domain: SiteDomain = requestedDomain): string {
-  return new URL(pathname, DOMAIN_TO_SITE_URL[domain]).toString();
+  if (lang === 'zh-CN') {
+    return {
+      href: '/',
+      label: 'EN'
+    };
+  }
+
+  return {
+    href: '/zh/',
+    label: '中文'
+  };
 }
 
-export function getCanonicalUrl(pathname = '/'): string {
-  return getAbsoluteUrl(pathname, requestedDomain);
+export function getSiteForPath(
+  pathname = '/',
+  domain: SiteDomain = requestedDomain
+): SiteContext {
+  const normalizedPath = normalizePathname(pathname);
+  const lang = resolveLanguage(normalizedPath, domain);
+  const isChinese = lang === 'zh-CN';
+
+  return {
+    domain,
+    siteUrl: DOMAIN_TO_SITE_URL[domain],
+    lang,
+    ogLocale: isChinese ? 'zh_CN' : 'en_US',
+    title: isChinese
+      ? 'Penclip | Paperclip 中文增强版，零人力公司操作系统'
+      : 'Penclip | Chinese-enhanced fork of Paperclip for autonomous companies',
+    description: isChinese
+      ? 'Penclip 是 Paperclip 的中文增强 Fork，面向中国团队优化，支持自托管、多智能体编排、组织架构、预算治理与国产大模型生态。'
+      : 'Penclip is a Chinese-enhanced Paperclip fork focused on localized UX, self-hosted AI agent orchestration, and support for the China model ecosystem.',
+    alternateName: isChinese
+      ? 'Penclip, Paperclip 中文增强版'
+      : 'Penclip, Chinese-enhanced fork of Paperclip',
+    ctaUrl: FIRST_PARTY_REPO_URL,
+    upstreamUrl: UPSTREAM_REPO_URL,
+    xDefaultUrl: DOMAIN_TO_SITE_URL[BRAND.internationalDomain],
+    firstPartyRepoUrl: FIRST_PARTY_REPO_URL,
+    firstPartyWebsiteRepoUrl: FIRST_PARTY_WEBSITE_REPO_URL,
+    discordUrl: DISCORD_URL,
+    isChinese,
+    home: isChinese ? zhHomeContent : enHomeContent,
+    localeSwitch: getLocaleSwitch(normalizedPath, domain, lang),
+    path: normalizedPath
+  };
 }
 
-export function getAlternateLinks(pathname = '/'): AlternateLink[] {
+export const CURRENT_SITE = getSiteForPath('/');
+
+export function getAbsoluteUrl(
+  pathname = '/',
+  domain: SiteDomain = requestedDomain
+): string {
+  return new URL(normalizePathname(pathname), DOMAIN_TO_SITE_URL[domain]).toString();
+}
+
+export function getCanonicalUrl(
+  pathname = '/',
+  domain: SiteDomain = requestedDomain
+): string {
+  return getAbsoluteUrl(pathname, domain);
+}
+
+export function getAlternateLinks(
+  pathname = '/',
+  _domain: SiteDomain = requestedDomain
+): AlternateLink[] {
+  const normalizedPath = normalizePathname(pathname);
+
   return [
-    { hreflang: 'zh-CN', href: getAbsoluteUrl(pathname, BRAND.chineseDomain) },
-    { hreflang: 'en', href: getAbsoluteUrl(pathname, BRAND.internationalDomain) },
-    { hreflang: 'x-default', href: getAbsoluteUrl(pathname, BRAND.internationalDomain) }
+    { hreflang: 'zh-CN', href: getAbsoluteUrl(normalizedPath, BRAND.chineseDomain) },
+    { hreflang: 'en', href: getAbsoluteUrl(normalizedPath, BRAND.internationalDomain) },
+    { hreflang: 'x-default', href: getAbsoluteUrl(normalizedPath, BRAND.internationalDomain) }
   ];
 }
 
@@ -270,18 +360,19 @@ export function getRobotsContent(index = true): string {
   return index ? 'index,follow,max-image-preview:large' : 'noindex,follow';
 }
 
-export function getHomeStructuredData() {
-  const url = getAbsoluteUrl('/');
+export function getHomeStructuredData(pathname = '/') {
+  const site = getSiteForPath(pathname);
+  const url = getAbsoluteUrl(pathname, site.domain);
 
   return [
     {
       '@context': 'https://schema.org',
       '@type': 'Organization',
       name: BRAND.name,
-      alternateName: CURRENT_SITE.alternateName,
+      alternateName: site.alternateName,
       url,
-      logo: getAbsoluteUrl('/og.png'),
-      sameAs: [CURRENT_SITE.firstPartyRepoUrl, CURRENT_SITE.firstPartyWebsiteRepoUrl]
+      logo: getAbsoluteUrl('/og.png', site.domain),
+      sameAs: [site.firstPartyRepoUrl, site.firstPartyWebsiteRepoUrl]
     },
     {
       '@context': 'https://schema.org',
@@ -289,7 +380,7 @@ export function getHomeStructuredData() {
       name: BRAND.name,
       applicationCategory: 'BusinessApplication',
       operatingSystem: 'Linux, macOS, Windows',
-      description: CURRENT_SITE.description,
+      description: site.description,
       url,
       sourceOrganization: {
         '@type': 'Organization',
@@ -305,8 +396,8 @@ export function getHomeStructuredData() {
       '@context': 'https://schema.org',
       '@type': 'WebSite',
       name: BRAND.name,
-      alternateName: CURRENT_SITE.alternateName,
-      description: CURRENT_SITE.description,
+      alternateName: site.alternateName,
+      description: site.description,
       url
     }
   ];

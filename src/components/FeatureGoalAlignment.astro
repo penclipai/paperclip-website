@@ -1,7 +1,9 @@
 ---
-import { CURRENT_SITE } from '../config/site';
+import { getSiteForPath } from '../config/site';
 
-const content = CURRENT_SITE.isChinese
+const site = getSiteForPath(Astro.url.pathname);
+
+const content = site.isChinese
   ? {
       badge: '目标对齐',
       heading: ['让每个 agent 都', '对准同一个目标。'],
@@ -80,7 +82,7 @@ const content = CURRENT_SITE.isChinese
           {content.paragraphs[0]}
         </p>
         <p class="feature-sub">
-          {content.paragraphs[1]} <code>SKILLS.md</code> {CURRENT_SITE.isChinese
+          {content.paragraphs[1]} <code>SKILLS.md</code> {site.isChinese
             ? '机制让 agents 知道该如何发现自己需要的上下文。'
             : 'means your agents know how to discover the context they need.'}
         </p>

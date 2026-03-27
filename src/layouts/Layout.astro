@@ -1,13 +1,16 @@
 ---
 import { BRAND } from '../config/brand';
 import {
-  CURRENT_SITE,
+  type AlternateLink,
   getAlternateLinks,
   getCanonicalUrl,
+  getSiteForPath,
   getRobotsContent
 } from '../config/site';
 
 interface Props {
+  alternateLinks?: AlternateLink[];
+  canonicalHref?: string;
   title?: string;
   description?: string;
   ogImage?: string;
@@ -17,25 +20,28 @@ interface Props {
 }
 
 const pathname = Astro.url.pathname;
-const canonicalURL = new URL(getCanonicalUrl(pathname));
-const alternateLinks = getAlternateLinks(pathname);
+const site = getSiteForPath(pathname);
 
 const {
-  title = CURRENT_SITE.title,
-  description = CURRENT_SITE.description,
+  alternateLinks: alternateLinksProp,
+  canonicalHref = getCanonicalUrl(pathname),
+  title = site.title,
+  description = site.description,
   ogImage = '/og.png',
-  lang = CURRENT_SITE.lang,
+  lang = site.lang,
   robots = getRobotsContent(true),
   structuredData = [],
 } = Astro.props;
 
+const canonicalURL = new URL(canonicalHref);
+const alternateLinks = alternateLinksProp ?? getAlternateLinks(pathname);
 const structuredDataItems = Array.isArray(structuredData)
   ? structuredData
   : structuredData
     ? [structuredData]
     : [];
-const ogImageURL = new URL(ogImage, CURRENT_SITE.siteUrl).href;
-const alternateLocale = CURRENT_SITE.lang === 'zh-CN' ? 'en_US' : 'zh_CN';
+const ogImageURL = new URL(ogImage, site.siteUrl).href;
+const alternateLocale = site.lang === 'zh-CN' ? 'en_US' : 'zh_CN';
 ---
 
 <!doctype html>
@@ -58,7 +64,7 @@ const alternateLocale = CURRENT_SITE.lang === 'zh-CN' ? 'en_US' : 'zh_CN';
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={BRAND.name} />
     <meta property="og:url" content={canonicalURL.href} />
-    <meta property="og:locale" content={CURRENT_SITE.ogLocale} />
+    <meta property="og:locale" content={site.ogLocale} />
     <meta property="og:locale:alternate" content={alternateLocale} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
