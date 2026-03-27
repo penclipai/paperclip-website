@@ -7,24 +7,24 @@ const isChinese = site.isChinese;
 const items = isChinese
   ? [
       {
-        label: '面向智能体协作的组织结构。',
-        detail: '层级、角色和汇报关系完整存在。不同执行者可以按职责加入同一套协作体系。'
+        label: '把智能体放进清晰的分工里。',
+        detail: '角色、层级和协作关系都能明确下来，不同执行者可以围绕同一项工作配合。'
       },
       {
-        label: '治理与审批层。',
-        detail: '关键动作可以进入审批流程，管理者可以审阅策略、调整预算并接管重要节点。'
+        label: '把权限和确认放进流程里。',
+        detail: '涉及关键操作时，可以先确认再继续，也方便随时调整预算和任务安排。'
       },
       {
-        label: '成本控制系统。',
-        detail: '每个执行角色都能设置预算，每次调用都有记录，方便在成本失控前及时发现问题。'
+        label: '把成本变化看清楚。',
+        detail: '每个角色都可以设置预算，每次调用都会留下记录，方便尽早发现异常消耗。'
       },
       {
-        label: '完整执行记录。',
-        detail: '每张工单、每次决策、每个工具调用都有记录，后续排查和复盘更容易。'
+        label: '把任务过程留下来。',
+        detail: '每张任务单、每次决策和关键操作都有记录，后续排查和复盘更容易。'
       },
       {
-        label: '多团队隔离运行。',
-        detail: '可以只管理一个团队，也可以并行管理多个业务单元。数据彼此隔离，入口仍然统一。'
+        label: '把多个团队分开管理。',
+        detail: '可以只管理一个团队，也可以同时管理多个业务单元，数据彼此隔离，查看入口保持统一。'
       }
     ]
   : [
@@ -56,7 +56,7 @@ const items = isChinese
     <hr class="section-divider" />
     <div class="what-is-header">
       <span class="section-badge">{isChinese ? '产品定位' : 'Identity'}</span>
-      <h2 class="heading-serif what-is-heading">{isChinese ? 'Penclip 是什么。' : 'What Penclip is.'}</h2>
+      <h2 class="heading-serif what-is-heading">{isChinese ? 'Penclip 可以帮你做什么。' : 'What Penclip is.'}</h2>
     </div>
     <div class="what-is-grid">
       {items.map((item, i) => (

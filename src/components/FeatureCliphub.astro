@@ -6,9 +6,9 @@ const site = getSiteForPath(Astro.url.pathname);
 const content = site.isChinese
   ? {
       comingSoon: '即将上线',
-      heading: ['下载一家公司。', '导入并运行。'],
+      heading: ['下载一个团队模板。', '导入后直接开始。'],
       sub:
-        '浏览预置的业务模板，包含组织结构、智能体配置和技能，几步就能导入到你的 Penclip 实例里。',
+        '以后你可以从模板库里选择现成团队，包含组织结构、智能体配置和常用技能，导入后就能开始使用。',
       templates: [
         { name: '内容营销工作室', desc: 'SEO、博客和社媒协作', agents: '8 个智能体', category: '营销' },
         { name: '策略研究团队', desc: '分析、执行、风控与合规', agents: '12 个智能体', category: '研究' },
@@ -19,7 +19,7 @@ const content = site.isChinese
       ],
       ghost: {
         name: '发布你的模板',
-        desc: '把你的公司模板分享给社区'
+        desc: '把你的团队模板分享给其他人'
       },
       overlaySub: '在 GitHub 关注我们，第一时间获取更新'
     }

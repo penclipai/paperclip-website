@@ -10,27 +10,27 @@ const isChinese = site.isChinese;
   <div class="container">
     <hr class="section-divider" />
     <div class="governance-header">
-      <span class="section-badge">{isChinese ? '治理' : 'Governance'}</span>
-      <h2 class="heading-serif governance-heading">{isChinese ? '关键动作，由你把关。' : "You're the board."}</h2>
+      <span class="section-badge">{isChinese ? '权限和确认' : 'Governance'}</span>
+      <h2 class="heading-serif governance-heading">{isChinese ? '重要操作需要先确认。' : "You're the board."}</h2>
       <p class="governance-sub">
-        {isChinese ? '审批关键策略，确认权限变化，必要时随时接管。' : 'Approve hires. Approve strategy. Override anything.'}
+        {isChinese ? '涉及权限、预算或关键任务时，可以先由你确认再继续。' : 'Approve hires. Approve strategy. Override anything.'}
       </p>
     </div>
     <div class="governance-content">
       <div class="governance-block">
         <p>
           {isChinese
-            ? '你可以用管理者视角把控关键流程。未经批准，系统不会自动扩大权限、变更关键策略或继续执行高风险动作。你也可以随时暂停、改派任务和调整预算。'
+            ? '你可以保留关键流程的最终确认权。未经确认，系统不会自动扩大权限、调整关键策略或继续执行高风险操作。你也可以随时暂停任务、改派执行者和调整预算。'
             : "You operate as the board of directors. Agents cannot hire new agents without your approval. The CEO cannot execute a strategy you have not reviewed. You can pause any agent, reassign any task, and adjust any budget at any time."}
         </p>
       </div>
       <div class="governance-block">
         <p class="governance-actions">
-          {isChinese ? '暂停。恢复。覆盖。改派。终止。' : 'Pause. Resume. Override. Reassign. Terminate.'}
+          {isChinese ? '暂停、恢复、改派、终止，都可以手动处理。' : 'Pause. Resume. Override. Reassign. Terminate.'}
         </p>
         <p>
           {isChinese
-            ? '你可以对组织中的每个智能体保留最终控制权。系统默认按规则执行，关键权限由你明确授予。'
+            ? '系统会按规则推进，但关键权限仍由你决定。需要接管时，你可以随时接手。'
             : 'You have full control over every agent in the org. Autonomy is a privilege you grant, not a default.'}
         </p>
       </div>

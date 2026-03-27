@@ -7,28 +7,28 @@ const isChinese = site.isChinese;
 const problems = isChinese
   ? [
       {
-        without: '你同时开着 20 个 Claude Code 标签页，却不知道谁在做什么；一重启，进度全丢。',
-        with: '任务以工单为中心，对话按线程沉淀，重启后也能继续追踪上下文。'
+        without: '你同时开着很多 AI 工具窗口，却不知道谁在做什么；一重启，进度也不好接上。',
+        with: '任务会按线程和状态留下来，重新打开后也更容易接着往下看。'
       },
       {
-        without: '你要手动从多个地方拼上下文，反复提醒工具现在到底在做什么。',
-        with: '上下文会从任务一直关联到项目和团队目标，执行者更容易理解当前任务的背景。'
+        without: '你要手动从多个地方整理背景，反复告诉工具现在为什么要做这件事。',
+        with: '任务会连到项目和团队目标，智能体更容易理解背景和优先级。'
       },
       {
-        without: '智能体配置散落各处，你还得自己重造任务管理、协作和调度系统。',
-        with: 'Penclip 把组织架构、工单、委派和审批流程整合起来，让团队协作不再依赖零散脚本。'
+        without: '智能体配置散落各处，任务分配、协作和确认步骤都要自己另外拼。',
+        with: 'Penclip 把分工、任务和确认步骤放到一起，日常协作会更顺。'
       },
       {
-        without: '失控循环几分钟就烧掉几百美元 token，等你发现时额度已经见底。',
-        with: '成本追踪会把预算与消耗及时展示出来，超限自动暂停，方便管理层及时调整优先级。'
+        without: '成本变化只有出问题时才看得到，等发现时预算可能已经超了。',
+        with: '预算和花费会及时显示出来，接近上限时更容易发现和处理。'
       },
       {
-        without: '客服、内容、日报这类周期性工作，总得你自己记得去手动触发。',
-        with: '定时调度可以按计划接管这些重复性工作，管理层只需要做必要监督。'
+        without: '客服、内容、日报这类重复工作，总要靠人记得去安排。',
+        with: '可以按时间安排重复任务，让智能体按计划继续处理。'
       },
       {
-        without: '你有个想法，还得找仓库、开 Claude Code、盯着窗口，整个过程都得人工盯着。',
-        with: '直接在 Penclip 里下发任务，编码智能体会持续推进，最后再由管理者审阅结果。'
+        without: '有了想法之后，还得自己反复分派、跟进和确认，整个过程比较碎。',
+        with: '可以直接在 Penclip 里建任务、分配执行者，再在关键步骤里做确认。'
       }
     ]
   : [
@@ -65,7 +65,7 @@ const problems = isChinese
     <div class="problems-header">
       <span class="section-badge">{isChinese ? '解决的问题' : 'Problems Solved'}</span>
       <h2 class="heading-serif problems-heading">
-        {isChinese ? '用了 Penclip，会发生什么变化。' : 'What changes with Penclip.'}
+        {isChinese ? '用 Penclip 后，协作会更清楚。' : 'What changes with Penclip.'}
       </h2>
     </div>
     <div class="problems-list">

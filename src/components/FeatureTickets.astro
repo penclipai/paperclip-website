@@ -5,39 +5,39 @@ const site = getSiteForPath(Astro.url.pathname);
 
 const content = site.isChinese
   ? {
-      badge: '工单系统',
-      heading: ['每次对话都有记录。', '每个决策都能追溯。'],
+      badge: '任务记录',
+      heading: ['每次协作都有记录。', '关键决定也能回看。'],
       sub:
-        '你通过工单与智能体协作。每条指令、每次响应、每个工具调用和关键决策都会被记录下来，方便追踪与复盘。',
+        '你可以通过任务单和智能体协作。每条指令、每次响应和关键操作都会留下记录，方便回看和复盘。',
       bullets: [
         {
-          title: '结构化工单',
-          desc: '每项任务都是一个工单，带有明确负责人、状态和线程。'
+          title: '结构化任务',
+          desc: '每项任务都有明确负责人、状态和线程。'
         },
         {
-          title: '完整执行记录',
+          title: '过程记录清楚',
           desc: '每次工具调用、接口请求和关键决策节点都可见可查。'
         },
         {
-          title: '不可变审计日志',
-          desc: '只追加、不篡改、不删除，责任链完整可追踪。'
+          title: '审计日志可查',
+          desc: '记录以追加为主，方便后续追溯责任链。'
         }
       ],
       ticket: {
         title: '发布新版定价页',
-        status: '进行中',
-        assignee: 'CTO',
+        status: '处理中',
+        assignee: '技术负责人',
         messages: [
           { author: '你', time: '2 分钟前', text: '把新版定价页部署到生产环境，先跑测试。' },
-          { author: 'CTO 智能体', time: '1 分钟前', text: '正在执行测试和预发部署。烟雾测试通过后我会切到生产。' },
+          { author: '技术智能体', time: '1 分钟前', text: '正在执行测试和预发部署。验证通过后我会继续发布。' },
           { author: '你', time: '刚刚', text: '已批准，继续。' }
         ],
-        traceLabel: '执行记录',
+        traceLabel: '过程记录',
         trace: [
-          { action: 'run_tests()', status: '通过' },
-          { action: 'deploy_to_staging()', status: '完成' },
-          { action: 'smoke_test()', status: '通过' },
-          { action: 'deploy_to_production()', status: '进行中' }
+          { action: '运行测试', status: '通过' },
+          { action: '预发部署', status: '完成' },
+          { action: '验证检查', status: '通过' },
+          { action: '正式发布', status: '进行中' }
         ]
       }
     }

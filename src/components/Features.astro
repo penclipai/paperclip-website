@@ -7,48 +7,48 @@ const isChinese = site.isChinese;
 const features = isChinese
   ? [
       {
-        title: '任意智能体接入',
-        desc: '支持不同类型的智能体和运行环境，统一纳入同一套分工和协作体系。',
+        title: '接入常用智能体',
+        desc: 'Claude Code、OpenClaw、脚本和接口都可以接入，放进同一套协作流程里。',
         icon: 'plug'
       },
       {
-        title: '目标对齐',
-        desc: '每个任务都能追溯到团队目标，让执行者知道做什么，也知道为什么要做。',
+        title: '目标更清楚',
+        desc: '每个任务都能对应到团队目标，执行时更容易理解优先级。',
         icon: 'target'
       },
       {
-        title: '定时调度',
-        desc: '按计划唤醒智能体、检查任务进度，并把协作请求分发到合适的角色。',
+        title: '按计划推进',
+        desc: '可以按时间安排任务，定时检查进度，让重复工作持续往前走。',
         icon: 'pulse'
       },
       {
-        title: '成本控制',
-        desc: '按智能体设置预算和阈值，超限自动暂停，避免成本失控。',
+        title: '花费看得见',
+        desc: '可以给智能体设置预算，及时看到消耗变化，避免超支。',
         icon: 'dollar'
       },
       {
-        title: '多公司运行',
-        desc: '一次部署可管理多个业务团队，数据隔离清晰，统一控制台集中查看。',
+        title: '多团队分开管理',
+        desc: '一套部署可以服务多个团队，数据彼此隔离，也方便统一查看。',
         icon: 'building'
       },
       {
-        title: '工单协作',
-        desc: '任务、对话、决策和工具调用都有记录，方便追踪与复盘。',
+        title: '任务都有记录',
+        desc: '任务过程、对话和关键操作都会留下记录，方便回看和复盘。',
         icon: 'ticket'
       },
       {
-        title: '治理与审批',
-        desc: '关键动作可进入审批流程，必要时随时暂停、改派或终止执行。',
+        title: '重要操作先确认',
+        desc: '涉及权限、预算或关键动作时，可以先确认再继续。',
         icon: 'shield'
       },
       {
-        title: '组织架构',
-        desc: '层级、角色和汇报关系一目了然，智能体不再是散落脚本，而是完整团队的一部分。',
+        title: '分工关系更清楚',
+        desc: '角色、汇报关系和职责范围都能明确下来，协作边界更清楚。',
         icon: 'orgchart'
       },
       {
-        title: '移动端可管',
-        desc: '随时随地查看团队运行状态，处理审批和关键任务。',
+        title: '手机也能处理',
+        desc: '在外也能查看进度，处理确认事项和关键任务。',
         icon: 'phone'
       }
     ]
@@ -106,7 +106,7 @@ const features = isChinese
     <div class="features-header">
       <span class="section-badge">{isChinese ? '核心能力' : 'Features'}</span>
       <h2 class="heading-serif features-heading">
-        {isChinese ? '搭建 AI 协作团队的统一控制台。' : 'Everything you need to run'}{!isChinese && <br />}{!isChinese && 'an autonomous company.'}
+        {isChinese ? '把智能体、任务和进度放到一起看。' : 'Everything you need to run'}{!isChinese && <br />}{!isChinese && 'an autonomous company.'}
       </h2>
     </div>
     <div class="features-grid">

@@ -5,7 +5,7 @@ const site = getSiteForPath(Astro.url.pathname);
 
 const content = site.isChinese
   ? {
-      badge: '目标对齐',
+      badge: '目标更清楚',
       heading: ['让每个智能体都', '对准同一个目标。'],
       levels: [
         { label: '团队目标', text: '完成产品内测，并建立稳定的协作流程' },
@@ -14,7 +14,7 @@ const content = site.isChinese
         { label: '当前任务', text: '完善文档更新的实时同步逻辑' }
       ],
       paragraphs: [
-        '每一项工作都能关联到更上层的团队目标。执行者不只知道要做什么，也知道这项任务为什么重要。',
+        '每一项工作都能关联到更上层的团队目标。智能体不只知道要做什么，也知道这项任务和整体目标有什么关系。',
         'Penclip 的'
       ]
     }
@@ -83,7 +83,7 @@ const content = site.isChinese
         </p>
         <p class="feature-sub">
           {content.paragraphs[1]} <code>SKILLS.md</code> {site.isChinese
-            ? '机制让智能体知道该去哪里查找所需的上下文。'
+            ? '约定可以帮助智能体找到项目背景、协作方式和需要遵守的规则。'
             : 'means your agents know how to discover the context they need.'}
         </p>
       </div>

@@ -6,9 +6,9 @@ const site = getSiteForPath(Astro.url.pathname);
 const content = site.isChinese
   ? {
       badge: '多公司隔离',
-      heading: ['一次部署。', '管理多家公司。'],
+      heading: ['一次部署。', '管理多个团队。'],
       sub:
-        '一套 Penclip 安装即可承载多个业务团队。你可以只管理一个团队，也可以同时管理多个业务单元，数据彼此隔离、控制台统一查看。',
+        '一套 Penclip 可以同时服务多个团队或业务单元。数据彼此隔离，但入口仍然统一，查看和管理也更方便。',
       companies: [
         {
           name: '移动营销公司',

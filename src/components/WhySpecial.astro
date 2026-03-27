@@ -12,33 +12,33 @@ const items = isChinese
         icon: 'atom'
       },
       {
-        label: '上下文可续接。',
-        detail: '智能体在多次唤醒之间可以延续同一份上下文，不需要每次都从头开始。',
+        label: '任务可以接着做。',
+        detail: '智能体下次被唤醒时，可以接着之前的任务继续，不用每次从头开始。',
         icon: 'save'
       },
       {
-        label: '技能可按需补充。',
-        detail: '智能体可以在执行时读取工作流和项目上下文，不需要重新训练才能理解当前任务。',
+        label: '项目背景能带上。',
+        detail: '智能体执行任务时，可以同时读取项目背景和协作规则，不必每次重新说明。',
         icon: 'zap'
       },
       {
-        label: '配置可回滚。',
-        detail: '审批规则可以强制执行，配置变更有版本记录，出现问题时也更容易回退。',
+        label: '设置改动可回退。',
+        detail: '确认规则可以强制执行，配置变更也有版本记录，出问题时更容易回退。',
         icon: 'rewind'
       },
       {
-        label: '目标上下文完整。',
-        detail: '任务不只带标题，也会带上关联目标和背景说明，方便执行者理解优先级。',
+        label: '任务背景更完整。',
+        detail: '任务不只有标题，也会带上关联目标和补充说明，方便判断优先级。',
         icon: 'layers'
       },
       {
-        label: '团队模板可迁移。',
-        detail: '组织结构、智能体配置和技能可以导出导入，也能处理敏感信息清理与命名冲突。',
+        label: '团队模板能复用。',
+        detail: '组织结构、智能体配置和技能可以导出导入，方便在不同团队之间复用。',
         icon: 'package'
       },
       {
-        label: '多团队隔离清晰。',
-        detail: '不同业务单元的数据和执行记录彼此隔离，一套部署也能稳定承载多个团队。',
+        label: '多团队隔离更清楚。',
+        detail: '不同业务单元的数据和过程记录彼此隔离，一套部署也能稳定服务多个团队。',
         icon: 'lock'
       }
     ]
@@ -86,10 +86,10 @@ const items = isChinese
     <hr class="section-divider" />
     <div class="special-header">
       <span class="section-badge">{isChinese ? '底层能力' : 'Under the Hood'}</span>
-      <h2 class="heading-serif special-heading">{isChinese ? '为什么 Penclip 更适合真正落地。' : 'Why Penclip is special.'}</h2>
+      <h2 class="heading-serif special-heading">{isChinese ? '为什么它更适合长期使用。' : 'Why Penclip is special.'}</h2>
       <p class="special-sub">
         {isChinese
-          ? 'Penclip 把任务编排、成本管理和组织控制放进了一套更容易落地的执行框架里。'
+          ? 'Penclip 把协作、预算和权限放在同一套机制里，长期使用时更容易保持稳定。'
           : 'Penclip handles the hard orchestration details correctly.'}
       </p>
     </div>
