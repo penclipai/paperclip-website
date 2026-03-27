@@ -63920,7 +63920,7 @@ index 55cf3ef..c5cd42f 100644
      </div>
    </div>
 diff --git a/src/components/FAQ.astro b/src/components/FAQ.astro
-index 16e4ca4..1f32300 100644
+index 16e4ca4..92b2435 100644
 --- a/src/components/FAQ.astro
 +++ b/src/components/FAQ.astro
 @@ -1,49 +1,91 @@
@@ -64045,7 +64045,8 @@ index 16e4ca4..1f32300 100644
 +    ];
  ---
  
- <section class="faq-section section">
+-<section class="faq-section section">
++<section id="faq" class="faq-section section">
    <div class="container">
      <div class="faq-header">
        <span class="section-badge">FAQ</span>
@@ -65468,7 +65469,7 @@ index 9bdff4b..47b2d35 100644
              </div>
            </div>
 diff --git a/src/components/Features.astro b/src/components/Features.astro
-index 8169aa6..a1f8898 100644
+index 8169aa6..a22d262 100644
 --- a/src/components/Features.astro
 +++ b/src/components/Features.astro
 @@ -1,58 +1,111 @@
@@ -65620,7 +65621,8 @@ index 8169aa6..a1f8898 100644
 +    ];
  ---
  
- <section class="features-section section">
+-<section class="features-section section">
++<section id="features" class="features-section section">
    <div class="container">
      <div class="features-header">
 -      <span class="section-badge">Features</span>
@@ -65880,10 +65882,10 @@ index d9209af..dbaef6a 100644
      <div class="steps-grid">
        {steps.map((step) => (
 diff --git a/src/components/Navbar.astro b/src/components/Navbar.astro
-index 00e85a3..f9fc023 100644
+index 00e85a3..7dc7f64 100644
 --- a/src/components/Navbar.astro
 +++ b/src/components/Navbar.astro
-@@ -1,25 +1,29 @@
+@@ -1,25 +1,25 @@
  ---
 +import { BRAND } from '../config/brand';
 +import { CURRENT_SITE } from '../config/site';
@@ -65896,12 +65898,10 @@ index 00e85a3..f9fc023 100644
      <div class="navbar-left">
 -      <a href="https://github.com/paperclipai/paperclip" class="navbar-link">Docs</a>
 -      <a href="https://github.com/paperclipai/paperclip" class="navbar-link navbar-link--icon">
-+      <a href={navbar.primaryLinkHref} class="navbar-link">{navbar.primaryLinkLabel}</a>
-+      <a href={navbar.secondaryLinkHref} class="navbar-link navbar-link--icon">
-         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
 -        GitHub
-+        {navbar.secondaryLinkLabel}
-       </a>
+-      </a>
++      <a href={navbar.primaryLinkHref} class="navbar-link">{navbar.primaryLinkLabel}</a>
      </div>
      <a href="/" class="navbar-logo">
        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -65919,6 +65919,19 @@ index 00e85a3..f9fc023 100644
        </a>
      </div>
    </div>
+@@ -91,12 +91,6 @@
+     color: #fff;
+   }
+ 
+-  .navbar-link--icon {
+-    display: inline-flex;
+-    align-items: center;
+-    gap: 0.35rem;
+-  }
+-
+   .navbar-cta {
+     display: inline-flex;
+     align-items: center;
 diff --git a/src/components/ProblemsSolved.astro b/src/components/ProblemsSolved.astro
 index 7261feb..8aad425 100644
 --- a/src/components/ProblemsSolved.astro
@@ -66431,10 +66444,10 @@ index 0000000..8b9c199
 +} as const;
 diff --git a/src/config/site.ts b/src/config/site.ts
 new file mode 100644
-index 0000000..d8991b9
+index 0000000..db97509
 --- /dev/null
 +++ b/src/config/site.ts
-@@ -0,0 +1,319 @@
+@@ -0,0 +1,313 @@
 +import { BRAND } from './brand';
 +
 +type SiteDomain = typeof BRAND.chineseDomain | typeof BRAND.internationalDomain;
@@ -66448,8 +66461,6 @@ index 0000000..d8991b9
 +  navbar: {
 +    primaryLinkLabel: string;
 +    primaryLinkHref: string;
-+    secondaryLinkLabel: string;
-+    secondaryLinkHref: string;
 +    ctaLabel: string;
 +    ctaHref: string;
 +  };
@@ -66521,8 +66532,6 @@ index 0000000..d8991b9
 +  navbar: {
 +    primaryLinkLabel: 'GitHub',
 +    primaryLinkHref: FIRST_PARTY_REPO_URL,
-+    secondaryLinkLabel: 'Paperclip',
-+    secondaryLinkHref: UPSTREAM_REPO_URL,
 +    ctaLabel: '立即体验',
 +    ctaHref: FIRST_PARTY_REPO_URL
 +  },
@@ -66533,8 +66542,8 @@ index 0000000..d8991b9
 +      '面向中国团队优化的自托管多智能体编排平台。组织架构、预算治理、任务协作与国产大模型支持，统一落在一个控制面里。',
 +    primaryCtaLabel: '立即体验 Penclip',
 +    primaryCtaHref: FIRST_PARTY_REPO_URL,
-+    secondaryCtaLabel: '查看上游 Paperclip',
-+    secondaryCtaHref: UPSTREAM_REPO_URL
++    secondaryCtaLabel: '查看核心能力',
++    secondaryCtaHref: '#features'
 +  },
 +  quickstart: {
 +    heading: '快速开始',
@@ -66542,8 +66551,8 @@ index 0000000..d8991b9
 +      '开源、自托管、可审计。交互式初始化会带你完成数据库、认证和第一家 AI 公司配置。兼容现有 Paperclip 工作流与自托管部署方式。',
 +    primaryLabel: '查看 Penclip 仓库',
 +    primaryHref: FIRST_PARTY_REPO_URL,
-+    secondaryLabel: '查看上游 Paperclip 文档 ->',
-+    secondaryHref: UPSTREAM_REPO_URL
++    secondaryLabel: '查看快速开始 ->',
++    secondaryHref: '#get-started'
 +  },
 +  cta: {
 +    badge: '立即开始',
@@ -66552,8 +66561,8 @@ index 0000000..d8991b9
 +      '从 Penclip 仓库开始搭建你的中文增强版 Paperclip 实例。保留自托管能力，同时获得更适合中国团队的品牌、文案与落地体验。',
 +    primaryLabel: '立即体验 Penclip',
 +    primaryHref: FIRST_PARTY_REPO_URL,
-+    secondaryLabel: '查看上游 Paperclip ->',
-+    secondaryHref: UPSTREAM_REPO_URL
++    secondaryLabel: '查看常见问题 ->',
++    secondaryHref: '#faq'
 +  },
 +  footer: {
 +    columns: [
@@ -66577,14 +66586,14 @@ index 0000000..d8991b9
 +        links: [
 +          { href: FIRST_PARTY_REPO_URL, label: 'Penclip GitHub' },
 +          { href: FIRST_PARTY_WEBSITE_REPO_URL, label: '官网源码' },
-+          { href: UPSTREAM_REPO_URL, label: 'Upstream Paperclip' }
++          { href: UPSTREAM_REPO_URL, label: 'Paperclip' }
 +        ]
 +      },
 +      {
 +        heading: '资源',
 +        links: [
-+          { href: UPSTREAM_REPO_URL, label: '上游文档' },
-+          { href: UPSTREAM_REPO_URL, label: 'MIT License' },
++          { href: '#features', label: '核心能力' },
++          { href: '#faq', label: '常见问题' },
 +          { href: DISCORD_URL, label: 'Discord' }
 +        ]
 +      }
@@ -66597,8 +66606,6 @@ index 0000000..d8991b9
 +  navbar: {
 +    primaryLinkLabel: 'GitHub',
 +    primaryLinkHref: FIRST_PARTY_REPO_URL,
-+    secondaryLinkLabel: 'Paperclip',
-+    secondaryLinkHref: UPSTREAM_REPO_URL,
 +    ctaLabel: 'Try Penclip',
 +    ctaHref: FIRST_PARTY_REPO_URL
 +  },
@@ -66609,8 +66616,8 @@ index 0000000..d8991b9
 +      'Self-hosted AI agent orchestration with org charts, budgets, governance, and a localization layer built for teams shipping in the China model ecosystem.',
 +    primaryCtaLabel: 'Try Penclip',
 +    primaryCtaHref: FIRST_PARTY_REPO_URL,
-+    secondaryCtaLabel: 'View upstream Paperclip',
-+    secondaryCtaHref: UPSTREAM_REPO_URL
++    secondaryCtaLabel: 'Explore features',
++    secondaryCtaHref: '#features'
 +  },
 +  quickstart: {
 +    heading: 'Quickstart',
@@ -66618,8 +66625,8 @@ index 0000000..d8991b9
 +      'Open source, self-hosted, and compatible with existing Paperclip workflows. Interactive setup walks you through database, auth, and your first autonomous company.',
 +    primaryLabel: 'Explore the Penclip repo',
 +    primaryHref: FIRST_PARTY_REPO_URL,
-+    secondaryLabel: 'Read upstream Paperclip docs ->',
-+    secondaryHref: UPSTREAM_REPO_URL
++    secondaryLabel: 'Go to get started ->',
++    secondaryHref: '#get-started'
 +  },
 +  cta: {
 +    badge: 'Get started',
@@ -66628,8 +66635,8 @@ index 0000000..d8991b9
 +      'Start with Penclip for branded localization, self-hosted orchestration, and a clearer path for teams targeting Chinese users without giving up Paperclip compatibility.',
 +    primaryLabel: 'Try Penclip',
 +    primaryHref: FIRST_PARTY_REPO_URL,
-+    secondaryLabel: 'Read upstream Paperclip ->',
-+    secondaryHref: UPSTREAM_REPO_URL
++    secondaryLabel: 'Read FAQ ->',
++    secondaryHref: '#faq'
 +  },
 +  footer: {
 +    columns: [
@@ -66653,14 +66660,14 @@ index 0000000..d8991b9
 +        links: [
 +          { href: FIRST_PARTY_REPO_URL, label: 'Penclip GitHub' },
 +          { href: FIRST_PARTY_WEBSITE_REPO_URL, label: 'Website source' },
-+          { href: UPSTREAM_REPO_URL, label: 'Upstream Paperclip' }
++          { href: UPSTREAM_REPO_URL, label: 'Paperclip' }
 +        ]
 +      },
 +      {
 +        heading: 'Resources',
 +        links: [
-+          { href: UPSTREAM_REPO_URL, label: 'Upstream docs' },
-+          { href: UPSTREAM_REPO_URL, label: 'MIT License' },
++          { href: '#features', label: 'Features' },
++          { href: '#faq', label: 'FAQ' },
 +          { href: DISCORD_URL, label: 'Discord' }
 +        ]
 +      }

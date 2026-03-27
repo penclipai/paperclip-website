@@ -11,8 +11,6 @@ type HomeContent = {
   navbar: {
     primaryLinkLabel: string;
     primaryLinkHref: string;
-    secondaryLinkLabel: string;
-    secondaryLinkHref: string;
     ctaLabel: string;
     ctaHref: string;
   };
@@ -84,8 +82,6 @@ const zhHomeContent: HomeContent = {
   navbar: {
     primaryLinkLabel: 'GitHub',
     primaryLinkHref: FIRST_PARTY_REPO_URL,
-    secondaryLinkLabel: 'Paperclip',
-    secondaryLinkHref: UPSTREAM_REPO_URL,
     ctaLabel: '立即体验',
     ctaHref: FIRST_PARTY_REPO_URL
   },
@@ -96,8 +92,8 @@ const zhHomeContent: HomeContent = {
       '面向中国团队优化的自托管多智能体编排平台。组织架构、预算治理、任务协作与国产大模型支持，统一落在一个控制面里。',
     primaryCtaLabel: '立即体验 Penclip',
     primaryCtaHref: FIRST_PARTY_REPO_URL,
-    secondaryCtaLabel: '查看上游 Paperclip',
-    secondaryCtaHref: UPSTREAM_REPO_URL
+    secondaryCtaLabel: '查看核心能力',
+    secondaryCtaHref: '#features'
   },
   quickstart: {
     heading: '快速开始',
@@ -105,8 +101,8 @@ const zhHomeContent: HomeContent = {
       '开源、自托管、可审计。交互式初始化会带你完成数据库、认证和第一家 AI 公司配置。兼容现有 Paperclip 工作流与自托管部署方式。',
     primaryLabel: '查看 Penclip 仓库',
     primaryHref: FIRST_PARTY_REPO_URL,
-    secondaryLabel: '查看上游 Paperclip 文档 ->',
-    secondaryHref: UPSTREAM_REPO_URL
+    secondaryLabel: '查看快速开始 ->',
+    secondaryHref: '#get-started'
   },
   cta: {
     badge: '立即开始',
@@ -115,8 +111,8 @@ const zhHomeContent: HomeContent = {
       '从 Penclip 仓库开始搭建你的中文增强版 Paperclip 实例。保留自托管能力，同时获得更适合中国团队的品牌、文案与落地体验。',
     primaryLabel: '立即体验 Penclip',
     primaryHref: FIRST_PARTY_REPO_URL,
-    secondaryLabel: '查看上游 Paperclip ->',
-    secondaryHref: UPSTREAM_REPO_URL
+    secondaryLabel: '查看常见问题 ->',
+    secondaryHref: '#faq'
   },
   footer: {
     columns: [
@@ -140,14 +136,14 @@ const zhHomeContent: HomeContent = {
         links: [
           { href: FIRST_PARTY_REPO_URL, label: 'Penclip GitHub' },
           { href: FIRST_PARTY_WEBSITE_REPO_URL, label: '官网源码' },
-          { href: UPSTREAM_REPO_URL, label: 'Upstream Paperclip' }
+          { href: UPSTREAM_REPO_URL, label: 'Paperclip' }
         ]
       },
       {
         heading: '资源',
         links: [
-          { href: UPSTREAM_REPO_URL, label: '上游文档' },
-          { href: UPSTREAM_REPO_URL, label: 'MIT License' },
+          { href: '#features', label: '核心能力' },
+          { href: '#faq', label: '常见问题' },
           { href: DISCORD_URL, label: 'Discord' }
         ]
       }
@@ -160,8 +156,6 @@ const enHomeContent: HomeContent = {
   navbar: {
     primaryLinkLabel: 'GitHub',
     primaryLinkHref: FIRST_PARTY_REPO_URL,
-    secondaryLinkLabel: 'Paperclip',
-    secondaryLinkHref: UPSTREAM_REPO_URL,
     ctaLabel: 'Try Penclip',
     ctaHref: FIRST_PARTY_REPO_URL
   },
@@ -172,8 +166,8 @@ const enHomeContent: HomeContent = {
       'Self-hosted AI agent orchestration with org charts, budgets, governance, and a localization layer built for teams shipping in the China model ecosystem.',
     primaryCtaLabel: 'Try Penclip',
     primaryCtaHref: FIRST_PARTY_REPO_URL,
-    secondaryCtaLabel: 'View upstream Paperclip',
-    secondaryCtaHref: UPSTREAM_REPO_URL
+    secondaryCtaLabel: 'Explore features',
+    secondaryCtaHref: '#features'
   },
   quickstart: {
     heading: 'Quickstart',
@@ -181,8 +175,8 @@ const enHomeContent: HomeContent = {
       'Open source, self-hosted, and compatible with existing Paperclip workflows. Interactive setup walks you through database, auth, and your first autonomous company.',
     primaryLabel: 'Explore the Penclip repo',
     primaryHref: FIRST_PARTY_REPO_URL,
-    secondaryLabel: 'Read upstream Paperclip docs ->',
-    secondaryHref: UPSTREAM_REPO_URL
+    secondaryLabel: 'Go to get started ->',
+    secondaryHref: '#get-started'
   },
   cta: {
     badge: 'Get started',
@@ -191,8 +185,8 @@ const enHomeContent: HomeContent = {
       'Start with Penclip for branded localization, self-hosted orchestration, and a clearer path for teams targeting Chinese users without giving up Paperclip compatibility.',
     primaryLabel: 'Try Penclip',
     primaryHref: FIRST_PARTY_REPO_URL,
-    secondaryLabel: 'Read upstream Paperclip ->',
-    secondaryHref: UPSTREAM_REPO_URL
+    secondaryLabel: 'Read FAQ ->',
+    secondaryHref: '#faq'
   },
   footer: {
     columns: [
@@ -216,14 +210,14 @@ const enHomeContent: HomeContent = {
         links: [
           { href: FIRST_PARTY_REPO_URL, label: 'Penclip GitHub' },
           { href: FIRST_PARTY_WEBSITE_REPO_URL, label: 'Website source' },
-          { href: UPSTREAM_REPO_URL, label: 'Upstream Paperclip' }
+          { href: UPSTREAM_REPO_URL, label: 'Paperclip' }
         ]
       },
       {
         heading: 'Resources',
         links: [
-          { href: UPSTREAM_REPO_URL, label: 'Upstream docs' },
-          { href: UPSTREAM_REPO_URL, label: 'MIT License' },
+          { href: '#features', label: 'Features' },
+          { href: '#faq', label: 'FAQ' },
           { href: DISCORD_URL, label: 'Discord' }
         ]
       }
