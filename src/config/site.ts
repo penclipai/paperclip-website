@@ -151,9 +151,9 @@ const zhHomeContent: HomeContent = {
   },
   hero: {
     eyebrow: 'Paperclip 中文增强版',
-    headlineLines: ['Penclip', '让智能体协作起来', '让任务持续推进'],
+    headlineLines: ['Penclip', '让智能体分工协作', '让公司持续运转'],
     lede:
-      'Penclip 是面向中文用户优化的 Paperclip 版本。你可以把常用的智能体和工具接进来，分配任务、查看进度、控制权限，让事情按计划往前推进。',
+      'Penclip 是面向中文用户优化的 Paperclip 版本。你可以把常用的智能体和工具接进来，分配职责、查看进度、控制权限，让团队协作和日常工作在同一套系统里持续运转。',
     primaryCtaLabel: '立即体验 Penclip',
     primaryCtaHref: FIRST_PARTY_REPO_URL,
     secondaryCtaLabel: '查看核心能力',
@@ -326,10 +326,10 @@ export function getSiteForPath(
     lang,
     ogLocale: isChinese ? 'zh_CN' : 'en_US',
     title: isChinese
-      ? 'Penclip | 让智能体协作起来，让任务持续推进'
+      ? 'Penclip | 让智能体分工协作，让公司持续运转'
       : 'Penclip | Chinese-enhanced fork of Paperclip for autonomous companies',
     description: isChinese
-      ? 'Penclip 是 Paperclip 的中文增强版，帮你把常用智能体和工具组织起来，分配任务、查看进度、控制权限，让事情更顺地往前推进。'
+      ? 'Penclip 是 Paperclip 的中文增强版，帮你把常用智能体和工具组织起来，分配职责、查看进度、控制权限，让团队协作和日常工作在同一套系统里持续运转。'
       : 'Penclip is a Chinese-enhanced Paperclip fork focused on localized UX, self-hosted AI agent orchestration, and support for the China model ecosystem.',
     alternateName: isChinese
       ? 'Penclip, Paperclip 中文增强版'
