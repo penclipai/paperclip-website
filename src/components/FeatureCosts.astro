@@ -9,6 +9,7 @@ const content = site.isChinese
       heading: ['看清每个智能体的花费。', '也管住每个智能体的预算。'],
       sub:
         '每个智能体都可以设置月度预算。接近上限时容易发现，达到上限后也可以自动暂停。',
+      currencySymbol: '￥',
       headers: {
         agent: '角色',
         budget: '预算使用',
@@ -23,6 +24,7 @@ const content = site.isChinese
       heading: ['Know what every agent costs.', 'Control what every agent spends.'],
       sub:
         'Every agent gets a monthly budget. When they hit it, they stop. Automatically. No runaway costs. No surprise bills. Hard limits, enforced by the system.',
+      currencySymbol: '$',
       headers: {
         agent: 'Agent',
         budget: 'Budget Used',
@@ -70,8 +72,8 @@ const content = site.isChinese
               <div class="cost-bar-bg"><div class="cost-bar-fill" style="--target-pct: 70%"></div></div>
             </div>
             <div class="cost-col-cost">
-              <span class="cost-amount">$<span class="cost-num">0</span></span>
-              <span class="cost-budget">/ $60</span>
+              <span class="cost-amount">{content.currencySymbol}<span class="cost-num">0</span></span>
+              <span class="cost-budget">/ {content.currencySymbol}60</span>
             </div>
           </div>
 
@@ -89,8 +91,8 @@ const content = site.isChinese
               <div class="cost-bar-bg"><div class="cost-bar-fill" style="--target-pct: 30%"></div></div>
             </div>
             <div class="cost-col-cost">
-              <span class="cost-amount">$<span class="cost-num">0</span></span>
-              <span class="cost-budget">/ $40</span>
+              <span class="cost-amount">{content.currencySymbol}<span class="cost-num">0</span></span>
+              <span class="cost-budget">/ {content.currencySymbol}40</span>
             </div>
           </div>
 
@@ -108,8 +110,8 @@ const content = site.isChinese
               <div class="cost-bar-bg"><div class="cost-bar-fill" style="--target-pct: 50%"></div></div>
             </div>
             <div class="cost-col-cost">
-              <span class="cost-amount">$<span class="cost-num">0</span></span>
-              <span class="cost-budget">/ $50</span>
+              <span class="cost-amount">{content.currencySymbol}<span class="cost-num">0</span></span>
+              <span class="cost-budget">/ {content.currencySymbol}50</span>
             </div>
           </div>
 
@@ -127,8 +129,8 @@ const content = site.isChinese
               <div class="cost-bar-bg"><div class="cost-bar-fill" style="--target-pct: 87%"></div></div>
             </div>
             <div class="cost-col-cost">
-              <span class="cost-amount">$<span class="cost-num">0</span></span>
-              <span class="cost-budget">/ $30</span>
+              <span class="cost-amount">{content.currencySymbol}<span class="cost-num">0</span></span>
+              <span class="cost-budget">/ {content.currencySymbol}30</span>
             </div>
           </div>
 
@@ -146,8 +148,8 @@ const content = site.isChinese
               <div class="cost-bar-bg"><div class="cost-bar-fill" style="--target-pct: 30%"></div></div>
             </div>
             <div class="cost-col-cost">
-              <span class="cost-amount">$<span class="cost-num">0</span></span>
-              <span class="cost-budget">/ $30</span>
+              <span class="cost-amount">{content.currencySymbol}<span class="cost-num">0</span></span>
+              <span class="cost-budget">/ {content.currencySymbol}30</span>
             </div>
           </div>
 
@@ -165,8 +167,8 @@ const content = site.isChinese
               <div class="cost-bar-bg"><div class="cost-bar-fill" style="--target-pct: 87%"></div></div>
             </div>
             <div class="cost-col-cost">
-              <span class="cost-amount">$<span class="cost-num">0</span></span>
-              <span class="cost-budget">/ $30</span>
+              <span class="cost-amount">{content.currencySymbol}<span class="cost-num">0</span></span>
+              <span class="cost-budget">/ {content.currencySymbol}30</span>
             </div>
           </div>
 
@@ -177,8 +179,8 @@ const content = site.isChinese
             </div>
             <div class="cost-col-bar"></div>
             <div class="cost-col-cost">
-              <span class="cost-amount cost-amount--bold">$<span class="cost-num">0</span></span>
-              <span class="cost-budget">/ $240</span>
+              <span class="cost-amount cost-amount--bold">{content.currencySymbol}<span class="cost-num">0</span></span>
+              <span class="cost-budget">/ {content.currencySymbol}240</span>
             </div>
           </div>
         </div>
