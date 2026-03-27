@@ -84,7 +84,7 @@ const zhHomeContent: HomeContent = {
   navbar: {
     primaryLinkLabel: 'GitHub',
     primaryLinkHref: FIRST_PARTY_REPO_URL,
-    secondaryLinkLabel: '上游 Paperclip',
+    secondaryLinkLabel: 'Paperclip',
     secondaryLinkHref: UPSTREAM_REPO_URL,
     ctaLabel: '立即体验',
     ctaHref: FIRST_PARTY_REPO_URL
@@ -160,7 +160,7 @@ const enHomeContent: HomeContent = {
   navbar: {
     primaryLinkLabel: 'GitHub',
     primaryLinkHref: FIRST_PARTY_REPO_URL,
-    secondaryLinkLabel: 'Upstream Paperclip',
+    secondaryLinkLabel: 'Paperclip',
     secondaryLinkHref: UPSTREAM_REPO_URL,
     ctaLabel: 'Try Penclip',
     ctaHref: FIRST_PARTY_REPO_URL

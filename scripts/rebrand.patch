@@ -66431,7 +66431,7 @@ index 0000000..8b9c199
 +} as const;
 diff --git a/src/config/site.ts b/src/config/site.ts
 new file mode 100644
-index 0000000..254dc4b
+index 0000000..d8991b9
 --- /dev/null
 +++ b/src/config/site.ts
 @@ -0,0 +1,319 @@
@@ -66521,7 +66521,7 @@ index 0000000..254dc4b
 +  navbar: {
 +    primaryLinkLabel: 'GitHub',
 +    primaryLinkHref: FIRST_PARTY_REPO_URL,
-+    secondaryLinkLabel: '上游 Paperclip',
++    secondaryLinkLabel: 'Paperclip',
 +    secondaryLinkHref: UPSTREAM_REPO_URL,
 +    ctaLabel: '立即体验',
 +    ctaHref: FIRST_PARTY_REPO_URL
@@ -66597,7 +66597,7 @@ index 0000000..254dc4b
 +  navbar: {
 +    primaryLinkLabel: 'GitHub',
 +    primaryLinkHref: FIRST_PARTY_REPO_URL,
-+    secondaryLinkLabel: 'Upstream Paperclip',
++    secondaryLinkLabel: 'Paperclip',
 +    secondaryLinkHref: UPSTREAM_REPO_URL,
 +    ctaLabel: 'Try Penclip',
 +    ctaHref: FIRST_PARTY_REPO_URL
