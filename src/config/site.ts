@@ -151,7 +151,7 @@ const zhHomeContent: HomeContent = {
   },
   hero: {
     eyebrow: 'Paperclip 中文增强版',
-    headlineLines: ['Penclip', '开源协作系统', '面向智能体团队'],
+    headlineLines: ['Penclip', '面向智能体团队的', '开源协作平台'],
     lede:
       'Penclip 是面向中文用户优化的 Paperclip 版本，用来把多个智能体和工具组织起来，分配职责、查看进度、控制权限，让团队协作和日常工作更清楚、更可持续。',
     primaryCtaLabel: '立即体验 Penclip',
@@ -326,7 +326,7 @@ export function getSiteForPath(
     lang,
     ogLocale: isChinese ? 'zh_CN' : 'en_US',
     title: isChinese
-      ? 'Penclip | 开源协作系统，面向智能体团队'
+      ? 'Penclip | 面向智能体团队的开源协作平台'
       : 'Penclip | Chinese-enhanced fork of Paperclip for autonomous companies',
     description: isChinese
       ? 'Penclip 是 Paperclip 的中文增强版，帮你把多个智能体和工具组织起来，分配职责、查看进度、控制权限，让团队协作和日常工作更清楚、更可持续。'
