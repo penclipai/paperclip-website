@@ -16,7 +16,7 @@ const problems = isChinese
       },
       {
         without: '智能体配置散落各处，任务分配、协作和确认步骤都要自己另外拼。',
-        with: 'Penclip 把分工、任务和确认步骤放到一起，日常协作会更顺。'
+        with: 'Paperclip CN 把分工、任务和确认步骤放到一起，日常协作会更顺。'
       },
       {
         without: '成本变化只有出问题时才看得到，等发现时预算可能已经超了。',
@@ -28,7 +28,7 @@ const problems = isChinese
       },
       {
         without: '有了想法之后，还得自己反复分派、跟进和确认，整个过程比较碎。',
-        with: '可以直接在 Penclip 里建任务、分配执行者，再在关键步骤里做确认。'
+        with: '可以直接在 Paperclip CN 里建任务、分配执行者，再在关键步骤里做确认。'
       }
     ]
   : [
@@ -42,7 +42,7 @@ const problems = isChinese
       },
       {
         without: 'Folders of agent configs are disorganized and you are re-inventing task management, communication, and coordination between agents.',
-        with: 'Penclip gives you org charts, ticketing, delegation, and governance out of the box, so you run a company instead of a pile of scripts.'
+        with: 'Paperclip CN gives you org charts, ticketing, delegation, and governance out of the box, so you run a company instead of a pile of scripts.'
       },
       {
         without: 'Runaway loops waste hundreds of dollars of tokens and max your quota before you even know what happened.',
@@ -54,7 +54,7 @@ const problems = isChinese
       },
       {
         without: 'You have an idea, then you have to find your repo, fire up Claude Code, keep a tab open, and babysit it.',
-        with: 'Add a task in Penclip. Your coding agent works on it until it is done. Management reviews the outcome.'
+        with: 'Add a task in Paperclip CN. Your coding agent works on it until it is done. Management reviews the outcome.'
       }
     ];
 ---
@@ -65,14 +65,14 @@ const problems = isChinese
     <div class="problems-header">
       <span class="section-badge">{isChinese ? '解决的问题' : 'Problems Solved'}</span>
       <h2 class="heading-serif problems-heading">
-        {isChinese ? '用 Penclip 后，协作会更清楚。' : 'What changes with Penclip.'}
+        {isChinese ? '用 Paperclip CN 后，协作会更清楚。' : 'What changes with Paperclip CN.'}
       </h2>
     </div>
     <div class="problems-list">
       {problems.map((p) => (
         <div class="problem-row" data-animate-problem>
           <div class="problem-without">
-            <span class="problem-label problem-label-without">{isChinese ? '没有 Penclip' : 'Without'}</span>
+            <span class="problem-label problem-label-without">{isChinese ? '没有 Paperclip CN' : 'Without'}</span>
             <p>{p.without}</p>
           </div>
           <div class="problem-arrow">
@@ -81,7 +81,7 @@ const problems = isChinese
             </svg>
           </div>
           <div class="problem-with">
-            <span class="problem-label problem-label-with">{isChinese ? '使用 Penclip' : 'With Penclip'}</span>
+            <span class="problem-label problem-label-with">{isChinese ? '使用 Paperclip CN' : 'With Paperclip CN'}</span>
             <p>{p.with}</p>
           </div>
         </div>

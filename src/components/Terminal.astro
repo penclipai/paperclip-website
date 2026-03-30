@@ -1,9 +1,10 @@
 ---
+import { BRAND } from '../config/brand';
 import { getSiteForPath } from '../config/site';
 
 const site = getSiteForPath(Astro.url.pathname);
 
-const command = 'npx paperclipai onboard --yes';
+const command = `npx ${BRAND.npmPackage} onboard --yes`;
 const copyLabel = site.isChinese ? '复制命令' : 'Copy command';
 ---
 
@@ -48,6 +49,7 @@ const copyLabel = site.isChinese ? '复制命令' : 'Copy command';
   .terminal-body {
     display: flex;
     align-items: center;
+    gap: 0.45rem;
     padding: 1.1rem 1.25rem;
     font-family: var(--font-mono);
     font-size: 0.95rem;
@@ -61,6 +63,9 @@ const copyLabel = site.isChinese ? '复制命令' : 'Copy command';
 
   .terminal-cmd {
     flex: 1;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
 
   .copy-btn {
@@ -99,5 +104,12 @@ const copyLabel = site.isChinese ? '复制命令' : 'Copy command';
     0% { transform: scale(0.5); opacity: 0; }
     60% { transform: scale(1.15); }
     100% { transform: scale(1); opacity: 1; }
+  }
+
+  @media (max-width: 480px) {
+    .terminal-body {
+      align-items: flex-start;
+      font-size: 0.84rem;
+    }
   }
 </style>

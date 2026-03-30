@@ -7,12 +7,12 @@ const isChinese = site.isChinese;
 const faqs = isChinese
   ? [
       {
-        q: 'Penclip 和 OpenClaw、Claude Code 这类工具有什么区别？',
-        a: '这些工具更像具体执行任务的助手，Penclip 更像把它们组织起来协作的那一层。它负责分工、任务流转、权限确认和进度管理。'
+        q: 'Paperclip CN 和 OpenClaw、Claude Code 这类工具有什么区别？',
+        a: '这些工具更像具体执行任务的助手，Paperclip CN 更像把它们组织起来协作的那一层。它负责分工、任务流转、权限确认和进度管理。'
       },
       {
         q: '我能继续使用现有的智能体吗？',
-        a: '可以。Claude Code、OpenClaw、Python 脚本、Shell 命令和 HTTP 接口都能接入。只要能被调用、能按规则执行，就可以纳入 Penclip。'
+        a: '可以。Claude Code、OpenClaw、Python 脚本、Shell 命令和 HTTP 接口都能接入。只要能被调用、能按规则执行，就可以纳入 Paperclip CN。'
       },
       {
         q: '智能体超出预算会怎样？',
@@ -24,11 +24,11 @@ const faqs = isChinese
       },
       {
         q: '智能体会一直连续运行吗？',
-        a: '默认不会。Penclip 更适合在有任务、收到消息或到达计划时间时唤醒智能体；如果你已经有长期运行的服务，也可以接入。'
+        a: '默认不会。Paperclip CN 更适合在有任务、收到消息或到达计划时间时唤醒智能体；如果你已经有长期运行的服务，也可以接入。'
       },
       {
         q: '为什么不用 Asana、Trello 再配一个 OpenClaw 就行？',
-        a: '任务工具能管理待办，但通常不负责智能体之间的分工、预算、确认和持续推进。Penclip 解决的是这层协作问题。'
+        a: '任务工具能管理待办，但通常不负责智能体之间的分工、预算、确认和持续推进。Paperclip CN 解决的是这层协作问题。'
       },
       {
         q: '典型部署形态是什么？',
@@ -36,21 +36,21 @@ const faqs = isChinese
       },
       {
         q: '一套部署能跑多家公司吗？',
-        a: '可以。一套 Penclip 部署可以同时管理多个业务团队，数据彼此隔离，适合多项目或多团队并行运行。'
+        a: '可以。一套 Paperclip CN 部署可以同时管理多个业务团队，数据彼此隔离，适合多项目或多团队并行运行。'
       },
       {
-        q: 'Penclip 是开源的吗？',
-        a: '是。MIT 协议、自托管，不需要单独注册 Penclip 账户。你可以自己部署，也可以接自己的数据库和基础设施。'
+        q: 'Paperclip CN 是开源的吗？',
+        a: '是。MIT 协议、自托管，不需要单独注册 Paperclip CN 账户。你可以自己部署，也可以接自己的数据库和基础设施。'
       }
     ]
   : [
       {
-        q: 'How is Penclip different from agents like OpenClaw or Claude Code?',
-        a: 'Penclip uses those agents. It orchestrates them into a company with org charts, budgets, goals, governance, and accountability.'
+        q: 'How is Paperclip CN different from agents like OpenClaw or Claude Code?',
+        a: 'Paperclip CN uses those agents. It orchestrates them into a company with org charts, budgets, goals, governance, and accountability.'
       },
       {
         q: 'Can I use my existing agents?',
-        a: 'Yes. Penclip is unopinionated about agent runtimes. Your agents can be Claude Code sessions, OpenClaw bots, Python scripts, shell commands, or HTTP webhooks.'
+        a: 'Yes. Paperclip CN is unopinionated about agent runtimes. Your agents can be Claude Code sessions, OpenClaw bots, Python scripts, shell commands, or HTTP webhooks.'
       },
       {
         q: 'What happens when an agent hits its budget limit?',
@@ -58,26 +58,26 @@ const faqs = isChinese
       },
       {
         q: 'How do I keep agents from doing things I do not want?',
-        a: 'Penclip adds governance and approval control around organizational changes. For example, hiring new agents is gated by board approval by default.'
+        a: 'Paperclip CN adds governance and approval control around organizational changes. For example, hiring new agents is gated by board approval by default.'
       },
       {
         q: 'Do agents run continuously?',
-        a: 'By default, Penclip runs agents on scheduled heartbeats and notifications like task assignment or mentions. If you already have a continuous agent, you can wire it into Penclip.'
+        a: 'By default, Paperclip CN runs agents on scheduled heartbeats and notifications like task assignment or mentions. If you already have a continuous agent, you can wire it into Paperclip CN.'
       },
       {
-        q: 'Why should I use Penclip instead of just pointing my OpenClaw at Asana or Trello?',
-        a: 'Agent orchestration has subtleties around task checkout, session continuity, budget monitoring, and governance. Penclip handles that control plane for you.'
+        q: 'Why should I use Paperclip CN instead of just pointing my OpenClaw at Asana or Trello?',
+        a: 'Agent orchestration has subtleties around task checkout, session continuity, budget monitoring, and governance. Paperclip CN handles that control plane for you.'
       },
       {
         q: 'What does a typical setup look like?',
-        a: 'You can run Penclip locally or deploy it remotely. Start with the core runtime, then configure projects, agents, tasks, and governance so the system can run structured work end to end.'
+        a: 'You can run Paperclip CN locally or deploy it remotely. Start with the core runtime, then configure projects, agents, tasks, and governance so the system can run structured work end to end.'
       },
       {
         q: 'Can I run multiple companies?',
-        a: 'Yes. A single Penclip deployment can run dozens of companies with complete data isolation between them.'
+        a: 'Yes. A single Paperclip CN deployment can run dozens of companies with complete data isolation between them.'
       },
       {
-        q: 'Is Penclip open source?',
+        q: 'Is Paperclip CN open source?',
         a: 'Yes. MIT licensed, self-hosted, and compatible with existing Paperclip-style workflows.'
       }
     ];

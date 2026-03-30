@@ -94,8 +94,8 @@ export type SiteContext = {
   xDefaultUrl: string;
 };
 
-const FIRST_PARTY_REPO_URL = `https://github.com/${BRAND.githubOrg}/paperclip`;
-const FIRST_PARTY_WEBSITE_REPO_URL = `https://github.com/${BRAND.githubOrg}/paperclip-website`;
+const FIRST_PARTY_REPO_URL = `https://github.com/${BRAND.githubOrg}/${BRAND.productRepo}`;
+const FIRST_PARTY_WEBSITE_REPO_URL = `https://github.com/${BRAND.githubOrg}/${BRAND.websiteRepo}`;
 const UPSTREAM_REPO_URL = 'https://github.com/paperclipai/paperclip';
 const DISCORD_URL = 'https://discord.gg/m4HZY7xNG3';
 const WECHAT_PLACEHOLDER_IMAGE = '/wechat-community-placeholder.svg';
@@ -150,11 +150,11 @@ const zhHomeContent: HomeContent = {
     ctaHref: FIRST_PARTY_REPO_URL
   },
   hero: {
-    eyebrow: 'Paperclip 中文增强版',
-    headlineLines: ['Penclip', '面向智能体团队的', '开源协作平台'],
+    eyebrow: BRAND.name,
+    headlineLines: [BRAND.name, '面向智能体团队的', '开源协作平台'],
     lede:
-      'Penclip 是面向中文用户优化的 Paperclip 版本，用来把多个智能体和工具组织起来，分配职责、查看进度、控制权限，让团队协作和日常工作更清楚、更可持续。',
-    primaryCtaLabel: '立即体验 Penclip',
+      `${BRAND.name} 是面向中文用户优化的 Paperclip 版本，用来把多个智能体和工具组织起来，分配职责、查看进度、控制权限，让团队协作和日常工作更清楚、更可持续。`,
+    primaryCtaLabel: `立即体验 ${BRAND.name}`,
     primaryCtaHref: FIRST_PARTY_REPO_URL,
     secondaryCtaLabel: '查看核心能力',
     secondaryCtaHref: '#features'
@@ -162,18 +162,18 @@ const zhHomeContent: HomeContent = {
   quickstart: {
     heading: '快速开始',
     sub:
-      '开源、自托管、可审计。初始化流程会带你完成数据库、认证和首个团队空间配置，也兼容现有 Paperclip 的使用方式。',
-    primaryLabel: '查看 Penclip 仓库',
+      `开源、自托管、可审计。初始化流程会带你完成数据库、认证和首个团队空间配置，也兼容现有 Paperclip 的使用方式。CLI 默认命令为 ${BRAND.cliName}，也兼容 ${BRAND.cliAliases.join('、')}。`,
+    primaryLabel: `查看 ${BRAND.name} 仓库`,
     primaryHref: FIRST_PARTY_REPO_URL,
     secondaryLabel: '查看快速开始 ->',
     secondaryHref: '#get-started'
   },
   cta: {
     badge: '立即开始',
-    heading: '从一个仓库开始，搭建自己的 Penclip。',
+    heading: `从一个仓库开始，搭建自己的 ${BRAND.name}。`,
     sub:
-      '从 Penclip 仓库开始部署中文增强版 Paperclip，把常用智能体、任务和权限放到同一套系统里管理。',
-    primaryLabel: '立即体验 Penclip',
+      `从 ${BRAND.name} 仓库开始部署中文增强版 Paperclip，把常用智能体、任务和权限放到同一套系统里管理。`,
+    primaryLabel: `立即体验 ${BRAND.name}`,
     primaryHref: FIRST_PARTY_REPO_URL,
     secondaryLabel: '查看常见问题 ->',
     secondaryHref: '#faq'
@@ -198,7 +198,7 @@ const zhHomeContent: HomeContent = {
       {
         heading: '开发者',
         links: [
-          { href: FIRST_PARTY_REPO_URL, label: 'Penclip GitHub' },
+          { href: FIRST_PARTY_REPO_URL, label: `${BRAND.name} GitHub` },
           { href: FIRST_PARTY_WEBSITE_REPO_URL, label: '官网源码' },
           { href: UPSTREAM_REPO_URL, label: 'Paperclip' }
         ]
@@ -220,15 +220,15 @@ const enHomeContent: HomeContent = {
   navbar: {
     primaryLinkLabel: 'GitHub',
     primaryLinkHref: FIRST_PARTY_REPO_URL,
-    ctaLabel: 'Try Penclip',
+    ctaLabel: `Try ${BRAND.name}`,
     ctaHref: FIRST_PARTY_REPO_URL
   },
   hero: {
-    eyebrow: 'Chinese-enhanced fork of Paperclip',
-    headlineLines: ['Penclip', 'Open-source orchestration', 'for autonomous companies'],
+    eyebrow: BRAND.name,
+    headlineLines: [BRAND.name, 'Open-source orchestration', 'for autonomous companies'],
     lede:
-      'Self-hosted AI agent orchestration with org charts, budgets, governance, and a localization layer built for teams shipping in the China model ecosystem.',
-    primaryCtaLabel: 'Try Penclip',
+      `${BRAND.name} is a Chinese-enhanced Paperclip fork with self-hosted orchestration, org charts, budgets, governance, and support for teams shipping in the China model ecosystem.`,
+    primaryCtaLabel: `Try ${BRAND.name}`,
     primaryCtaHref: FIRST_PARTY_REPO_URL,
     secondaryCtaLabel: 'Explore features',
     secondaryCtaHref: '#features'
@@ -236,8 +236,8 @@ const enHomeContent: HomeContent = {
   quickstart: {
     heading: 'Quickstart',
     sub:
-      'Open source, self-hosted, and compatible with existing Paperclip workflows. Interactive setup walks you through database, auth, and your first autonomous company.',
-    primaryLabel: 'Explore the Penclip repo',
+      `Open source, self-hosted, and compatible with existing Paperclip workflows. Interactive setup walks you through database, auth, and your first autonomous company. The primary CLI is ${BRAND.cliName}, with ${BRAND.cliAliases.join(' and ')} kept as aliases.`,
+    primaryLabel: `Explore the ${BRAND.name} repo`,
     primaryHref: FIRST_PARTY_REPO_URL,
     secondaryLabel: 'Go to get started ->',
     secondaryHref: '#get-started'
@@ -246,8 +246,8 @@ const enHomeContent: HomeContent = {
     badge: 'Get started',
     heading: 'Launch a Chinese-enhanced Paperclip stack from one repo.',
     sub:
-      'Start with Penclip for branded localization, self-hosted orchestration, and a clearer path for teams targeting Chinese users without giving up Paperclip compatibility.',
-    primaryLabel: 'Try Penclip',
+      `Start with ${BRAND.name} for branded localization, self-hosted orchestration, and a clearer path for teams targeting Chinese users without giving up Paperclip compatibility.`,
+    primaryLabel: `Try ${BRAND.name}`,
     primaryHref: FIRST_PARTY_REPO_URL,
     secondaryLabel: 'Read FAQ ->',
     secondaryHref: '#faq'
@@ -272,7 +272,7 @@ const enHomeContent: HomeContent = {
       {
         heading: 'Developers',
         links: [
-          { href: FIRST_PARTY_REPO_URL, label: 'Penclip GitHub' },
+          { href: FIRST_PARTY_REPO_URL, label: `${BRAND.name} GitHub` },
           { href: FIRST_PARTY_WEBSITE_REPO_URL, label: 'Website source' },
           { href: UPSTREAM_REPO_URL, label: 'Paperclip' }
         ]
@@ -326,14 +326,14 @@ export function getSiteForPath(
     lang,
     ogLocale: isChinese ? 'zh_CN' : 'en_US',
     title: isChinese
-      ? 'Penclip | 面向智能体团队的开源协作平台'
-      : 'Penclip | Chinese-enhanced fork of Paperclip for autonomous companies',
+      ? `${BRAND.name} | 面向智能体团队的开源协作平台`
+      : `${BRAND.name} | Chinese-enhanced fork of Paperclip for autonomous companies`,
     description: isChinese
-      ? 'Penclip 是 Paperclip 的中文增强版，帮你把多个智能体和工具组织起来，分配职责、查看进度、控制权限，让团队协作和日常工作更清楚、更可持续。'
-      : 'Penclip is a Chinese-enhanced Paperclip fork focused on localized UX, self-hosted AI agent orchestration, and support for the China model ecosystem.',
+      ? `${BRAND.name} 是 Paperclip 的中文增强版，帮你把多个智能体和工具组织起来，分配职责、查看进度、控制权限，让团队协作和日常工作更清楚、更可持续。`
+      : `${BRAND.name} is a Chinese-enhanced Paperclip fork focused on localized UX, self-hosted AI agent orchestration, and support for the China model ecosystem.`,
     alternateName: isChinese
-      ? 'Penclip, Paperclip 中文增强版'
-      : 'Penclip, Chinese-enhanced fork of Paperclip',
+      ? `${BRAND.name}, Paperclip 中文增强版, ${BRAND.cliAliases.join(', ')}`
+      : `${BRAND.name}, ${BRAND.cliAliases.join(', ')}`,
     ctaUrl: FIRST_PARTY_REPO_URL,
     upstreamUrl: UPSTREAM_REPO_URL,
     xDefaultUrl: DOMAIN_TO_SITE_URL[BRAND.internationalDomain],
