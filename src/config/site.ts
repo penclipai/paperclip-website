@@ -162,7 +162,7 @@ const zhHomeContent: HomeContent = {
   quickstart: {
     heading: '快速开始',
     sub:
-      `开源、自托管、可审计。初始化流程会带你完成数据库、认证和首个团队空间配置，也兼容现有 Paperclip 的使用方式。CLI 默认命令为 ${BRAND.cliName}，也兼容 ${BRAND.cliAliases.join('、')}。`,
+      '开源、自托管、可审计。初始化流程会带你完成数据库、认证和首个团队空间配置，也兼容现有 Paperclip 的使用方式。',
     primaryLabel: `查看 ${BRAND.name} 仓库`,
     primaryHref: FIRST_PARTY_REPO_URL,
     secondaryLabel: '查看快速开始 ->',
@@ -236,7 +236,7 @@ const enHomeContent: HomeContent = {
   quickstart: {
     heading: 'Quickstart',
     sub:
-      `Open source, self-hosted, and compatible with existing Paperclip workflows. Interactive setup walks you through database, auth, and your first autonomous company. The primary CLI is ${BRAND.cliName}, with ${BRAND.cliAliases.join(' and ')} kept as aliases.`,
+      'Open source, self-hosted, and compatible with existing Paperclip workflows. Interactive setup walks you through database, auth, and your first autonomous company.',
     primaryLabel: `Explore the ${BRAND.name} repo`,
     primaryHref: FIRST_PARTY_REPO_URL,
     secondaryLabel: 'Go to get started ->',

@@ -1,10 +1,9 @@
 ---
-import { BRAND } from '../config/brand';
 import { getSiteForPath } from '../config/site';
 
 const site = getSiteForPath(Astro.url.pathname);
 
-const command = `npx ${BRAND.npmPackage} onboard --yes`;
+const command = 'npx penclip onboard --yes';
 const copyLabel = site.isChinese ? '复制命令' : 'Copy command';
 ---
 
