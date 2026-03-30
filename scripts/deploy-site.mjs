@@ -53,7 +53,7 @@ function syncRelease(domain) {
   };
 }
 
-const domain = buildSite(process.argv[2]);
+const domain = await buildSite(process.argv[2]);
 const result = syncRelease(domain);
 
 process.stdout.write(

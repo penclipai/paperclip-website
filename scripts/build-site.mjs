@@ -1,34 +1,30 @@
-import { spawnSync } from 'node:child_process';
+import { build } from 'astro';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
 const VALID_DOMAINS = new Set(['paperclipai.cn', 'penclip.ing']);
+const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
 function resolveDomain(input) {
   return VALID_DOMAINS.has(input) ? input : 'penclip.ing';
 }
 
-export function buildSite(domain) {
+export async function buildSite(domain) {
   const targetDomain = resolveDomain(domain);
-  const command =
-    process.platform === 'win32'
-      ? { file: 'cmd.exe', args: ['/c', 'npx astro build'] }
-      : { file: 'npx', args: ['astro', 'build'] };
-  const result = spawnSync(
-    command.file,
-    command.args,
-    {
-      stdio: 'inherit',
-      cwd: path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..'),
-      env: {
-        ...process.env,
-        PUBLIC_DOMAIN: targetDomain
-      }
-    }
-  );
+  const previousDomain = process.env.PUBLIC_DOMAIN;
 
-  if (result.status !== 0) {
-    process.exit(result.status ?? 1);
+  process.env.PUBLIC_DOMAIN = targetDomain;
+
+  try {
+    await build({
+      root: projectRoot
+    });
+  } finally {
+    if (previousDomain === undefined) {
+      delete process.env.PUBLIC_DOMAIN;
+    } else {
+      process.env.PUBLIC_DOMAIN = previousDomain;
+    }
   }
 
   return targetDomain;
@@ -38,5 +34,10 @@ const invokedPath = process.argv[1] ? path.resolve(process.argv[1]) : '';
 const currentPath = fileURLToPath(import.meta.url);
 
 if (invokedPath === currentPath) {
-  buildSite(process.argv[2]);
+  try {
+    await buildSite(process.argv[2]);
+  } catch (error) {
+    console.error(error);
+    process.exit(1);
+  }
 }
