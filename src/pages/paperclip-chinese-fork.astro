@@ -1,0 +1,69 @@
+---
+import { BRAND } from '../config/brand';
+import GuideLayout from '../layouts/GuideLayout.astro';
+import { getChineseSeoAlternateLinks, getContentPageStructuredData, SEO_GUIDES } from '../config/seo';
+import { getAbsoluteUrl, getRobotsContent, getSiteForPath } from '../config/site';
+
+const pathname = Astro.url.pathname;
+const site = getSiteForPath(pathname);
+const isPrimaryChineseDomain = site.domain === BRAND.chineseDomain;
+const title = 'Paperclip 中文增强版介绍 | Paperclip CN';
+const description =
+  '了解什么是 Paperclip 中文增强版，以及 Paperclip CN 和原版的 Fork 关系、兼容边界和中文增强方向。';
+const relatedGuides = SEO_GUIDES.filter((guide) => guide.href !== pathname);
+---
+
+<GuideLayout
+  title={title}
+  description={description}
+  heading="什么是 Paperclip 中文增强版"
+  intro="Paperclip CN 可以理解为面向中文团队优化的 Paperclip 中文增强版。它延续了原版的方向，但会把中文表达、模型生态、部署路径和团队使用体验放在更优先的位置。"
+  canonicalHref={getAbsoluteUrl(pathname, BRAND.chineseDomain)}
+  alternateLinks={isPrimaryChineseDomain ? getChineseSeoAlternateLinks(pathname) : []}
+  robots={getRobotsContent(isPrimaryChineseDomain)}
+  structuredData={getContentPageStructuredData(pathname, title, description)}
+  relatedGuides={relatedGuides}
+>
+  <h2>它不是一个完全不同的产品，而是一个中文增强方向。</h2>
+  <p>
+    看到“Paperclip 中文增强版”这个说法时，很多人会先问：这到底是不是另一个新项目？更准确的理解是，Paperclip CN 不是把原版推翻重做，而是在保留原方向的前提下，把中文团队真正会遇到的问题提前解决掉。
+  </p>
+  <p>
+    这些问题包括中文文案是不是好懂、部署路径是不是清楚、团队成员是不是都能顺着页面理解产品在做什么、以及能不能更自然地接入国产模型和中国用户常见的工作方式。也正因为这样，Paperclip CN 更适合作为中文用户第一次接触 Paperclip 时的入口。
+  </p>
+
+  <h2>为什么要单独强调“中文增强版”？</h2>
+  <p>
+    因为很多中文团队在评估这类系统时，卡住的并不是能力本身，而是理解成本。原版的能力可能已经足够强，但如果首页、FAQ、场景说明和部署路径都更偏向原有语境，团队里非技术成员就很难快速跟上。Paperclip CN 的意义，就是把这层理解和落地成本降下来。
+  </p>
+  <p>
+    对搜索用户来说也是一样。很多人不会直接搜一个抽象的产品定位，而会直接搜“Paperclip 中文”“Paperclip 中文版”“Paperclip fork”。Paperclip CN 需要正面回答这些问题，而不是假设用户已经知道原版的全部上下文。
+  </p>
+
+  <h2>Fork 关系意味着什么？</h2>
+  <p>
+    Fork 的意思不是背离原项目，而是在一个已有基础上继续演进。对用户来说，最重要的不是 Git 层面的关系，而是三件事：能力方向是否保持一致、兼容性边界是否说清楚、以及中文增强到底做到了哪一步。
+  </p>
+  <ul>
+    <li>方向上，Paperclip CN 仍然围绕智能体协作、自托管、任务推进和权限控制展开。</li>
+    <li>使用上，它会更强调中文团队能否真正看懂、部署和落地。</li>
+    <li>表达上，它会把“这是 Paperclip 的中文增强版”说清楚，避免用户误以为这是毫不相关的新项目。</li>
+  </ul>
+
+  <h2>哪些地方是中文增强的重点？</h2>
+  <p>
+    第一是首页和说明内容，尽量先讲清楚这是什么、适合谁、和原版是什么关系。第二是部署和接入路径，会优先围绕中文团队更关心的自托管、权限、预算和模型接入来组织信息。第三是面向中国用户的使用体验，包括语言、社区入口和后续文档承接。
+  </p>
+  <p>
+    这也是为什么 Paperclip CN 的官网不应该只停留在品牌展示，而要有能够回答问题的专题页。用户需要的不只是看到名字，而是快速判断“它和原版的关系是什么”“是不是适合我的团队”“我下一步应该怎么试”。
+  </p>
+
+  <h2>谁适合先从这一页开始了解？</h2>
+  <p>
+    如果你已经知道 Paperclip，但不清楚 Paperclip CN 的位置，这一页最适合先看。如果你关心的是“它和原版有什么区别”，可以继续看区别页；如果你想判断这套东西适不适合自己的团队，可以继续看部署和场景页。
+  </p>
+  <div class="guide-note">
+    <strong>继续看哪一页？</strong>
+    想对比原版和中文增强版的差别，下一页建议看“Paperclip CN 和 Paperclip 原版的区别”；想直接判断部署和使用价值，建议继续看“适合中文团队的自托管智能体协作平台”。
+  </div>
+</GuideLayout>

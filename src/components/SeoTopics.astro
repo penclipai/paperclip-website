@@ -1,0 +1,100 @@
+---
+import { SEO_GUIDES } from '../config/seo';
+import { getSiteForPath } from '../config/site';
+
+const site = getSiteForPath(Astro.url.pathname);
+---
+
+{site.isChinese && (
+  <section class="seo-topics section">
+    <div class="container">
+      <div class="seo-topics-header">
+        <span class="section-badge">了解 Paperclip CN</span>
+        <h2 class="heading-serif seo-topics-heading">从几个常见问题开始，快速看懂 Paperclip CN。</h2>
+        <p class="seo-topics-sub">
+          Paperclip CN 是 Paperclip 的中文增强版，也是面向中文团队优化的 Paperclip fork。下面这几个专题页分别回答“它和原版有什么区别”“适不适合自己部署”“更适合哪些场景”这些最常见的问题。
+        </p>
+      </div>
+
+      <div class="seo-topics-grid">
+        {SEO_GUIDES.map((guide) => (
+          <a class="seo-topics-card" href={guide.href}>
+            <p class="seo-topics-label">{guide.label}</p>
+            <h3>{guide.title}</h3>
+            <p>{guide.description}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+<style>
+  .seo-topics {
+    padding-top: 0;
+  }
+
+  .seo-topics-header {
+    max-width: 760px;
+    margin-bottom: var(--space-xl);
+  }
+
+  .seo-topics-heading {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    margin-bottom: var(--space-sm);
+  }
+
+  .seo-topics-sub {
+    color: var(--color-text-muted);
+    font-size: 1rem;
+    line-height: 1.75;
+    max-width: 680px;
+  }
+
+  .seo-topics-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-md);
+  }
+
+  .seo-topics-card {
+    display: block;
+    padding: var(--space-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: var(--color-bg-alt);
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  }
+
+  .seo-topics-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-text-muted);
+    background: #f1eee9;
+  }
+
+  .seo-topics-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: var(--color-text-secondary);
+    margin-bottom: 0.45rem;
+  }
+
+  .seo-topics-card h3 {
+    font-size: 1.2rem;
+    line-height: 1.35;
+    margin-bottom: 0.6rem;
+  }
+
+  .seo-topics-card p:last-child {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  @media (max-width: 768px) {
+    .seo-topics-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

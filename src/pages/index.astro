@@ -4,6 +4,7 @@ import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Hero from '../components/Hero.astro';
 import Quickstart from '../components/Quickstart.astro';
+import SeoTopics from '../components/SeoTopics.astro';
 import HowItWorks from '../components/HowItWorks.astro';
 import Features from '../components/Features.astro';
 import FeatureOrgChart from '../components/FeatureOrgChart.astro';
@@ -31,6 +32,7 @@ const structuredData = getHomeStructuredData(Astro.url.pathname);
   <main>
     <Hero />
     <Quickstart />
+    <SeoTopics />
     <HowItWorks />
     <Features />
     <FeatureOrgChart />

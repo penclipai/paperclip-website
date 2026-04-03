@@ -1,0 +1,69 @@
+---
+import { BRAND } from '../config/brand';
+import GuideLayout from '../layouts/GuideLayout.astro';
+import { getChineseSeoAlternateLinks, getContentPageStructuredData, SEO_GUIDES } from '../config/seo';
+import { getAbsoluteUrl, getRobotsContent, getSiteForPath } from '../config/site';
+
+const pathname = Astro.url.pathname;
+const site = getSiteForPath(pathname);
+const isPrimaryChineseDomain = site.domain === BRAND.chineseDomain;
+const title = 'Paperclip CN 和 Paperclip 有什么区别？';
+const description =
+  '了解 Paperclip CN 和 Paperclip 原版的区别，包括语言支持、模型生态、部署方式和适合哪些中文团队使用。';
+const relatedGuides = SEO_GUIDES.filter((guide) => guide.href !== pathname);
+---
+
+<GuideLayout
+  title={title}
+  description={description}
+  heading="Paperclip CN 和 Paperclip 原版的区别"
+  intro="如果你已经知道 Paperclip，但还不确定 Paperclip CN 到底改了什么，可以先从这页看起。Paperclip CN 并不是另起炉灶，而是在保持原有方向的基础上，把更适合中文团队使用的表达、模型接入和部署体验补齐。"
+  canonicalHref={getAbsoluteUrl(pathname, BRAND.chineseDomain)}
+  alternateLinks={isPrimaryChineseDomain ? getChineseSeoAlternateLinks(pathname) : []}
+  robots={getRobotsContent(isPrimaryChineseDomain)}
+  structuredData={getContentPageStructuredData(pathname, title, description)}
+  relatedGuides={relatedGuides}
+>
+  <h2>先说结论：方向一致，落地方式更适合中文团队。</h2>
+  <p>
+    Paperclip CN 和 Paperclip 原版的核心目标是一致的，都是把多个智能体和工具组织起来，让任务可以按规则推进。真正的区别不在“做不做同一件事”，而在“怎么让中文团队更容易理解、部署和长期使用”。
+  </p>
+  <p>
+    如果你第一次接触这类产品，原版更像一个理念和能力都很强的基础项目；Paperclip CN 则更强调把这些能力翻译成中文团队更容易理解的界面、文案和使用路径。它仍然保持自托管、开源和可扩展的方向，但会优先解释中文用户最常遇到的问题，比如怎么部署、怎么接国产模型、怎么把权限和预算流程接进来。
+  </p>
+
+  <h2>区别一：语言支持不只是翻译，而是把使用路径讲清楚。</h2>
+  <p>
+    很多产品做中文化，只停留在把英文词换成中文词。Paperclip CN 更想解决的是“读得懂”和“用得上”之间的落差。比如首页、FAQ、操作说明和部署指引，都会尽量用中文团队熟悉的表达来说明，不让用户在一堆工程缩写里猜产品到底是干什么的。
+  </p>
+  <p>
+    这对 SEO 也很重要。很多用户并不是搜索一个抽象概念，而是会直接搜“Paperclip 中文”“Paperclip 中文版”“Paperclip CN”。Paperclip CN 的站点和内容页会围绕这些问题来组织，而不是只保留原版的抽象表达。
+  </p>
+
+  <h2>区别二：模型生态和接入习惯更贴近中文团队。</h2>
+  <p>
+    原版的能力重点在于组织智能体工作，而 Paperclip CN 在此基础上更强调中文团队常见的模型生态。你可以继续接现有的智能体、脚本和接口，也可以把更适合中国用户的模型服务和工具链纳入同一套流程里。
+  </p>
+  <p>
+    这并不意味着两者完全不兼容。恰恰相反，Paperclip CN 保留了和原版接近的工作方式，只是在日常使用时，把“中文团队真正会怎么接、怎么管、怎么解释给同事听”这件事放在更前面。
+  </p>
+
+  <h2>区别三：部署与团队管理的关注点更具体。</h2>
+  <p>
+    对很多中文团队来说，真正关心的不是抽象的系统能力，而是几个很具体的问题：能不能自己部署？权限怎么控？预算怎么看？出了问题谁来确认？Paperclip CN 会把这些问题当作首页和专题页的核心内容，而不是散落在深层文档里。
+  </p>
+  <ul>
+    <li>如果你更看重自托管和可控性，Paperclip CN 会更适合作为中文入口。</li>
+    <li>如果你已经熟悉原版术语，也可以直接沿用原版工作方式，再逐步接入中文增强内容。</li>
+    <li>如果团队成员并不都偏技术，Paperclip CN 更容易作为内部统一说明口径。</li>
+  </ul>
+
+  <h2>适合谁先看 Paperclip CN？</h2>
+  <p>
+    如果你的团队已经在关注 Paperclip，但希望先有一个更容易解释给同事、产品、运营或管理者的入口，那么 Paperclip CN 更适合先看。它能帮你判断这套系统到底适不适合自己的团队，再决定是不是继续深入原版能力。
+  </p>
+  <div class="guide-note">
+    <strong>继续看哪一页？</strong>
+    如果你更关心“为什么会有 Paperclip 中文增强版”，下一页建议看“什么是 Paperclip 中文增强版”；如果你更关心部署和使用方式，建议继续看“适合中文团队的自托管智能体协作平台”。
+  </div>
+</GuideLayout>

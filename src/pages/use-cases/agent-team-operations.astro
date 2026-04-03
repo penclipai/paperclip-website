@@ -1,0 +1,67 @@
+---
+import { BRAND } from '../../config/brand';
+import GuideLayout from '../../layouts/GuideLayout.astro';
+import { getChineseSeoAlternateLinks, getContentPageStructuredData, SEO_GUIDES } from '../../config/seo';
+import { getAbsoluteUrl, getRobotsContent, getSiteForPath } from '../../config/site';
+
+const pathname = Astro.url.pathname;
+const site = getSiteForPath(pathname);
+const isPrimaryChineseDomain = site.domain === BRAND.chineseDomain;
+const title = '智能体团队如何协作推进工作 | Paperclip CN';
+const description =
+  '从内容、运营和研发三个场景，了解 Paperclip CN 如何帮助智能体团队协作推进日常工作。';
+const relatedGuides = SEO_GUIDES.filter((guide) => guide.href !== pathname);
+---
+
+<GuideLayout
+  title={title}
+  description={description}
+  heading="让智能体团队协作推进日常工作"
+  intro="很多团队并不是缺一个更强的模型，而是缺一套能把分工、任务、进度和确认流程串起来的方式。Paperclip CN 更适合的场景，不是一次性的演示，而是那些每天都会重复发生、又需要多人和多个智能体一起完成的工作。"
+  canonicalHref={getAbsoluteUrl(pathname, BRAND.chineseDomain)}
+  alternateLinks={isPrimaryChineseDomain ? getChineseSeoAlternateLinks(pathname) : []}
+  robots={getRobotsContent(isPrimaryChineseDomain)}
+  structuredData={getContentPageStructuredData(pathname, title, description)}
+  relatedGuides={relatedGuides}
+>
+  <h2>场景一：内容团队需要持续产出，但不想被流程卡住。</h2>
+  <p>
+    内容团队往往会同时面对选题、资料整理、初稿生成、改写、配图、排期和复盘。单个智能体可以帮你完成其中某一步，但如果没有一套稳定的分工关系，最后还是要靠人手动把这些环节串起来。Paperclip CN 更适合把这几个步骤组织成一条明确的工作流。
+  </p>
+  <p>
+    对内容负责人来说，最重要的不是“某个模型写得多快”，而是能不能知道现在卡在哪一步、哪些内容可以自动推进、哪些地方必须人工确认。Paperclip CN 的价值，在于让整条流程更容易被看见，也更容易被调整。
+  </p>
+
+  <h2>场景二：运营团队要同时推进多个任务，但边界必须清楚。</h2>
+  <p>
+    运营工作经常是多线程并行的。活动准备、数据整理、对外沟通、渠道投放、日常监控，这些事情都可能交给不同角色和不同智能体去配合。如果没有统一的任务视角，团队很容易只看到局部动作，看不到整体节奏。
+  </p>
+  <p>
+    Paperclip CN 更适合的地方，是把这些并行任务放到一套统一视图里，明确谁负责推进、谁负责确认、什么时候该暂停。这样运营团队不需要一直盯着每个细节，也不会因为自动化而失去边界感。
+  </p>
+
+  <h2>场景三：研发协作不只是写代码，还包括确认和交接。</h2>
+  <p>
+    研发场景里，智能体能帮上忙的地方很多，但真正难的是“怎么配合”。需求拆分后由谁接手，哪些任务可以直接推进，哪些步骤需要 reviewer 确认，出了问题以后如何回到正确的人手里，这些都比单次生成代码更关键。
+  </p>
+  <p>
+    Paperclip CN 不是取代研发流程，而是让已有流程更容易和智能体协作。它更适合那些已经有明确分工、但希望把重复推进工作交给智能体处理的团队。
+  </p>
+
+  <h2>什么样的团队最适合先试用？</h2>
+  <ul>
+    <li>任务每天都在重复发生，但推进过程分散在多个人和多个工具之间。</li>
+    <li>已经在用智能体或自动化脚本，但缺一个统一的协作层。</li>
+    <li>需要权限、预算和确认机制，而不是只求“跑得快”。</li>
+    <li>希望技术成员和业务成员都能看懂系统在怎么工作。</li>
+  </ul>
+
+  <h2>这页的重点不是“有没有万能场景”，而是“有没有稳定流程”。</h2>
+  <p>
+    Paperclip CN 更适合那些本来就有稳定流程、只是希望把流程推进得更顺的团队。只要你的团队已经知道工作要怎么分、哪些地方需要确认、哪些步骤适合交给智能体，那它就有机会带来持续价值。反过来，如果流程本身还没有理清，再强的系统也很难立刻替你补齐所有管理问题。
+  </p>
+  <div class="guide-note">
+    <strong>继续看哪一页？</strong>
+    如果你想先理解中文增强版的定位，建议看“什么是 Paperclip 中文增强版”；如果你更关注部署和权限控制，建议继续看“适合中文团队的自托管智能体协作平台”。
+  </div>
+</GuideLayout>

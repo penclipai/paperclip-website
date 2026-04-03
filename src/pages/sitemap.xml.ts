@@ -1,21 +1,34 @@
-import { getAbsoluteUrl, getAlternateLinks } from '../config/site';
+import { BRAND } from '../config/brand';
+import { CURRENT_SITE, getAbsoluteUrl, getAlternateLinks } from '../config/site';
+import { getChineseSeoAlternateLinks, SEO_GUIDES } from '../config/seo';
 
 export const prerender = true;
 
 export function GET() {
-  const homeUrl = getAbsoluteUrl('/');
-  const alternates = getAlternateLinks('/');
+  const lastmod = new Date().toISOString();
+  const urls =
+    CURRENT_SITE.domain === BRAND.chineseDomain
+      ? ['/', ...SEO_GUIDES.map((guide) => guide.href)]
+      : ['/'];
   const body = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <url>
-    <loc>${homeUrl}</loc>
+  ${urls
+    .map((pathname) => {
+      const alternates = SEO_GUIDES.some((guide) => guide.href === pathname)
+        ? getChineseSeoAlternateLinks(pathname)
+        : getAlternateLinks(pathname);
+      return `<url>
+    <loc>${getAbsoluteUrl(pathname)}</loc>
+    <lastmod>${lastmod}</lastmod>
     ${alternates
       .map(
         (link) =>
           `<xhtml:link rel="alternate" hreflang="${link.hreflang}" href="${link.href}" />`
       )
       .join('\n    ')}
-  </url>
+  </url>`;
+    })
+    .join('\n  ')}
 </urlset>`;
 
   return new Response(body, {

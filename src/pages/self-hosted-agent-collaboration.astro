@@ -1,0 +1,67 @@
+---
+import { BRAND } from '../config/brand';
+import GuideLayout from '../layouts/GuideLayout.astro';
+import { getChineseSeoAlternateLinks, getContentPageStructuredData, SEO_GUIDES } from '../config/seo';
+import { getAbsoluteUrl, getRobotsContent, getSiteForPath } from '../config/site';
+
+const pathname = Astro.url.pathname;
+const site = getSiteForPath(pathname);
+const isPrimaryChineseDomain = site.domain === BRAND.chineseDomain;
+const title = '自托管智能体协作平台 | Paperclip CN';
+const description =
+  '了解 Paperclip CN 为什么适合作为中文团队的自托管智能体协作平台，包括部署、权限、预算和任务推进。';
+const relatedGuides = SEO_GUIDES.filter((guide) => guide.href !== pathname);
+---
+
+<GuideLayout
+  title={title}
+  description={description}
+  heading="适合中文团队的自托管智能体协作平台"
+  intro="如果你关心的是“这套系统能不能自己部署、能不能接进现有流程、出了问题能不能管得住”，那自托管这一页会比抽象概念更重要。Paperclip CN 想解决的，就是让多个智能体真正进入日常协作，而不是只停留在演示里。"
+  canonicalHref={getAbsoluteUrl(pathname, BRAND.chineseDomain)}
+  alternateLinks={isPrimaryChineseDomain ? getChineseSeoAlternateLinks(pathname) : []}
+  robots={getRobotsContent(isPrimaryChineseDomain)}
+  structuredData={getContentPageStructuredData(pathname, title, description)}
+  relatedGuides={relatedGuides}
+>
+  <h2>为什么很多团队最终会回到“自己部署”这个问题？</h2>
+  <p>
+    因为一旦智能体真正开始参与日常工作，团队最关心的就不再只是“能不能跑起来”，而是“数据放哪”“权限怎么控”“预算谁来兜底”“关键任务怎么确认”。这些问题如果不能提前想清楚，再强的演示也很难真的进入业务流程。
+  </p>
+  <p>
+    Paperclip CN 把自托管放在更靠前的位置，并不是为了强调技术门槛，而是因为很多中文团队在评估产品时，本来就会先问这些现实问题。自己部署意味着你可以把数据库、认证、日志、权限和预算规则放在更可控的范围里，而不是把整个团队流程交给一个难以调整的黑盒。
+  </p>
+
+  <h2>“智能体协作”具体指的是什么？</h2>
+  <p>
+    在 Paperclip CN 里，智能体协作不是让所有工具同时乱跑，而是把它们放进一套更清楚的分工关系里。谁负责什么、什么时候启动、预算上限是多少、哪些步骤需要确认，这些都应该提前定义好。这样团队看到的不是一堆零散脚本，而是一套能长期维护的工作流程。
+  </p>
+  <p>
+    对中文团队来说，这比抽象的“AI 自动化”更重要。很多时候，业务并不缺一个能执行的模型，而是缺一层能够把任务、权限、进度和确认流程连起来的协作方式。Paperclip CN 更适合承担的就是这一层。
+  </p>
+
+  <h2>它更适合哪些使用方式？</h2>
+  <ul>
+    <li>你想把多个智能体接到同一套任务流程里，而不是分散在不同工具里各自运行。</li>
+    <li>你需要知道预算和权限发生了什么，而不是只看最终结果。</li>
+    <li>你希望团队里的非技术成员也能看懂系统大概在怎么工作。</li>
+    <li>你需要把已有脚本、接口和现有工具链接进来，而不是从零换一整套系统。</li>
+  </ul>
+
+  <h2>预算、权限和确认为什么是重点？</h2>
+  <p>
+    因为真正进入生产环境后，风险往往不来自“能不能完成任务”，而来自“是不是在不该继续的时候继续了”。预算超了怎么办？权限放大了谁来确认？关键任务是否允许自动往下走？如果这些问题没有明确边界，团队很快就会对整套系统失去信任。
+  </p>
+  <p>
+    Paperclip CN 的优势，不是只让智能体更快执行，而是让团队在需要的时候能看到、能暂停、能确认、能继续。这种可控性，正是自托管价值的一部分。
+  </p>
+
+  <h2>如果你正在评估，这页最适合回答什么问题？</h2>
+  <p>
+    这页最适合回答的是：“Paperclip CN 能不能作为一套长期运行的自托管智能体协作平台？”如果你的团队已经在使用一些智能体或自动化脚本，但还缺一套更清楚的任务与权限管理方式，那 Paperclip CN 会比单一助手工具更值得看。
+  </p>
+  <div class="guide-note">
+    <strong>继续看哪一页？</strong>
+    如果你更关心使用场景，建议继续看“让智能体团队协作推进日常工作”；如果你还没弄清楚和原版的关系，建议回看“Paperclip CN 和 Paperclip 原版的区别”。
+  </div>
+</GuideLayout>

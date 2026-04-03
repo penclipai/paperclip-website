@@ -150,10 +150,10 @@ const zhHomeContent: HomeContent = {
     ctaHref: FIRST_PARTY_REPO_URL
   },
   hero: {
-    eyebrow: BRAND.name,
+    eyebrow: 'Paperclip 中文增强版',
     headlineLines: [BRAND.name, '面向智能体团队的', '开源协作平台'],
     lede:
-      `${BRAND.name} 是面向中文用户优化的 Paperclip 版本，用来把多个智能体和工具组织起来，分配职责、查看进度、控制权限，让团队协作和日常工作更清楚、更可持续。`,
+      `${BRAND.name} 是 Paperclip 的中文增强版，也是面向中文团队优化的 Paperclip fork，支持自托管、智能体协作、权限控制和国产模型接入。`,
     primaryCtaLabel: `立即体验 ${BRAND.name}`,
     primaryCtaHref: FIRST_PARTY_REPO_URL,
     secondaryCtaLabel: '查看核心能力',
@@ -162,7 +162,7 @@ const zhHomeContent: HomeContent = {
   quickstart: {
     heading: '快速开始',
     sub:
-      '开源、自托管、可审计。初始化流程会带你完成数据库、认证和首个团队空间配置，也兼容现有 Paperclip 的使用方式。',
+      'Paperclip CN 是 Paperclip 的中文增强版，开源、自托管、可审计。初始化流程会带你完成数据库、认证和首个团队空间配置，也兼容现有 Paperclip 的使用方式。',
     primaryLabel: `查看 ${BRAND.name} 仓库`,
     primaryHref: FIRST_PARTY_REPO_URL,
     secondaryLabel: '查看快速开始 ->',
@@ -326,13 +326,13 @@ export function getSiteForPath(
     lang,
     ogLocale: isChinese ? 'zh_CN' : 'en_US',
     title: isChinese
-      ? `${BRAND.name} | 面向智能体团队的开源协作平台`
+      ? 'Paperclip 中文增强版 | Paperclip CN by Penclip'
       : `${BRAND.name} | Chinese-enhanced fork of Paperclip for autonomous companies`,
     description: isChinese
-      ? `${BRAND.name} 是 Paperclip 的中文增强版，帮你把多个智能体和工具组织起来，分配职责、查看进度、控制权限，让团队协作和日常工作更清楚、更可持续。`
+      ? 'Paperclip CN 是 Paperclip 的中文增强版，面向中文团队优化，支持自托管、智能体协作、权限控制和国产模型接入。'
       : `${BRAND.name} is a Chinese-enhanced Paperclip fork focused on localized UX, self-hosted AI agent orchestration, and support for the China model ecosystem.`,
     alternateName: isChinese
-      ? `${BRAND.name}, Paperclip 中文增强版, ${BRAND.cliAliases.join(', ')}`
+      ? `${BRAND.name}, Paperclip 中文增强版, Paperclip fork`
       : `${BRAND.name}, ${BRAND.cliAliases.join(', ')}`,
     ctaUrl: FIRST_PARTY_REPO_URL,
     upstreamUrl: UPSTREAM_REPO_URL,

@@ -7,8 +7,16 @@ const isChinese = site.isChinese;
 const faqs = isChinese
   ? [
       {
-        q: 'Paperclip CN 和 OpenClaw、Claude Code 这类工具有什么区别？',
-        a: '这些工具更像具体执行任务的助手，Paperclip CN 更像把它们组织起来协作的那一层。它负责分工、任务流转、权限确认和进度管理。'
+        q: 'Paperclip CN 和 Paperclip 原版有什么区别？',
+        a: '核心方向是一致的，Paperclip CN 在此基础上补上了更适合中文团队的文案、使用路径和模型生态支持。你可以把它理解为面向中文用户优化的 Paperclip fork。'
+      },
+      {
+        q: 'Paperclip CN 支持中文团队和国产模型吗？',
+        a: '支持。Paperclip CN 会优先把中文团队更常见的表达、部署路径和模型接入方式讲清楚，也更适合结合国产模型和现有工具链一起使用。'
+      },
+      {
+        q: 'Paperclip CN 可以自己部署吗？',
+        a: '可以。它保持了开源、自托管的方式，你可以部署到自己的服务器，接自己的数据库、认证和基础设施，再按团队需要逐步接入智能体、任务和权限流程。'
       },
       {
         q: '我能继续使用现有的智能体吗？',
