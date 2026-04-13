@@ -21,13 +21,10 @@ type LegalFooter = {
 };
 
 type CommunityCard = {
-  type: 'wechat_qr_placeholder';
+  type: 'wechat_qr';
   imageSrc: string;
   title: string;
   description: string;
-  label: string;
-  href: string;
-  show: boolean;
 };
 
 type HomeContent = {
@@ -75,7 +72,7 @@ type HomeContent = {
 export type SiteContext = {
   alternateName: string;
   ctaUrl: string;
-  communityCard?: CommunityCard;
+  communityCards?: CommunityCard[];
   description: string;
   discordUrl: string;
   domain: SiteDomain;
@@ -98,7 +95,8 @@ const FIRST_PARTY_REPO_URL = `https://github.com/${BRAND.githubOrg}/${BRAND.prod
 const FIRST_PARTY_WEBSITE_REPO_URL = `https://github.com/${BRAND.githubOrg}/${BRAND.websiteRepo}`;
 const UPSTREAM_REPO_URL = 'https://github.com/paperclipai/paperclip';
 const DISCORD_URL = 'https://discord.gg/m4HZY7xNG3';
-const WECHAT_PLACEHOLDER_IMAGE = '/wechat-community-placeholder.svg';
+const WECHAT_GROUP_QR_IMAGE = '/wechat-group-qr.png';
+const WECHAT_OFFICIAL_ACCOUNT_IMAGE = '/wechat-official-account.jpg';
 
 const DOMAIN_TO_SITE_URL: Record<SiteDomain, string> = {
   [BRAND.chineseDomain]: `https://${BRAND.chineseDomain}`,
@@ -340,16 +338,21 @@ export function getSiteForPath(
     firstPartyRepoUrl: FIRST_PARTY_REPO_URL,
     firstPartyWebsiteRepoUrl: FIRST_PARTY_WEBSITE_REPO_URL,
     discordUrl: DISCORD_URL,
-    communityCard: isChinese
-      ? {
-          type: 'wechat_qr_placeholder',
-          imageSrc: WECHAT_PLACEHOLDER_IMAGE,
-          title: '微信交流群',
-          description: '社群入口筹备中，二维码后续替换为正式版本。',
-          label: '查看社群占位',
-          href: '#community',
-          show: true
-        }
+    communityCards: isChinese
+      ? [
+          {
+            type: 'wechat_qr',
+            imageSrc: WECHAT_GROUP_QR_IMAGE,
+            title: '微信交流群',
+            description: '扫码加入微信交流群，获取产品更新、使用答疑和版本动态。'
+          },
+          {
+            type: 'wechat_qr',
+            imageSrc: WECHAT_OFFICIAL_ACCOUNT_IMAGE,
+            title: '公众号关注',
+            description: '扫码关注公众号，第一时间获取 Penclip / Paperclip CN 的更新和教程。'
+          }
+        ]
       : undefined,
     isChinese,
     home: isChinese ? zhHomeContent : enHomeContent,

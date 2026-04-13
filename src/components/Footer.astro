@@ -4,7 +4,7 @@ import { getSiteForPath } from '../config/site';
 const site = getSiteForPath(Astro.url.pathname);
 
 const { footer } = site.home;
-const { communityCard, legalFooter } = site;
+const { communityCards, legalFooter } = site;
 ---
 
 <footer class="footer">
@@ -27,20 +27,26 @@ const { communityCard, legalFooter } = site;
       ))}
     </div>
 
-    {communityCard?.show && (
+    {communityCards && communityCards.length > 0 && (
       <div class="container footer-community" id="community">
-        <div class="community-card">
-          <img
-            src={communityCard.imageSrc}
-            alt={communityCard.title}
-            width="160"
-            height="160"
-            loading="lazy"
-          />
-          <div class="community-copy">
-            <h4>{communityCard.title}</h4>
-            <p>{communityCard.description}</p>
-          </div>
+        <div class="community-grid">
+          {communityCards.map((card) => (
+            <div class="community-card">
+              <div class="community-image-wrap">
+                <img
+                  src={card.imageSrc}
+                  alt={card.title}
+                  width="160"
+                  height="160"
+                  loading="lazy"
+                />
+              </div>
+              <div class="community-copy">
+                <h4>{card.title}</h4>
+                <p>{card.description}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     )}
@@ -135,39 +141,59 @@ const { communityCard, legalFooter } = site;
     padding-bottom: var(--space-lg);
   }
 
+  .community-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-md);
+    align-items: stretch;
+  }
+
   .community-card {
     display: flex;
     align-items: center;
-    gap: var(--space-lg);
-    width: min(100%, 560px);
+    gap: var(--space-md);
+    min-height: 100%;
     padding: var(--space-md);
     border: 1px solid rgba(255, 255, 255, 0.16);
     border-radius: var(--radius);
-    background: rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(6px);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+  }
+
+  .community-image-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 152px;
+    min-width: 152px;
+    height: 152px;
+    padding: 0.6rem;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 20px 48px rgba(8, 18, 37, 0.2);
   }
 
   .community-card img {
-    width: 128px;
-    height: 128px;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
     border-radius: 18px;
-    background: rgba(255, 255, 255, 0.94);
     flex-shrink: 0;
   }
 
   .community-copy h4 {
     font-family: var(--font-sans);
-    font-size: 1rem;
+    font-size: 1.02rem;
     font-weight: 600;
     color: #ffffff;
     margin-bottom: 0.35rem;
   }
 
   .community-copy p {
-    max-width: 24rem;
-    font-size: 0.9rem;
-    line-height: 1.65;
-    color: rgba(255, 255, 255, 0.72);
+    max-width: 26rem;
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.76);
   }
 
   .footer-legal {
@@ -218,6 +244,10 @@ const { communityCard, legalFooter } = site;
       gap: var(--space-lg) var(--space-md);
     }
 
+    .community-grid {
+      grid-template-columns: 1fr;
+    }
+
     .community-card {
       align-items: flex-start;
     }
@@ -232,9 +262,15 @@ const { communityCard, legalFooter } = site;
       flex-direction: column;
     }
 
+    .community-image-wrap {
+      width: 136px;
+      min-width: 136px;
+      height: 136px;
+    }
+
     .community-card img {
-      width: 120px;
-      height: 120px;
+      width: 100%;
+      height: 100%;
     }
 
     .footer-bottom {
