@@ -355,7 +355,7 @@ export function getSiteForPath(
     home: isChinese ? zhHomeContent : enHomeContent,
     legalFooter: isChinese
       ? {
-          icp: 'ICP备案号申请中',
+          icp: '沪ICP备2026013058号',
           publicSecurity: '公网安备申请中',
           show: showLegalFooter
         }
