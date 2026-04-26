@@ -54,7 +54,10 @@ const { communityCards, legalFooter } = site;
     {legalFooter?.show && (
       <div class="container footer-legal">
         <span>{legalFooter.icp}</span>
-        <span>{legalFooter.publicSecurity}</span>
+        <a class="public-security-link" href="https://beian.mps.gov.cn/#/query/webSearch?code=31010702010112" rel="noreferrer" target="_blank">
+          <img src="/police-badge.png" alt="公安备案" class="public-security-icon" width="20" height="20" />
+          {legalFooter.publicSecurity}
+        </a>
       </div>
     )}
 
@@ -203,6 +206,26 @@ const { communityCards, legalFooter } = site;
     padding-bottom: var(--space-md);
     color: rgba(255, 255, 255, 0.58);
     font-size: 0.8rem;
+  }
+
+  .public-security-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: rgba(255, 255, 255, 0.58);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .public-security-link:hover {
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .public-security-icon {
+    display: block;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
   }
 
   /* ── Bottom bar ── */

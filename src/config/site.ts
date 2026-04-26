@@ -359,7 +359,7 @@ export function getSiteForPath(
     legalFooter: isChinese
       ? {
           icp: '沪ICP备2026013058号',
-          publicSecurity: '公网安备申请中',
+          publicSecurity: '沪公网安备31010702010112号',
           show: showLegalFooter
         }
       : undefined,
