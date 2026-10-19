@@ -53,16 +53,9 @@ const { communityCards, legalFooter } = site;
 
     {legalFooter?.show && (
       <div class="container footer-legal">
-        <ul class="footer-icp-list" aria-label="ICP备案信息">
-          {legalFooter.icp.map((filing) => (
-            <li>
-              <span>{filing.domain}</span>
-              <a href="https://beian.miit.gov.cn/" rel="noopener noreferrer" target="_blank">
-                {filing.number}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <a class="footer-icp-link" href="https://beian.miit.gov.cn/" rel="noopener noreferrer" target="_blank">
+          {legalFooter.icp}
+        </a>
         <a class="public-security-link" href="https://beian.mps.gov.cn/#/query/webSearch?code=31010702010112" rel="noreferrer" target="_blank">
           <img src="/police-badge.png" alt="公安备案" class="public-security-icon" width="20" height="20" />
           {legalFooter.publicSecurity}
@@ -217,30 +210,14 @@ const { communityCards, legalFooter } = site;
     font-size: 0.8rem;
   }
 
-  .footer-icp-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem 1.25rem;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .footer-icp-list li {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.25rem 0.5rem;
-  }
-
-  .footer-icp-list a {
+  .footer-icp-link {
     color: inherit;
     text-decoration: underline;
     text-underline-offset: 0.2em;
   }
 
-  .footer-icp-list a:hover,
-  .footer-icp-list a:focus-visible {
+  .footer-icp-link:hover,
+  .footer-icp-link:focus-visible {
     color: #ffffff;
   }
 

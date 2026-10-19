@@ -5,6 +5,8 @@ import { buildSite } from './build-site.mjs';
 
 const SITE_TARGETS = {
   'paperclipai.cn': 'cn',
+  'penclip.cn': 'penclip-cn',
+  'penclipai.com': 'penclipai-com',
   'penclip.ing': 'intl'
 };
 

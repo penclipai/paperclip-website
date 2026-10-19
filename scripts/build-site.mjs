@@ -2,7 +2,7 @@ import { build } from 'astro';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
-const VALID_DOMAINS = new Set(['paperclipai.cn', 'penclip.ing']);
+const VALID_DOMAINS = new Set(['paperclipai.cn', 'penclip.cn', 'penclipai.com', 'penclip.ing']);
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
 function resolveDomain(input) {
@@ -12,8 +12,11 @@ function resolveDomain(input) {
 export async function buildSite(domain) {
   const targetDomain = resolveDomain(domain);
   const previousDomain = process.env.PUBLIC_DOMAIN;
+  const previousIcpDomain = process.env.PUBLIC_ICP_DOMAIN;
 
-  process.env.PUBLIC_DOMAIN = targetDomain;
+  // Keep one Chinese SEO domain while rendering each host's filing number into its HTML.
+  process.env.PUBLIC_DOMAIN = targetDomain === 'penclip.ing' ? targetDomain : 'paperclipai.cn';
+  process.env.PUBLIC_ICP_DOMAIN = targetDomain;
 
   try {
     await build({
@@ -24,6 +27,11 @@ export async function buildSite(domain) {
       delete process.env.PUBLIC_DOMAIN;
     } else {
       process.env.PUBLIC_DOMAIN = previousDomain;
+    }
+    if (previousIcpDomain === undefined) {
+      delete process.env.PUBLIC_ICP_DOMAIN;
+    } else {
+      process.env.PUBLIC_ICP_DOMAIN = previousIcpDomain;
     }
   }
 

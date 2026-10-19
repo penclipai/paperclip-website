@@ -15,7 +15,7 @@ type LocaleSwitch = {
 };
 
 type LegalFooter = {
-  icp: Array<{ domain: string; number: string }>;
+  icp: string;
   publicSecurity: string;
   show: boolean;
 };
@@ -97,6 +97,12 @@ const UPSTREAM_REPO_URL = 'https://github.com/paperclipai/paperclip';
 const DISCORD_URL = 'https://discord.gg/m4HZY7xNG3';
 const WECHAT_GROUP_QR_IMAGE = '/wechat-group-qr.png';
 const WECHAT_OFFICIAL_ACCOUNT_IMAGE = '/wechat-official-account.jpg';
+
+const ICP_NUMBERS: Record<string, string> = {
+  'paperclipai.cn': '沪ICP备2026013058号-1',
+  'penclip.cn': '沪ICP备2026013058号-2',
+  'penclipai.com': '沪ICP备2026013058号-3'
+};
 
 const DOMAIN_TO_SITE_URL: Record<SiteDomain, string> = {
   [BRAND.chineseDomain]: `https://${BRAND.chineseDomain}`,
@@ -317,6 +323,7 @@ export function getSiteForPath(
   const lang = resolveLanguage(normalizedPath, domain);
   const isChinese = lang === 'zh-CN';
   const showLegalFooter = isChinese && domain === BRAND.chineseDomain;
+  const icpDomain = process.env.PUBLIC_ICP_DOMAIN ?? import.meta.env.PUBLIC_ICP_DOMAIN ?? domain;
 
   return {
     domain,
@@ -358,11 +365,7 @@ export function getSiteForPath(
     home: isChinese ? zhHomeContent : enHomeContent,
     legalFooter: isChinese
       ? {
-          icp: [
-            { domain: 'paperclipai.cn', number: '沪ICP备2026013058号-1' },
-            { domain: 'penclip.cn', number: '沪ICP备2026013058号-2' },
-            { domain: 'penclipai.com', number: '沪ICP备2026013058号-3' }
-          ],
+          icp: ICP_NUMBERS[icpDomain] ?? ICP_NUMBERS[BRAND.chineseDomain],
           publicSecurity: '沪公网安备31010702010112号',
           show: showLegalFooter
         }
