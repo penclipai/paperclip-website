@@ -15,7 +15,7 @@ type LocaleSwitch = {
 };
 
 type LegalFooter = {
-  icp: string;
+  icp: Array<{ domain: string; number: string }>;
   publicSecurity: string;
   show: boolean;
 };
@@ -358,7 +358,11 @@ export function getSiteForPath(
     home: isChinese ? zhHomeContent : enHomeContent,
     legalFooter: isChinese
       ? {
-          icp: '沪ICP备2026013058号',
+          icp: [
+            { domain: 'paperclipai.cn', number: '沪ICP备2026013058号-1' },
+            { domain: 'penclip.cn', number: '沪ICP备2026013058号-2' },
+            { domain: 'penclipai.com', number: '沪ICP备2026013058号-3' }
+          ],
           publicSecurity: '沪公网安备31010702010112号',
           show: showLegalFooter
         }
